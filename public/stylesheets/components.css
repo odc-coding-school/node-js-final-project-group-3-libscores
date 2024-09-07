@@ -109,6 +109,10 @@
     height: 100vh;
     overflow: hidden;
   }
+
+  .container.center {
+    
+  }
   
   /* TODO: change to proper cente layout size */
   .constrant {
