@@ -3,18 +3,16 @@
     display: flex;
     align-items: center; /* Center align items */
     /* TODO CHANAGE BG TO MOCKBG */
-    background-color: var(--mist); /* Set mist background color */
-    border-radius: 8px; /* Apply border radius */
+    background-color: var(--dark-gray); /* Set mist background color */
+    border-radius: var(--round-md); /* Apply border radius */
     color: var(--black); /* Set text color to slate */
     cursor: pointer; /* Change cursor to pointer */
-    display: flex; /* Use flexbox for layout */
-    font-size: var(--small); /* Set font size to small */
-    height: 28px; /* Set fixed height */
+    font-size: var(--mid); /* Set font size to small */
     min-width: 38px;
-    margin-right: 8px; /* Set right margin */
-    padding: 0 var(--spacing-sm); /* Apply horizontal padding */
+    padding:  0 var(--spacing-md); /* Apply horizontal padding */
     gap: var(--space-sm);
-    text-align: c;
+    text-align: center;
+
 }
 
 .chip.active, .chip:hover {
@@ -37,6 +35,8 @@
 .sidebar {
     width: 278px;
     max-height: 84vh;
+    min-height: 84vh;
+    background-color: white;
 }
 
 .sidebar .header {
@@ -105,14 +105,13 @@
 
 /* Full viewport container */
 .container {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+    width: 950px;
+    margin: 0 auto;
+    min-height: 95vh;
+    align-items: flex-start;
+    padding: var(--spacing-md);
   }
 
-  .container.center {
-    
-  }
   
   /* TODO: change to proper cente layout size */
   .constrant {

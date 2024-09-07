@@ -13,7 +13,7 @@
 :root {
    /* Roundness sizes */
    --round-sm: 4px;
-   --round-md: 8px;
+   --round-md: 16px;
    --round-lg: 17px;
    --round-full: 50%;
    --round: 50%;
@@ -21,7 +21,7 @@
      /* Responsive font sizes */
   --tiny: 0.75rem;
   --small: 16px;
-  --mid: 18px;
+  --mid: 1.438em;
   --large: 23px;
   --huge: 36px;
 
@@ -449,3 +449,6 @@ hr.divider {
    height: 100vh;
  }
 
+ .bg-white {
+  background-color: white;
+ }
