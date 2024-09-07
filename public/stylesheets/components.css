@@ -1,0 +1,118 @@
+/* Small tab component */
+.chip {
+    display: flex;
+    align-items: center; /* Center align items */
+    /* TODO CHANAGE BG TO MOCKBG */
+    background-color: var(--mist); /* Set mist background color */
+    border-radius: 8px; /* Apply border radius */
+    color: var(--black); /* Set text color to slate */
+    cursor: pointer; /* Change cursor to pointer */
+    display: flex; /* Use flexbox for layout */
+    font-size: var(--small); /* Set font size to small */
+    height: 28px; /* Set fixed height */
+    min-width: 38px;
+    margin-right: 8px; /* Set right margin */
+    padding: 0 var(--spacing-sm); /* Apply horizontal padding */
+    gap: var(--space-sm);
+    text-align: c;
+}
+
+.chip.active, .chip:hover {
+    background-color: var(--crimson);
+    color: white;
+}
+
+
+/* Label */
+.label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: bold;
+    color: var(--midnight);
+  }
+  
+
+
+/* COMPONENT FOR SIDEBAR COMPONENT*/
+.sidebar {
+    width: 278px;
+    max-height: 84vh;
+}
+
+.sidebar .header {
+    font-size: var(--large);
+    font-weight: bolder;
+    text-align: center;
+}
+
+.sidebar .list {
+    gap: var(--spacing-sm);
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
+}
+
+.sidebar .item {
+    padding: var(--spacing-sm);
+    background-color: var(--light-gray);
+    border-radius: var(--round-md);
+    font-size: var(--small);
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.sidebar .item:hover, .sidebar .item.active {
+    background-color: var(--crimson);
+    color: white;
+    font-weight: bold;
+}
+
+
+.sidebar .item img {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    border: solid thin white;
+    border-radius: 50%;
+}
+
+.nav {
+    background-color: var(--navy-blue);
+    color: white;
+}
+
+.nav .logo {
+    width: 150px;
+}
+/* buttons */
+.link-button {
+    /* height: 38px; */
+    padding: var(--spacing-sm);
+    color: white;
+    background-color: var(--dark-blue);
+    border-radius: var(--round-md);
+}
+
+.icon-button {
+    width: 38px;
+    height: 38px;
+    border-radius: var(--round-md);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+/* Full viewport container */
+.container {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  /* TODO: change to proper cente layout size */
+  .constrant {
+    width: 900px;
+    max-height: 400px;
+    margin: 0 auto;
+  }

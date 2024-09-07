@@ -1,0 +1,451 @@
+/*
+  This CSS file contains custom properties (CSS variables) and utility classes
+  for backgrounds, text colors, borders, font sizes, spacing, and positioning.
+  Use these class tokens within HTML by applying the class names to elements.
+  For example:
+
+  <div class="font-medium padding-lg border"></div>
+
+  The above example would apply a medium font size, large padding, and a border
+  around the div element.
+*/
+
+:root {
+   /* Roundness sizes */
+   --round-sm: 4px;
+   --round-md: 8px;
+   --round-lg: 17px;
+   --round-full: 50%;
+   --round: 50%;
+   
+     /* Responsive font sizes */
+  --tiny: 0.75rem;
+  --small: 16px;
+  --mid: 18px;
+  --large: 23px;
+  --huge: 36px;
+
+  /* Spacing sizes */
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+
+  /* Roundness sizes */
+  --round-sm: 4px;
+  --round-md: 8px;
+  --round-lg: 16px;
+  --round-full: 50%;
+}
+
+
+/* Font size classes */
+/** Apply various font sizes based on utility classes **/
+.font-small { font-size: var(--font-small); } /* Small font */
+.font-medium { font-size: var(--font-medium); } /* Medium font */
+.font-large { font-size: var(--font-large); } /* Large font */
+.font-huge { font-size: 24px; } /* Custom large font */
+.tiny { font-size: var(--tiny); } /* Tiny font */
+.small { font-size: var(--small); } /* Small font (rem unit) */
+.large { font-size: var(--large); font-weight: bold; } /* Large font with bold */
+.huge { font-size: var(--huge); font-weight: bold; } /* Huge font with bold */
+.bold { font-weight: 700; } /* Bold font */
+.error { color: var(--red); } /* Error color */
+.muted { color: var(--shadow); } /* Muted color */
+.success { color: var(--green); } /* Success color */
+.warning { color: var(--yellow); } /* Warning color */
+.black { color: var(--black); } /* Black color */
+
+/* Spacing classes */
+/** Utility classes to manage padding **/
+.spacing-sm { padding: var(--spacing-sm); } /* Small padding */
+.spacing-md { padding: var(--spacing-md); } /* Medium padding */
+.spacing-lg { padding: var(--spacing-lg); } /* Large padding */
+.spacing-xl { padding: var(--spacing-xl); } /* Extra large padding */
+
+/* Border classes */
+/** Utility classes for adding and removing borders **/
+.border { border: 1px solid var(--light-gray); } /* Standard border */
+.border-top { border-top: 1px solid var(--light-gray); } /* Top border */
+.border-right { border-right: 1px solid var(--light-gray); } /* Right border */
+.border-bottom { border-bottom: 1px solid var(--light-gray); } /* Bottom border */
+.border-left { border-left: 1px solid var(--light-gray); } /* Left border */
+.no-border, .no-right, .no-left, .no-top, .no-bottom { border: unset !important; } /* Remove specific borders */
+.invalid { border-color: var(--red) !important; } /* Invalid border color */
+.hide { display: none; } /* Hide element */
+.show { display: block; } /* Show element */
+
+/* Text transformation */
+/** Utility classes for text transformations **/
+.uppercase { text-transform: uppercase; } /* Uppercase text */
+.lowercase { text-transform: lowercase; } /* Lowercase text */
+.capitalize { text-transform: capitalize; } /* Capitalize text */
+
+/* Font size classes */
+.tiny {
+  font-size: var(--tiny);
+}
+
+.small {
+  font-size: var(--small);
+}
+
+.large {
+  font-size: var(--large);
+  font-weight: bold;
+}
+
+.huge {
+  font-size: var(--huge);
+  font-weight: bold;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.error {
+  color: var(--red);
+}
+
+.muted {
+  color: var(--shadow);
+}
+
+.success {
+  color: var(--green);
+}
+
+.warning {
+  color: var(--yellow);
+}
+
+.black {
+  color: var(--black);
+}
+
+.crimson {
+  color: var(--crimson);
+}
+
+.black {
+  color: var(--coal);
+}
+
+.blue {
+  color: var(--blue);
+}
+
+.royal {
+  color: var(--royal);
+}
+
+.red {
+  color: var(--red);
+}
+
+.green {
+  color: var(--green);
+}
+
+/* Overflow control */
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Text alignment */
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+/* Font weight */
+.bold {
+  font-weight: bold;
+}
+
+.light {
+  font-weight: 300;
+}
+
+/* Display */
+.inline {
+  display: inline;
+}
+
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+/* Z-index control */
+.z-top {
+  z-index: 1000;
+}
+
+.z-bottom {
+  z-index: -1;
+}
+/* Divider class */
+hr.divider {
+    border: 0; /* Remove default border */
+    border-top: 1px solid var(--onyx); /* Apply a custom top border */
+    margin: var(--spacing-lg) 0; /* Apply large spacing above and below */
+}
+
+/* Space classes for vertical spacing between elements */
+.space {
+  display: block;
+  margin-bottom: var(--spacing-lg);
+}
+
+.space.small {
+  margin-bottom: var(--spacing-sm);
+}
+
+
+/* Margin classes */
+.no-margin { margin: 0 !important; } /* Remove all margins */
+.margin-right { margin-right: var(--spacing-md); } /* Apply medium right margin */
+.margin-left { margin-left: var(--spacing-md); } /* Apply medium left margin */
+.margin-top { margin-top: var(--spacing-md); } /* Apply medium top margin */
+.margin-bottom { margin-bottom: var(--spacing-md); } /* Apply medium bottom margin */
+
+/* Padding classes */
+.padding {padding: var(--spacing-md);}
+.small-padding {padding: var(--spacing-sm);}
+.no-padding { padding: 0 !important; } /* Remove all padding */
+.padding-right { padding-right: var(--spacing-md); } /* Apply medium right padding */
+.padding-left { padding-left: var(--spacing-md); } /* Apply medium left padding */
+.padding-top { padding-top: var(--spacing-md); } /* Apply medium top padding */
+.padding-bottom { padding-bottom: var(--spacing-md); } /* Apply medium bottom padding */
+
+/* Flexbox classes */
+.row { display: flex; flex-direction: row; } /* Flex container in a row direction */
+.column { display: flex; flex-direction: column; } /* Flex container in a column direction */
+.move-right { margin-left: auto; } /* Move element to the right */
+.move-left { margin-right: auto; } /* Move element to the left */
+.move-up { margin-bottom: auto; } /* Move element upwards */
+.move-down { margin-top: auto; } /* Move element downwards */
+/* Roundness classes */
+.round {
+  border-radius: var(--round-full);
+}
+
+.small-round {
+  border-radius: var(--round-sm);
+}
+
+.mid-round {
+  border-radius: var(--round-md);
+}
+
+.large-round {
+  border-radius: var(--round-lg);
+}
+
+/* Flexbox classes */
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.no-gap {
+  gap: unset !important;
+  row-gap: unset !important;
+}
+
+.flex > * {
+  flex: 2;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.gap {
+  gap: var(--spacing-sm);
+}
+
+.max {
+  flex: 2;
+}
+
+.sm {
+  flex-basis: auto;
+  flex-grow: var(--flex-sm);
+}
+
+/* Flexbox alignment */
+
+.center-justify {
+  justify-content: center;
+}
+
+.center-align {
+  align-items: center;
+  align-content: center;
+}
+
+.top-align {
+  align-items: flex-start;
+}
+
+.around {
+  justify-content: space-around;
+}
+
+.between {
+  justify-content: space-between;
+}
+
+.evenly {
+  justify-content: space-evenly;
+}
+
+/* Grid classes */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--spacing-md), 1fr));
+  gap: var(--spacing-md);
+}
+
+.sm {
+  grid-column: span var(--grid-sm);
+}
+
+.md {
+  grid-column: span var(--grid-md);
+}
+
+.lg {
+  grid-column: span var(--grid-lg);
+}
+
+.fit {
+  grid-template-columns: repeat(auto-fit, minmax(var(--spacing-md), 1fr));
+}
+
+.even {
+  grid-template-columns: repeat(4, minmax(var(--spacing-md), 1fr));
+
+}
+
+.sm-child {
+  grid-column: var(--grid-sm);
+}
+
+.md-child {
+  grid-column: var(--grid-md);
+}
+
+.lg-child {
+  grid-column: var(--grid-lg);
+}
+
+/* Positioned elements */
+.sticky { position: sticky; top: 0; } /* Sticky positioned element */
+.fixed { position: fixed; } /* Fixed positioned element */
+.relative { position: relative; } /* Relative positioned element */
+.absolute { position: absolute; } /* Absolute positioned element */
+.float-left { float: left; } /* Float element to the left */
+.float-right { float: right; } /* Float element to the right */
+
+/* Shadow classes */
+.small-elevate {
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .medium-elevate {
+    box-shadow: var(--shadow-md);
+  }
+  
+  .large-elevate {
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .huge-elevate {
+    box-shadow: var(--shadow-xl);
+  }
+
+  /* Roundness classes */
+.round {
+    border-radius: var(--round-full);
+  }
+  
+  .small-round {
+    border-radius: var(--round-sm);
+  }
+  
+  .medium-round {
+    border-radius: var(--round-md);
+  }
+  
+  .large-round {
+    border-radius: var(--round-lg);
+  }
+
+  /* changing line height */
+  /* Line Height Control */
+.no-line {
+  line-height: 1 !important; /* Removes additional line height, making it equal to the font size */
+}
+
+.small-line {
+  line-height: 1.2; /* Slightly increased line height for tighter text */
+}
+
+.medium-line {
+  line-height: 1.5; /* Default, balanced line height for readability */
+}
+
+.large-line {
+  line-height: 1.8; /* Increased line height for spacious text */
+}
+
+.extra-line {
+  line-height: 2; /* Extra line height for very spacious text */
+}
+
+/* Centering elements */
+.center {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: inherit;
+  text-align: unset !important;
+}
+
+
+
+.full {
+  min-height: 100%;
+ } 
+ 
+ .full-view {
+   width: 100vw;
+   height: 100vh;
+ }
+ 
+ .full-width {
+   width: 100vh;
+ }
+ .full-height {
+   height: 100vh;
+ }
+
