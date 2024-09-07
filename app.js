@@ -9,6 +9,7 @@ var SQLiteStore = require("connect-sqlite3")(session)
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var liveRouter = require('./routes/live.routes');
+var leagueRouter = require('./routes/league.routes');
 const db = require('@js/db');
 var cors = require("cors")
 var app = express();
@@ -40,6 +41,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/users', usersRouter);
 app.use('/live', liveRouter);
+app.use('/leagues', leagueRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
