@@ -98,6 +98,10 @@ section {
   display: block;
 }
 
+a{
+  color: black;
+}
+
 /* Ensure a baseline for headers */
 h1,
 h2,
