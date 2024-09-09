@@ -2,7 +2,7 @@
     /* Background colors */
     --frost: rgba(255, 255, 255, 0.12); /* Light frosted overlay background */
     --mist: rgba(255, 255, 255, 0.08); /* Misty white overlay */
-    --snow: #ffffff; /* Pure white */
+    --white: #ffffff; /* Pure white */
     --rose: #ff0050; /* Vibrant rose color */
     --slate: rgba(136, 136, 136, 0.50); /* Soft grayish color */
     --crimson: #fe2c55; /* Bold crimson color */

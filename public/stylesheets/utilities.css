@@ -452,3 +452,6 @@ hr.divider {
  .bg-white {
   background-color: white;
  }
+ .bg-gray {
+  background-color: var(--dark-gray);
+ }
