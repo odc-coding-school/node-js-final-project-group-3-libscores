@@ -10,6 +10,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var liveRouter = require('./routes/live.routes');
 var leagueRouter = require('./routes/league.routes');
+var teamsRouter = require('./routes/team.routes');
 const db = require('@js/db');
 var cors = require("cors")
 var app = express();
@@ -42,6 +43,7 @@ app.use('/users', usersRouter);
 app.use('/users', usersRouter);
 app.use('/live', liveRouter);
 app.use('/leagues', leagueRouter);
+app.use('/teams', teamsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

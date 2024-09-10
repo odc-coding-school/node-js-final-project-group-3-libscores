@@ -42,9 +42,9 @@
 
 /* Font size classes */
 /** Apply various font sizes based on utility classes **/
-.font-small { font-size: var(--font-small); } /* Small font */
-.font-medium { font-size: var(--font-medium); } /* Medium font */
-.font-large { font-size: var(--font-large); } /* Large font */
+.font-small { font-size: var(--small); } /* Small font */
+.font-medium { font-size: var(--medium); } /* Medium font */
+.font-large { font-size: var(--large); } /* Large font */
 .font-huge { font-size: 24px; } /* Custom large font */
 .tiny { font-size: var(--tiny); } /* Tiny font */
 .small { font-size: var(--small); } /* Small font (rem unit) */
@@ -451,4 +451,7 @@ hr.divider {
 
  .bg-white {
   background-color: white;
+ }
+ .bg-gray {
+  background-color: var(--dark-gray);
  }

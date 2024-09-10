@@ -127,3 +127,20 @@
     max-height: 400px;
     margin: 0 auto;
   }
+
+  .box {
+    background-color: var(--white);
+    border-radius: var(--round-md);
+    min-height: 58px;
+    padding: var(--spacing-sm);
+  }
+
+  .sm-logo {
+    width: 20px;
+  }
+
+  .mid-logo {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+  }
