@@ -5,5 +5,10 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
     res.render('league', { title: 'League' });
 });
+router.get('/:Id', function(req, res, next) {
+    res.locals.id = req.params.Id
+    res.render('league', { title: 'League'});
+});
+
 
 module.exports = router;
