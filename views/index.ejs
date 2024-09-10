@@ -1,2 +1,15 @@
 <%- include("./partial/head") %>
-<%- include("./partial/top-nav") %>
+<%- include("./partial/top-nav.ejs") %>
+
+
+
+<div class="container row">
+    <%- include("./partial/sidebar") %>
+    <section class="tab-container row">
+        <button class="chip active">All</button>
+        <button class="chip"><a href="/live">Live</a></button>
+        <button class="chip">Results</button>
+        <button class="chip">Fixtures</button>
+        <button class="chip move-right">Time</button>
+    </section>
+</div>
