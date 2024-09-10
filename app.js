@@ -35,7 +35,11 @@ app.use(
       maxAge: 60*60*1000, //1 hr
     },
   }));
-app.use(cors())
+app.use(cors()) 
+
+db.serialize(() => {
+  db.run('CREATE TABLE IF NOT EXISTS Leagues( ID INTEGER  PRIMARY KEY AUTOINCREMENT, Name VARCHAR(50) NOT NULL, logo VARCHAR(50) NOT NULL)');
+});
 
 // Routes handlers
 app.use('/', indexRouter);
