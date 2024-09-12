@@ -25,7 +25,7 @@ router.get('/second_division', function(req, res, next) {
 });
 
 router.get('/county_meet', function(req, res, next) {
-    res.render('league', { title: 'County Meet', logo: "/images/county_meet.png"});
+    res.render('county_meet', { title: 'County Meet', logo: "/images/county_meet.png"});
 });
 router.get('/women_league', function(req, res, next) {
     res.render('league', { title: 'Women League', logo: "/images/women_league.jpg"});
