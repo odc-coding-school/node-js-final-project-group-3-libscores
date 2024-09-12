@@ -1,146 +1,156 @@
+/**
+ * @file component.css
+ * 
+ * This CSS file defines styling for small UI components like chips, sidebars, navigation elements, 
+ * and buttons. It includes layout specifications, component interaction states, and design guidelines 
+ * for icons, containers, and logos, as well as common utilities like flexbox alignment and spacing. 
+ * The file is structured for consistent and reusable component styling across a user interface.
+ */
+
 /* Small tab component */
 .chip {
-    display: flex;
-    align-items: center; /* Center align items */
-    /* TODO CHANAGE BG TO MOCKBG */
-    background-color: var(--dark-gray); /* Set mist background color */
-    border-radius: var(--round-md); /* Apply border radius */
-    color: var(--black); /* Set text color to slate */
-    cursor: pointer; /* Change cursor to pointer */
-    font-size: var(--mid); /* Set font size to small */
-    min-width: 38px;
-    padding:  0 var(--spacing-md); /* Apply horizontal padding */
-    gap: var(--space-sm);
-    text-align: center;
-
+    display: flex; /* Apply flexbox layout to the chip */
+    align-items: center; /* Center align items vertically */
+    background-color: var(--dark-gray); /* Set background color for the chip */
+    border-radius: var(--round-md); /* Apply medium border radius */
+    color: var(--black); /* Set text color */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    font-size: var(--mid); /* Set font size to medium */
+    min-width: 38px; /* Minimum width for the chip */
+    padding: 0 var(--spacing-md); /* Apply horizontal padding */
+    gap: var(--space-sm); /* Set space between flex children */
+    text-align: center; /* Align text to center */
 }
 
 .chip.active, .chip:hover {
-    background-color: var(--crimson);
-    color: white;
+    background-color: var(--crimson); /* Set background color for active/hover state */
+    color: white; /* Set text color to white */
 }
 
-
-/* Label */
+/* Label styling */
 .label {
-    display: block;
-    margin-bottom: 4px;
-    font-weight: bold;
-    color: var(--midnight);
-  }
-  
-
-
-/* COMPONENT FOR SIDEBAR COMPONENT*/
-.sidebar {
-    width: 278px;
-    max-height: 84vh;
-    min-height: 84vh;
-    background-color: white;
-    border: thin solid var(--dark-gray);
-    border-radius: var(--round-md);
+    display: block; /* Make the label a block element */
+    margin-bottom: 4px; /* Add space below the label */
+    font-weight: bold; /* Make the text bold */
+    color: var(--midnight); /* Set label text color */
 }
 
-.sidebar .header img{
-    max-width: 2.5rem;
-    margin-left: 20px;
+/* Sidebar component */
+.sidebar {
+    width: 278px; /* Set sidebar width */
+    max-height: 84vh; /* Set maximum height of sidebar */
+    min-height: 84vh; /* Set minimum height of sidebar */
+    background-color: white; /* Set background color to white */
+    border: thin solid var(--dark-gray); /* Apply border with dark gray color */
+    border-radius: var(--round-md); /* Apply medium border radius */
+}
+
+.sidebar .header img {
+    max-width: 2.5rem; /* Set max width for header image */
+    margin-left: 20px; /* Add left margin to image */
 }
 
 .sidebar .header {
-    font-size: var(--large);
-    font-weight: bolder;
-    text-align: center;
+    font-size: var(--large); /* Set large font size */
+    font-weight: bolder; /* Make header text bolder */
+    text-align: center; /* Align text to center */
 }
 
 .sidebar .list {
-    gap: var(--spacing-sm);
-    padding-left: var(--spacing-sm);
-    padding-right: var(--spacing-sm);
+    gap: var(--spacing-sm); /* Set space between list items */
+    padding-left: var(--spacing-sm); /* Add left padding */
+    padding-right: var(--spacing-sm); /* Add right padding */
 }
 
 .sidebar .item {
-    padding: var(--spacing-sm);
-    background-color: var(--light-gray);
-    border-radius: var(--round-md);
-    font-size: var(--small);
-    color: var(--black);
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-md);
-    margin: 5px 0;
+    padding: var(--spacing-sm); /* Apply padding to list items */
+    background-color: var(--light-gray); /* Set background color for list items */
+    border-radius: var(--round-md); /* Apply medium border radius */
+    font-size: var(--small); /* Set small font size */
+    color: var(--black); /* Set text color to black */
+    display: flex; /* Apply flexbox layout to items */
+    align-items: center; /* Center align items vertically */
+    gap: var(--spacing-md); /* Set space between flex children */
+    margin: 5px 0; /* Add vertical margin between items */
 }
 
 .sidebar .item:hover, .sidebar .item.active {
-    background-color: var(--crimson);
-    color: white;
-    font-weight: bold;
+    background-color: var(--crimson); /* Change background color on hover/active */
+    color: white; /* Change text color to white */
+    font-weight: bold; /* Make text bold */
 }
-
 
 .sidebar .item img {
-    display: inline-block;
-    width: 28px;
-    height: 28px;
-    border: solid thin white;
-    border-radius: 50%;
+    display: inline-block; /* Display image inline-block */
+    width: 28px; /* Set image width */
+    height: 28px; /* Set image height */
+    border: solid thin white; /* Apply white border */
+    border-radius: 50%; /* Make image circular */
 }
 
+/* Navigation bar styling */
 .nav {
-    background-color: var(--navy-blue);
-    color: white;
+    background-color: var(--navy-blue); /* Set background color to navy blue */
+    color: white; /* Set text color to white */
 }
 
 .nav .logo {
-    width: 150px;
+    width: 150px; /* Set width for logo */
 }
-/* buttons */
+
+/* Button styles */
 .link-button {
-    /* height: 38px; */
-    padding: var(--spacing-sm);
-    color: white;
-    background-color: var(--dark-blue);
-    border-radius: var(--round-md);
+    padding: var(--spacing-sm); /* Apply padding */
+    color: white; /* Set text color to white */
+    background-color: var(--dark-blue); /* Set background color to dark blue */
+    border-radius: var(--round-md); /* Apply medium border radius */
 }
 
 .icon-button {
-    width: 38px;
-    height: 38px;
-    border-radius: var(--round-md);
-    display: grid;
-    place-items: center;
-    cursor: pointer;
+    width: 38px; /* Set width for icon button */
+    height: 38px; /* Set height for icon button */
+    border-radius: var(--round-md); /* Apply medium border radius */
+    display: grid; /* Use grid layout */
+    place-items: center; /* Center icon within the button */
+    cursor: pointer; /* Change cursor to pointer on hover */
 }
 
 /* Full viewport container */
 .container {
-    width: 950px;
-    margin: 0 auto;
-    min-height: 95vh;
-    align-items: flex-start;
-    padding: var(--spacing-md);
-  }
+    width: 950px; /* Set container width */
+    margin: 0 auto; /* Center container horizontally */
+    min-height: 95vh; /* Set minimum height */
+    align-items: flex-start; /* Align items to start */
+    padding: var(--spacing-md); /* Apply padding */
+}
 
-  
-  /* TODO: change to proper cente layout size */
-  .constrant {
-    width: 900px;
-    max-height: 400px;
-    margin: 0 auto;
-  }
+/* Centered layout with constraint */
+.constrant {
+    width: 900px; /* Set width */
+    max-height: 400px; /* Set maximum height */
+    margin: 0 auto; /* Center element horizontally */
+}
 
-  .box {
-    background-color: var(--white);
-    border-radius: var(--round-md);
-    min-height: 58px;
-    padding: var(--spacing-sm);
-  }
+.box {
+    background-color: var(--white); /* Set background color to white */
+    border-radius: var(--round-md); /* Apply medium border radius */
+    min-height: 58px; /* Set minimum height */
+    min-width: inherit; /* Set minimum width */
+}
 
-  .sm-logo {
-    width: 20px;
-  }
+/* Logo sizes */
+.sm-logo {
+    width: 20px; /* Set width for small logo */
+}
 
-  .mid-logo {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-  }
+.mid-logo {
+    width: 38px; /* Set width for medium logo */
+    height: 38px; /* Set height for medium logo */
+    border-radius: 50%; /* Make logo circular */
+}
+
+.lg-logo {
+    width: calc(68px * 2); /* Set width for large logo */
+    height: calc(68px * 2); /* Set height for large logo */
+    border-radius: 50%; /* Make logo circular */
+}
