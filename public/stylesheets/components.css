@@ -132,7 +132,7 @@
     background-color: var(--white);
     border-radius: var(--round-md);
     min-height: 58px;
-    padding: var(--spacing-sm);
+    min-width: inherit;
   }
 
   .sm-logo {
@@ -142,5 +142,11 @@
   .mid-logo {
     width: 38px;
     height: 38px;
+    border-radius: 50%;
+  }
+
+  .lg-logo  {
+    width: calc(68px * 2);
+    height: calc(68px * 2);
     border-radius: 50%;
   }
