@@ -21,7 +21,7 @@ router.get('/first_division', function(req, res, next) {
 });
 
 router.get('/second_division', function(req, res, next) {
-    res.render('league', { title: 'Second Division', logo: "/images/league_2.jpg"});
+    res.render('second_division', { title: 'Second Division'});
 });
 
 router.get('/county_meet', function(req, res, next) {
