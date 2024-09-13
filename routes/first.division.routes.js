@@ -2,9 +2,16 @@ var express = require('express');
 const upload = require('../middleware/upload');
 var router = express.Router();
 
-/* GET users listing. */
+
 router.get('/', function(req, res, next) {
-    res.render('first-division', { title: 'Orange First Division League', logo: "/images/league_1.png"});
+    console.log(req.query)
+    res.render('first-division', 
+        { 
+            title: 'Orange First Division League', 
+            logo: "/images/league_1.png",
+            param: req.query
+        }
+    );
 });
 
 module.exports = router;
