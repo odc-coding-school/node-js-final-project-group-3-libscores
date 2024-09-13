@@ -82,6 +82,7 @@
 .uppercase { text-transform: uppercase; } /* Uppercase text */
 .lowercase { text-transform: lowercase; } /* Lowercase text */
 .capitalize { text-transform: capitalize; } /* Capitalize text */
+.cap { text-transform: capitalize; } /* Capitalize text */
 
 /* Set font size to tiny */
 .tiny { font-size: var(--tiny); }
@@ -135,7 +136,7 @@
 .align-left { text-align: left; }
 
 /* Align text to the center */
-.align-center { text-align: center; }
+.align-center { text-align: center !important; }
 
 /* Align text to the right */
 .align-right { text-align: right; }
@@ -226,6 +227,7 @@ hr.divider { border: 0; border-top: 1px solid var(--onyx); margin: var(--spacing
 
 /* Set full roundness */
 .round { border-radius: var(--round-full); }
+.no-round { border-radius: unset !important; }
 
 /* Set small roundness */
 .small-round { border-radius: var(--round-sm); }

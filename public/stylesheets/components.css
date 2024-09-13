@@ -15,11 +15,12 @@
     border-radius: var(--round-md); /* Apply medium border radius */
     color: var(--black); /* Set text color */
     cursor: pointer; /* Change cursor to pointer on hover */
-    font-size: var(--mid); /* Set font size to medium */
+    font-size: var(--small); /* Set font size to medium */
     min-width: 38px; /* Minimum width for the chip */
-    padding: 0 var(--spacing-md); /* Apply horizontal padding */
+    padding: var(--spacing-sm) var(--spacing-lg); /* Apply horizontal padding */
     gap: var(--space-sm); /* Set space between flex children */
     text-align: center; /* Align text to center */
+    font-weight: bold;
 }
 
 .chip.active, .chip:hover {
@@ -74,8 +75,9 @@
     color: var(--black); /* Set text color to black */
     display: flex; /* Apply flexbox layout to items */
     align-items: center; /* Center align items vertically */
-    gap: var(--spacing-md); /* Set space between flex children */
-    margin: 5px 0; /* Add vertical margin between items */
+    gap: var(--spacing-sm); /* Set space between flex children */
+    font-weight: bold;
+    height: 48px;
 }
 
 .sidebar .item:hover, .sidebar .item.active {
