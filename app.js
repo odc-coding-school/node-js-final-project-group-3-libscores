@@ -11,7 +11,11 @@ var usersRouter = require('./routes/users');
 var liveRouter = require('./routes/live.routes');
 var leaguesRouter = require('./routes/league.routes');
 var teamsRouter = require('./routes/team.routes');
+var apiRouter = require('./routes/api.routes');
+var apiRouter = require('./routes/api.routes');
 var createLeaguesRouter = require('./routes/create_leagues.routes');
+var firstDivisionRouter = require('./routes/first.division.routes');
+var countyMeetRouter = require('./routes/county.meet.routes');
 const db = require('@js/db');
 var cors = require("cors")
 var app = express();
@@ -57,7 +61,10 @@ app.use('/users', usersRouter);
 app.use('/live', liveRouter);
 app.use('/leagues', leaguesRouter);
 app.use('/teams', teamsRouter);
+app.use('/api', apiRouter);
 app.use('/create_leagues', createLeaguesRouter);
+app.use('/first_division', firstDivisionRouter);
+app.use('/county_meet', countyMeetRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

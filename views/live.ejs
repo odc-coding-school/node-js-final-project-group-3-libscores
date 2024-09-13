@@ -4,7 +4,13 @@
 <div class="container row">
     <%- include("./partial/sidebar") %>
     <div class="column full max">
-    <%- include("./partial/tabs") %>
+        <section class="tab-container row">
+            <a href="/"><button class="chip">All</button></a>
+            <a href="/live"><button class="chip active">Live</button></a>
+            <button class="chip">Results</button>
+            <button class="chip">Fixtures</button>
+            <button class="chip move-right">Time</button>
+        </section>
         <section class="">
             <header class="bg-gray border row margin-top margin-bottom small-padding small-round">
                 <img src="/images/league_1.png" alt="" class="mid-logo">
