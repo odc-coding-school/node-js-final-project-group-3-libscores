@@ -3,5 +3,8 @@
     <a class="chip active" href="/<%= page %>/?tab=standings">Standings</a>
     <a  class="chip" href="/<%= page %>/?tab=fixtures">Fixtures</a>
     <a class="chip" href="/<%= page %>/?tab=results">Results</a>
+    <% if (league == "cm") { %>
     <a class="chip" href="/<%= page %>/?tab=statistics">Statistics</a>
+    <% } %>
+ 
 </section>

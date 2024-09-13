@@ -4,8 +4,7 @@ var router = express.Router();
 
 
 router.get('/', function(req, res, next) {
-    console.log("working with nothing")
-    res.render('first-division', 
+    res.render('second-division', 
         { 
             title: 'Orange Second Division League', 
             logo: "/images/league_2.jpg",
