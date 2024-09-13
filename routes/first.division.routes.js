@@ -4,7 +4,7 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    res.render('first_division', { title: 'First Division' });
+    res.render('first-division', { title: 'Orange First Division League', logo: "/images/league_1.png"});
 });
 
 module.exports = router;
