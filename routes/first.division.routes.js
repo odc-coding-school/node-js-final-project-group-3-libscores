@@ -3,8 +3,8 @@ const upload = require('../middleware/upload');
 var router = express.Router();
 
 
-router.get('/?', function(req, res, next) {
-    console.log(req)
+router.get('/', function(req, res, next) {
+    console.log(req.query)
 
     res.render('first-division', 
         { 
