@@ -4,12 +4,13 @@ var router = express.Router();
 
 
 router.get('/', function(req, res, next) {
-    console.log(req.query)
+    console.log("working with nothing")
     res.render('first-division', 
         { 
             title: 'Orange First Division League', 
             logo: "/images/league_1.png",
-            param: req.query
+            param: req.query,
+            league: "l1"
         }
     );
 });
