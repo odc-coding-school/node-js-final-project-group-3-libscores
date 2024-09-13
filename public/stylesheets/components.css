@@ -154,3 +154,36 @@
     height: calc(68px * 2); /* Set height for large logo */
     border-radius: 50%; /* Make logo circular */
 }
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #444;
+    background-color: #f4f4f4;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0;
+}
+
+table, th, td {
+    border-bottom: 1px solid black;
+}
+
+th {
+    background-color: #d3d3d3;
+    border-bottom: 1px solid black;
+    text-align: left;
+}
+
+th, td {
+    padding: 5px;
+    font-size: 14px;
+}
+
+.first{
+    width: 200px;
+}
