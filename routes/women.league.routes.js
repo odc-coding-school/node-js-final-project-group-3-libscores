@@ -4,15 +4,30 @@ var router = express.Router();
 
 
 router.get('/', function(req, res, next) {
-    res.render('women-league', 
-        { 
-            title: 'Women League', 
-            logo: "/images/women_league.jpg",
-            param: req.query,
-            league: "wl",
-            page: "women_league"
-        }
-    );
+    const {tab} = req.query
+
+    let options = { 
+        title: 'Women League', 
+        logo: "/images/women_league.jpg",
+        param: req.query,
+        league: "wl",
+        page: "women_league",
+        tab
+    }
+    switch (tab) {
+        case "results":
+            res.render('results', options) 
+            break;
+        case "standings":
+            res.render('standings', options) 
+            break;
+        case "fixtures":
+            res.render('fixtures', options) 
+            break;
+        default:
+            res.render('women-league', options );
+            break;
+    }
 });
 
 module.exports = router;

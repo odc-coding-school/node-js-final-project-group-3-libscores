@@ -4,15 +4,29 @@ var router = express.Router();
 
 
 router.get('/', function(req, res, next) {
-    res.render('second-division', 
-        { 
-            title: 'Orange Second Division League', 
-            logo: "/images/league_2.jpg",
-            param: req.query,
-            league: "l2",
-            page: "second_division"
-        }
-    );
+    const {tab} = req.query
+
+    let options = { 
+        title: 'Orange Second Division League', 
+        logo: "/images/league_2.jpg",
+        league: "l2",
+        page: "second_division",
+        tab
+    }
+    switch (tab) {
+        case "results":
+            res.render('results', options) 
+            break;
+        case "standings":
+            res.render('standings', options) 
+            break;
+        case "fixtures":
+            res.render('fixtures', options) 
+            break;
+        default:
+            res.render('second-division', options );
+            break;
+    }
 });
 
 module.exports = router;
