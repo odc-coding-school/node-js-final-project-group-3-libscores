@@ -156,8 +156,8 @@
 }
 
 .lg-logo {
-    width: calc(68px * 2); /* Set width for large logo */
-    height: calc(68px * 2); /* Set height for large logo */
+    width: 64px; /* Set width for large logo */
+    height: 64px; /* Set height for large logo */
     border-radius: 50%; /* Make logo circular */
 }
 

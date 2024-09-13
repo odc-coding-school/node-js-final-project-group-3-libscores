@@ -26,6 +26,7 @@
   --huge: 36px;
 
   /* Spacing sizes */
+  --spacing-xs: 0.3rem;
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
   --spacing-lg: 1.5rem;
@@ -191,6 +192,7 @@ hr.divider { border: 0; border-top: 1px solid var(--onyx); margin: var(--spacing
 
 /* Apply small padding */
 .small-padding { padding: var(--spacing-sm); }
+.tiny-padding { padding: var(--spacing-xs); }
 
 /* Remove all padding */
 .no-padding { padding: 0 !important; }
