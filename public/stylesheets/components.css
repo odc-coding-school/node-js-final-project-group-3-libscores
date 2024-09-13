@@ -27,6 +27,10 @@
     color: white; /* Set text color to white */
 }
 
+.chip-active a{
+    color: white;
+}
+
 /* Label styling */
 .label {
     display: block; /* Make the label a block element */
