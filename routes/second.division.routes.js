@@ -10,7 +10,8 @@ router.get('/', function(req, res, next) {
             title: 'Orange Second Division League', 
             logo: "/images/league_2.jpg",
             param: req.query,
-            league: "l2"
+            league: "l2",
+            page: "second_division"
         }
     );
 });

@@ -17,6 +17,7 @@ var createLeaguesRouter = require('./routes/create_leagues.routes');
 var firstDivisionRouter = require('./routes/first.division.routes');
 var countyMeetRouter = require('./routes/county.meet.routes');
 var secondDivisionRouter = require('./routes/second.division.routes');
+var womenLeagueRouter = require('./routes/women.league.routes');
 const db = require('@js/db');
 var cors = require("cors")
 var app = express();
@@ -66,6 +67,7 @@ app.use('/api', apiRouter);
 app.use('/create_leagues', createLeaguesRouter);
 app.use('/first_division', firstDivisionRouter);
 app.use('/second_division', secondDivisionRouter);
+app.use('/women_league', womenLeagueRouter);
 app.use('/county_meet', countyMeetRouter);
 
 // catch 404 and forward to error handler
