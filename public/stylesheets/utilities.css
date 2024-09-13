@@ -60,7 +60,7 @@
 
 /* Spacing classes */
 /** Utility classes to manage padding **/
-.spacing { gap: var(--spacing-md); } /* Small padding */
+.spacing { gap: var(--spacing-sm); } /* Small padding */
 .spacing-sm { padding: var(--spacing-sm); } /* Small padding */
 .spacing-md { padding: var(--spacing-md); } /* Medium padding */
 .spacing-lg { padding: var(--spacing-lg); } /* Large padding */
