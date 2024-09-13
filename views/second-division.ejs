@@ -4,10 +4,68 @@
 <div class="container row">
     <%- include("./partial/sidebar") %>
     <div class="column full max">
-        <section class="tab-container row padding">
-            <a href="/second_division"><button class="chip active">Fixtues</button></a>
-            <a href="/second_division_results"><button class="chip">Results</button></a>
-            <a href="/second_division_standings"><button class="chip">Standings</button></a>
-        </section>  
-    </div>
+        <div class="border row max bg-white tiny-padding mid-round">
+            <img src="<%= logo %>" class="lg-logo"  alt="">
+            <span>
+                <h1 class="large"><%= title %></h1>
+                <h4 class="muted bold">2024/2025</h4>
+            </span>
+        </div>
+        <section class="row padding-top padding-bottom">
+            <a class="chip active" href="/first_division/?tab=standings">Standings</a>
+            <a  class="chip" href="/first_division/?tab=fixtures">Fixtures</a>
+            <a class="chip" href="/first_division/?tab=results">Results</a>
+            <a class="chip" href="/first_division/?tab=statistics">Statistics</a>
+        </section>
+    <table>
+        <thead>
+            <tr>
+                <th class="first">Team</th>
+                <th>GP</th>
+                <th>W</th>
+                <th>D</th>
+                <th>L</th>
+                <th>G/A</th>
+                <th>Pts</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="first">Fassell FC</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td class="first">Paynesville FC</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td class="first">Freeport FC</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td class="first">Watanga FC</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
