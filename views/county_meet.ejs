@@ -4,8 +4,17 @@
 <div class="container row">
     <%- include("./partial/sidebar") %> 
     <div class="column max">
-    <%- include("./partial/league-header") %>
-
+        <header class="bg-gray border row margin-top margin-bottom small-padding small-round">
+            <img src="/images/county_meet.png" alt="County Meet" class="mid-logo">
+            <h3 class="large bold">County Meet 2025</h3>
+            <p class="move-right"><i class="fa-solid fa-calendar-days"></i> Select Year</p>
+        </header>
+    <section class="tab-container row padding">
+        <button class="chip active"><a href="">Standings</a></button>
+        <button class="chip"><a href="">Results</a></button>
+        <button class="chip">Fixture</button>
+        <button class="chip">Statistics</button>
+    </section>
     <!-- DOSSO: WRITE YOUR CODE HERE... -->
         <div class="box padding bg-white">
             <table>
