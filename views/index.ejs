@@ -6,13 +6,7 @@
 <div class="container row">
     <%- include("./partial/sidebar") %>
     <div class="column full max">
-    <section class="tab-container row">
-        <button class="chip active">All</button>
-        <button class="chip"><a href="/live">Live</a></button>
-        <button class="chip">Results</button>
-        <button class="chip">Fixtures</button>
-        <input class="chip move-right no-border" type="date">
-    </section>
+        <%- include("./partial/tabs") %>
     <section class="">
         <header class="bg-gray border row margin-top margin-bottom small-padding small-round">
             <img src="/images/league_1.png" alt="" class="mid-logo">
