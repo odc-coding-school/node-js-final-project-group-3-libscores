@@ -193,3 +193,12 @@ th, td {
 .first{
     width: 200px;
 }
+
+.match-logo{
+    width: 150px;
+    height: 150px;
+}
+
+.big-left{
+    margin-left: 25%;
+}
