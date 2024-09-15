@@ -21,7 +21,7 @@ const leagueApiMap = {
 
     sortedGames.forEach(item => {
     $(` 
-        <section class="box row padding margin-top padding-right">
+        <section class="box row padding">
             <h3 class="${item.status == 3 ? 'black' : 'red'} margin-right column center-align small">
             <span>${item.status == 3 ? 'FT' : '90'}</span>
             <span>${formatDate(item.time.start)}</span>
@@ -77,7 +77,7 @@ const leagueApiMap = {
         // Define an array of league data
         const leagues = [
             { id: "l1", name: "Orange First Division League", image: "/images/league_1.png", link: "/first_division" },
-            { id: "l2", name: "Orange Second Division League", image: "/images/league_2.png", link: "/second_division" },
+            { id: "l2", name: "Orange Second Division League", image: "/images/league_2.jpg", link: "/second_division" },
             { id: "l3", name: "National Women League", image: "/images/women_league.jpg", link: "/women_league" },
         ];
 

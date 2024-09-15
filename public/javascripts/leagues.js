@@ -1,4 +1,4 @@
-import { formatDate, removeWordFromEnd, getPageUrl } from "/javascripts/utils.js";
+import { formatDate, removeWordFromEnd, getPageUrl, getPage } from "/javascripts/utils.js";
 
 
 // // Function to fetch data for a specific league from the given URL
@@ -127,11 +127,14 @@ function fetchLeagueData(apiUrl, page) {
   })
 
   $(document).ready(function () {
-    let page = getPageUrl()
-    if(page == "results") {
-        fetchLeagueData('https://www.scorebar.com/api/league//tournament/1534/liberia-first-division', page)
-    }
-    if(page == "fixtures") {
-        fetchLeagueData('https://www.scorebar.com/api/league//tournament/1534/liberia-first-division', "future")
+    if(getPage() == "first_division"){
+      let page = getPageUrl()
+      if(page == "results") {
+          fetchLeagueData('https://www.scorebar.com/api/league//tournament/1534/liberia-first-division', page)
+      }
+      if(page == "fixtures") {
+          fetchLeagueData('https://www.scorebar.com/api/league//tournament/1534/liberia-first-division', "future")
+      }
     }
   });
+
