@@ -5,7 +5,19 @@ var router = express.Router();
 
 router.get('/', function(req, res, next) {
 
-    const {tab} = req.query
+    const options = { 
+        title: 'Orange First Division League', 
+        logo: "/images/league_1.png",
+        league: "l1",
+        page: "first_division",
+        tab: "/"
+    }
+    res.render('first-division', options );
+
+});
+router.get('/:tab', function(req, res, next) {
+
+    const {tab} = req.params
 
     const options = { 
         title: 'Orange First Division League', 

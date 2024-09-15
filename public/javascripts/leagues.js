@@ -10,10 +10,20 @@ import { formatDate, removeWordFromEnd } from "/javascripts/utils.js";
       success: function (data) {
         let { league, games } = data.result;
 
-    // Convert 'games' object into an array and sort by time in descending order
-    const sortedGames = Object.values(games).sort((a, b) => new Date(b.time.start) - new Date(a.time.start));
 
-    sortedGames.forEach(item => {
+
+// Get the current date and time
+const currentDate = new Date();
+
+// Convert 'games' object into an array, filter by future games, and sort by time in descending order
+const pastGames = Object.values(games)
+    .filter(item => {
+        const gameDate = new Date(item.time.start.replace(' ', 'T'));  // Convert to ISO 8601 format
+        return gameDate < currentDate;  // Filter out past games
+    })
+    .sort((a, b) => new Date(b.time.start.replace(' ', 'T')) - new Date(a.time.start.replace(' ', 'T')));  // Sort by time in descending order
+
+    pastGames.forEach(item => {
     $(` 
         <section class="box row padding margin-top padding-right">
             <h3 class="${item.status == 3 ? 'black' : 'red'} margin-right column center-align small">
@@ -34,6 +44,7 @@ import { formatDate, removeWordFromEnd } from "/javascripts/utils.js";
             </section>
         </section>`
     ).appendTo(`#${divId}`);  // Adjust target as necessary
+    
     });
       },
       error: function (err) {
@@ -54,5 +65,5 @@ import { formatDate, removeWordFromEnd } from "/javascripts/utils.js";
   })
 
   $(document).ready(function () {
-    fetchLeagueData('https://www.scorebar.com/api/league//tournament/1534/liberia-first-division', 'l1')
+    fetchLeagueData('https://www.scorebar.com/api/league//tournament/1534/liberia-first-division', 'container')
   });
