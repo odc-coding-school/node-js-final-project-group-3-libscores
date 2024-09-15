@@ -3,11 +3,15 @@
 
 <div class="container row">
     <%- include("./partial/sidebar") %>
-    <div class="column full max padding-left">
+    <div class="column full max">
         <%- include("./partial/league-header") %>
         <%- include("./partial/league-tabs") %>
-        <center id="loader"><div class="margin loader" ></div></center>
-        <div id="l1" class="league-container column spacing"></div>
+
+        <div id="l1" class="league-container column ">
+            <center id="loader">
+                <div class="margin loader" ></div>
+            </center>
+        </div>
 </div>
 <script type="module" src="/javascripts/jquery.js"></script>
 <script type="module" src="/javascripts/first-division.js"></script>

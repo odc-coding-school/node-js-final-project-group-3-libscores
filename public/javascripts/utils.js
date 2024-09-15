@@ -14,4 +14,9 @@ export function formatDate(date) {
     }
     return text;
   }
+
+  export function getPageUrl() {
+    let url = $(location).attr('href');
+    return url.replace(/\/\s*$/, "").split('/').pop();
+  }
   
