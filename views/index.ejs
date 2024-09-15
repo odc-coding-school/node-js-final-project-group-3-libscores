@@ -3,20 +3,22 @@
 
 
 
-<div class="container row">
+<div class="container row ">
     <%- include("./partial/sidebar") %>
     <div class="column full max padding">
         <%- include("./partial/tabs") %>
-                 
-    <div id="league_one">
-        <center id="loader"><div class="margin loader" ></div></center>
-        <div class="column spacing" id="l1_scores"></div>
-    </div>
-    <div id="women_league">
-        <div class="column spacing" id="wl_scores"></div>
-    </div>
+
+        <div id="l1" class="league-container column spacing "></div>
+        <div id="l2" class="league-container column spacing ">league two</div>
+        <div id="l3" class="league-container column spacing ">league three</div>
+        <!-- <div class="leagues-container">
+            <div id="l1" class="column spacing" >
+                <center id="loader"><div class="margin loader" ></div></center>
+            </div>
+            <div id="l2"  class="column spacing"></div>
+        </div> -->
 </div>
 </div>
 </div>
 <script type="module" src="/javascripts/jquery.js"></script>
-<script type="module" src="/javascripts/index.view.js"></script>
+<script type="module" src="/javascripts/fetch.js"></script>
