@@ -10,38 +10,37 @@ const leagueApiMap = {
   // Function to fetch data for a specific league from the given URL
   function fetchLeagueData(apiUrl, divId) {
     $.ajax({
+
       url: apiUrl,
       method: 'GET',
       success: function (data) {
         let { league, games } = data.result;
 
-// Convert 'games' object into an array and sort by time in descending order
-const sortedGames = Object.values(games).sort((a, b) => new Date(b.time.start) - new Date(a.time.start));
+    // Convert 'games' object into an array and sort by time in descending order
+    const sortedGames = Object.values(games).sort((a, b) => new Date(b.time.start) - new Date(a.time.start));
 
-sortedGames.forEach(item => {
-  $(` 
-     <section class="box row padding margin-top padding-right">
-        <h3 class="${item.status == 3 ? 'black' : 'red'} margin-right column center-align small">
-        <span>${item.status == 3 ? 'FT' : '90'}</span>
-        <span>${formatDate(item.time.start)}</span>
-        </h3>
-        <section class="column max">
-            <span class="row">
-                <img src="${item.teams.home.logo ? item.teams.home.logo : '/images/shield.webp' }" alt="" class="xs-logo">
-                <h3 class="bold max">${item.teams.home.name}</h3>
-                <h3 class="${item.status == 3 ? 'black' : 'red'}">${item.score.summary.score1}</h3>
-            </span>
-            <span class="row">
-                <img src="${item.teams.away.logo ? item.teams.away.logo : '/images/shield.webp' }" alt="" class="xs-logo">
-                <h3 class="bold max">${item.teams.away.name}</h3>
-                <h3 class="${item.status == 3 ? 'black' : 'red'}">${item.score.summary.score1}</h3>
-            </span>
-        </section>
-    </section>`
-  ).insertBefore(`#${divId}`);  // Adjust target as necessary
-});
-
-        
+    sortedGames.forEach(item => {
+    $(` 
+        <section class="box row padding margin-top padding-right">
+            <h3 class="${item.status == 3 ? 'black' : 'red'} margin-right column center-align small">
+            <span>${item.status == 3 ? 'FT' : '90'}</span>
+            <span>${formatDate(item.time.start)}</span>
+            </h3>
+            <section class="column max">
+                <span class="row">
+                    <img src="${item.teams.home.logo ? item.teams.home.logo : '/images/shield.webp' }" alt="" class="xs-logo">
+                    <h3 class="bold max">${removeWordFromEnd(item.teams.home.name, "Women")}</h3>
+                    <h3 class="${item.status == 3 ? 'black' : 'red'}">${item.score.summary.score1}</h3>
+                </span>
+                <span class="row">
+                    <img src="${item.teams.away.logo ? item.teams.away.logo : '/images/shield.webp' }" alt="" class="xs-logo">
+                    <h3 class="bold max">${removeWordFromEnd(item.teams.away.name, "Women")}</h3>
+                    <h3 class="${item.status == 3 ? 'black' : 'red'}">${item.score.summary.score1}</h3>
+                </span>
+            </section>
+        </section>`
+    ).appendTo(`#${divId}`);  // Adjust target as necessary
+    });
       },
       error: function (err) {
         console.error(`Error fetching data for div ${divId}: `, err);
@@ -61,9 +60,39 @@ sortedGames.forEach(item => {
         }
       }
     });
-  }, { threshold: 0.1 });  // Adjust threshold as needed
+  }, { threshold: 0.2 });  // Adjust threshold as needed
   
   // Observe each league div
   $('.league-container').each(function() {
     observer.observe(this);  // Observe the league's div
   });
+
+  
+  $(document).on({
+    ajaxStart: function() {
+        // Show the loader when AJAX starts
+        $("#loader").show();
+    },
+    ajaxStop: function() {
+        // Define an array of league data
+        const leagues = [
+            { id: "l1", name: "Orange First Division League", image: "/images/league_1.png", link: "/first_division" },
+            { id: "l2", name: "Orange Second Division League", image: "/images/league_2.png", link: "/second_division" },
+            { id: "l3", name: "National Women League", image: "/images/women_league.jpg", link: "/women_league" },
+        ];
+
+        // Iterate through the leagues and insert the headers dynamically
+        leagues.forEach(league => {
+            $(`<section class="header-section">
+                <a href="${league.link}" class="bg-gray row margin-top small-round">
+                    <img src="${league.image}" alt="" class="xs-logo margin-left round">
+                    <h3 class="large bold">${league.name}</h3>
+                    <i class="fa-solid fa-chevron-right move-right margin-right"></i>
+                </a>
+            </section>`).insertBefore(`#${league.id}`);
+        });
+
+        // Hide the loader after the AJAX call completes
+        $("#loader").hide();
+    },
+});
