@@ -15,6 +15,7 @@ const leagueApiMap = {
       method: 'GET',
       success: function (data) {
         let { league, games } = data.result;
+        $(".loader").hide();
 
     // Convert 'games' object into an array and sort by time in descending order
     const sortedGames = Object.values(games).sort((a, b) => new Date(b.time.start) - new Date(a.time.start));
@@ -71,7 +72,7 @@ const leagueApiMap = {
   $(document).on({
     ajaxStart: function() {
         // Show the loader when AJAX starts
-        $("#loader").show();
+        $(".loader").show();
     },
     ajaxStop: function() {
         // Define an array of league data
@@ -93,6 +94,5 @@ const leagueApiMap = {
         });
 
         // Hide the loader after the AJAX call completes
-        $("#loader").hide();
     },
 });
