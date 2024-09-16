@@ -82,8 +82,8 @@
 /** Utility classes for text transformations **/
 .uppercase { text-transform: uppercase; } /* Uppercase text */
 .lowercase { text-transform: lowercase; } /* Lowercase text */
-.capitalize { text-transform: capitalize; } /* Capitalize text */
-.cap { text-transform: capitalize; } /* Capitalize text */
+.capitalize { text-transform: capitalize !important; } /* Capitalize text */
+.cap { text-transform: capitalize !important; } /* Capitalize text */
 
 /* Set font size to tiny */
 .tiny { font-size: var(--tiny); }
@@ -134,7 +134,8 @@
 .ellipsis { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 
 /* Align text to the left */
-.align-left { text-align: left; }
+.align-left { text-align: left !important; }
+.left { text-align: left !important; }
 
 /* Align text to the center */
 .align-center { text-align: center !important; }
