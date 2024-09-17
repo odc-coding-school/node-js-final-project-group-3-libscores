@@ -221,12 +221,10 @@ table, th, td {
 .big-left{
     margin-left: 25%;
 }
-<<<<<<< HEAD
 
 .big-top{
     margin-top: 100px;
 }
-=======
 .tiny-logo {
     width: 28px;
     /* height: 150px; */
@@ -249,4 +247,3 @@ table, th, td {
     animation:spin 1s infinite steps(10);
   }
   @keyframes spin {to{transform: rotate(1turn)}}
->>>>>>> 934edd81e8c3ea8411917c300c76491bd675dce4
