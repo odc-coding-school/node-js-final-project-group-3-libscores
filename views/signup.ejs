@@ -1,17 +1,16 @@
 <%- include("./partial/head") %>
 <%- include("./partial/top-nav.ejs") %>
 
-<div class="center">
     <!-- Terryson: write code here -->
-    <div class="login-container border bg-white padding box">
+    <div class="pop border bg-white padding box huge-elevate">
         <h1 class="huge align-center margin-bottom">Login</h1>
         <form action="/login" method="POST">
-            <input type="text" name="username" placeholder="Enter your Email " class="margin-bottom" required>
+            <input type="text" name="username" placeholder="Enter your Email " class="margin-bottom " required>
             <input type="password" name="password" placeholder="Enter your password" required>
-            <button type="submit" class="button primary margin-top">Login</button>
+            <button class="bg-gray">Login</button>
             <p class="margin-top">you don't have an account?</p>
-            <a href="" class="align-center bold" >Register now</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScq4_j1NquFzSMxXI5Qu7iyj0gMVcULoNDcZAOpJSIm18kfRg/viewform?usp=pp_url" class="align-center bold" >Register now</a>
         </form>
-</div>
+    </div>
 <script type="module" src="/javascripts/jquery.js"></script>
 <script type="module" src="/javascripts/signup.js"></script>

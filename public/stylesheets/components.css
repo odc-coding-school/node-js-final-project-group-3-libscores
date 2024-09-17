@@ -130,6 +130,14 @@
     padding: var(--spacing-md); /* Apply padding */
 }
 
+.pop {
+    width: 450px; /* Set container width */
+    margin: 0 auto; /* Center container horizontally */
+    height: 450px; /* Set minimum height */
+    align-items: flex-start; /* Align items to start */
+    padding: var(--spacing-md); /* Apply padding */
+}
+
 /* Centered layout with constraint */
 .constrant {
     width: 900px; /* Set width */
@@ -221,12 +229,10 @@ table, th, td {
 .big-left{
     margin-left: 25%;
 }
-<<<<<<< HEAD
 
 .big-top{
     margin-top: 100px;
 }
-=======
 .tiny-logo {
     width: 28px;
     /* height: 150px; */
@@ -249,4 +255,3 @@ table, th, td {
     animation:spin 1s infinite steps(10);
   }
   @keyframes spin {to{transform: rotate(1turn)}}
->>>>>>> 934edd81e8c3ea8411917c300c76491bd675dce4
