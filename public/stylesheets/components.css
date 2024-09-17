@@ -46,8 +46,6 @@
     max-height: 84vh; /* Set maximum height of sidebar */
     min-height: 84vh; /* Set minimum height of sidebar */
     background-color: white; /* Set background color to white */
-    border: thin solid var(--dark-gray); /* Apply border with dark gray color */
-    border-radius: var(--round-md); /* Apply medium border radius */
 }
 
 .sidebar .header img {
