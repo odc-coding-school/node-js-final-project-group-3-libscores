@@ -4,65 +4,14 @@
 <div class="container row">
     <%- include("./partial/sidebar") %>
     <div class="column full max">
-        <div class="border row max bg-white tiny-padding mid-round">
-            <img src="<%= logo %>" class="lg-logo"  alt="">
-            <span>
-                <h1 class="large"><%= title %></h1>
-                <h4 class="muted bold">2024/2025</h4>
-            </span>
-        </div>
-    <%- include("./partial/league-tabs") %>
+        <%- include("./partial/league-header") %>
+        <%- include("./partial/league-tabs") %>
 
-    <table>
-        <thead>
-            <tr>
-                <th class="first">Team</th>
-                <th>GP</th>
-                <th>W</th>
-                <th>D</th>
-                <th>L</th>
-                <th>G/A</th>
-                <th>Pts</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="first">Fassell FC</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td class="first">Paynesville FC</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td class="first">Freeport FC</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td class="first">Watanga FC</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-        </tbody>
-    </table>
-    
+        <div id="l1" class="league-container column ">
+            <center id="loader">
+                <div class="margin loader" ></div>
+            </center>
+        </div>
 </div>
+<script type="module" src="/javascripts/jquery.js"></script>
+<script type="module" src="/javascripts/second-division.js"></script>

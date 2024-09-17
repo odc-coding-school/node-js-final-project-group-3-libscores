@@ -15,6 +15,7 @@ router.get('/', function(req, res, next) {
     res.render('first-division', options );
 
 });
+
 router.get('/:tab', function(req, res, next) {
 
     const {tab} = req.params
