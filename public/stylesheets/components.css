@@ -219,8 +219,6 @@ table, th, td {
     border-left: 4px solid var(--red);
 }
 
-
-
 .match-logo {
     width: 150px;
     height: 150px;
@@ -255,3 +253,18 @@ table, th, td {
     animation:spin 1s infinite steps(10);
   }
   @keyframes spin {to{transform: rotate(1turn)}}
+
+  .dash {
+    margin: var(--spacing-lg) 0;
+    border-left: 4px solid black;
+  }
+
+  .dash.green {
+    border-color: var(--green);
+  }
+  .dash.red {
+    border-color: var(--red);
+  }
+  .dash.gray {
+    border-color: var(--misty);
+  }

@@ -1,30 +1,37 @@
 var URLv1="https://www.thesportsdb.com/api/v1/json/3/search_all_leagues.php?c=Liberia";
-"5244"
 var tableUrl = "https://www.thesportsdb.com/api/v1/json/3/lookuptable.php?l=5244&s=2022-2023"
 
-console.log(URLv1)
 
 $(document).ready(function () {
-    function fetchLeagueData(apiUrl, divId) {
         $.ajax({
-    
           url: tableUrl,
           method: 'GET',
           success: function (data) {
-            let { league, games } = data.result;
+            const standing = data.table
+            $.each(data.table, function (index, team) { 
+              console.log(team)
+               
+              $(` 
+                  <tr class="tr ${team.intRank == 1 ? 'lead' : team.intRank >= 13 ? 'dead' : ''}">
+                    <td class="td">${team.intRank}</td>
+                    <td class="first wide td row">
+                        <img src="${team.strBadge}" class="tiny-logo">
+                        <span>${team.strTeam}</span>
+                    </td>
+                    <td class="td">${team.intPlayed}</td>
+                    <td class="td">${team.intWin}</td>
+                    <td class="td">${team.intDraw}</td>
+                    <td class="td">${team.intLoss}</td>
+                    <td class="td">${team.intGoalsFor}:${team.intGoalsAgainst}</td>
+                    <td class="td">${team.intPoints}</td>
+                </tr>
+                `
+              ).appendTo(`#tbody`);  // Adjust target as necessary
+            });
     
-        // Convert 'games' object into an array and sort by time in descending order
-        const sortedGames = Object.values(games).sort((a, b) => new Date(b.time.start) - new Date(a.time.start));
-    
-        sortedGames.forEach(item => {
-        $(` 
-            `
-        ).appendTo(`#${divId}`);  // Adjust target as necessary
+            },
+            error: function (err) {
+              console.error(`Error fetching data for table div: `, err);
+            }
         });
-          },
-          error: function (err) {
-            console.error(`Error fetching data for div ${divId}: `, err);
-          }
-        });
-      }
 });
