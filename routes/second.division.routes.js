@@ -3,7 +3,24 @@ const upload = require('../middleware/upload');
 var router = express.Router();
 
 
+
 router.get('/', function(req, res, next) {
+    const {tab} = req.query
+
+    let options = { 
+        title: 'Orange Second Division League', 
+        logo: "/images/league_2.jpg",
+        league: "l2",
+        page: "second_division",
+        tab
+    }
+   
+            res.render('second-division', options );
+   
+
+     
+});
+router.get('/:tab', function(req, res, next) {
     const {tab} = req.query
 
     let options = { 
@@ -27,6 +44,7 @@ router.get('/', function(req, res, next) {
             res.render('second-division', options );
             break;
     }
-});
 
+     
+});
 module.exports = router;

@@ -14,6 +14,21 @@ router.get('/', function(req, res, next) {
         page: "women_league",
         tab
     }
+   
+            res.render('women-league', options );
+    
+});
+router.get('/:tab', function(req, res, next) {
+    const {tab} = req.query
+
+    let options = { 
+        title: 'Women League', 
+        logo: "/images/women_league.jpg",
+        param: req.query,
+        league: "wl",
+        page: "women_league",
+        tab
+    }
     switch (tab) {
         case "results":
             res.render('results', options) 
