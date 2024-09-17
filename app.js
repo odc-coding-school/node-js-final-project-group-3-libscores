@@ -7,11 +7,9 @@ var logger = require('morgan');
 var session = require("express-session")
 var SQLiteStore = require("connect-sqlite3")(session)
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var liveRouter = require('./routes/live.routes');
 var leaguesRouter = require('./routes/league.routes');
 var teamsRouter = require('./routes/team.routes');
-var apiRouter = require('./routes/api.routes');
 var apiRouter = require('./routes/api.routes');
 var createLeaguesRouter = require('./routes/create.leagues.routes');
 var firstDivisionRouter = require('./routes/first.division.routes');
@@ -27,7 +25,6 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -60,8 +57,6 @@ db.serialize(() => {
 
 // Routes handlers
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/users', usersRouter);
 app.use('/live', liveRouter);
 app.use('/leagues', leaguesRouter);
 app.use('/teams', teamsRouter);
