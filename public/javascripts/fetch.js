@@ -86,7 +86,7 @@ const leagueApiMap = {
 
         // Iterate through the leagues and insert the headers dynamically
         leagues.forEach(league => {
-            $(`<section class="header-section league-header">
+            $(`#${league.id}`).not($(`.league-header`))(`<section class="header-section league-header">
                 <a href="${league.link}" class="bg-gray row margin-top small-round">
                     <img src="${league.image}" alt="" class="xs-logo margin-left round">
                     <h3 class="large bold">${league.name}</h3>
@@ -98,3 +98,12 @@ const leagueApiMap = {
         // Hide the loader after the AJAX call completes
     },
 });
+
+
+// Santa I don't understand why you are closing a tag with an tag. This little things might cause unexpected bugs in your code.
+
+// However, this solves your problem
+
+// $('.myEm').not($('.myEm').has('span.prependMe')).prepend('...');
+
+// See the docs http://api.jquery.com/not/ http://api.jquery.com/has/
