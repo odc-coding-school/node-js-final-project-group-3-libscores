@@ -133,7 +133,7 @@
 .pop {
     width: 450px; /* Set container width */
     margin: 0 auto; /* Center container horizontally */
-    height: 450px; /* Set minimum height */
+    height: 450px; /* Set m imum height */
     align-items: flex-start; /* Align items to start */
     padding: var(--spacing-md); /* Apply padding */
 }
