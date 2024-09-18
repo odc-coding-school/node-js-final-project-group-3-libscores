@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
             tab
             }
 
-        res.render('first-division', options );
+        res.render('county-meet', options );
         
 });
 
