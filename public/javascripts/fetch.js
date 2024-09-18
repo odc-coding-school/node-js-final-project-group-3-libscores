@@ -78,7 +78,7 @@ const leagueApiMap = {
         }
       }
     });
-  }, { threshold: 0.2 });  // Adjust threshold as needed
+  }, { threshold: 0.5 });  // Adjust threshold as needed
   
   // Observe each league div
   $('.league-container').each(function() {

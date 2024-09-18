@@ -98,6 +98,7 @@ body {
   color: #000; /* Set text color to black */
   background: var(--gray); /* Set background color */
   height: inherit; /* Inherit height from parent */
+  position: relative;
 }
 
 /* Ensure a baseline for sections and articles */

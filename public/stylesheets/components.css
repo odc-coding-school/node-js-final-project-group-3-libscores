@@ -302,3 +302,11 @@ table, th, td {
     color: var(--white); 
     cursor: pointer;
   }
+
+
+  .contraint {
+    max-height: 40vh;
+    overflow-x: auto;
+    padding-bottom: 5rem;
+  }
+
