@@ -129,9 +129,9 @@
 }
 
 .pop {
-    width: 450px; /* Set container width */
+    width: 400px; /* Set container width */
     margin: 0 auto; /* Center container horizontally */
-    height: 450px; /* Set m imum height */
+    height: 400px; /* Set m imum height */
     align-items: flex-start; /* Align items to start */
     padding: var(--spacing-md); /* Apply padding */
 }
@@ -284,4 +284,13 @@ table, th, td {
     100% {
       background-position: -200% 0;
     }
+  }
+
+  .form-input{
+    width: 340px;
+    height: 40px;
+    border-radius: 8px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    margin-top: 10px;
   }
