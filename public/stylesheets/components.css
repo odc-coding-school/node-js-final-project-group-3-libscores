@@ -304,9 +304,10 @@ table, th, td {
   }
 
 
-  .contraint {
-    max-height: 40vh;
+  .constraint {
+    max-height: 75vh;
     overflow-x: auto;
     padding-bottom: 5rem;
+    position: relative;
   }
 

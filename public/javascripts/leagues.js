@@ -54,7 +54,7 @@ function fetchLeagueData(apiUrl, page) {
               ).appendTo(`#container`);  // Insert into the specified container
             });
         } else {
-            $(`<h1 class="hugh center">No game found</h1>`).appendTo("#container")
+            $(`<h1 class="hugh center">No upcoming game found</h1>`).appendTo("#container")
         }
       },
       error: function(err) {
