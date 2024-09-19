@@ -93,10 +93,10 @@ hr {
 
 /* Ensure consistent styling for the body */
 body {
-  font-family: system-ui, sans-serif; /* Use system default font */
+  font-family: Arial, sans-serif, system-ui, sans-serif; /* Use system default font */
   font-weight: normal; /* Set font weight to normal */
   color: #000; /* Set text color to black */
-  background: var(--gray); /* Set background color */
+  background-color: var(--gray); /* Set background color */
   height: inherit; /* Inherit height from parent */
   position: relative;
 }
