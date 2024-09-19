@@ -1,12 +1,12 @@
 require('module-alias/register');
 var createError = require('http-errors');
+var cookieParser = require('cookie-parser');
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require("express-session")
 var SQLiteStore = require("connect-sqlite3")(session)
-var indexRouter = require('./routes/index');
+var indexRouter = require('./routes/index.routes');
 var liveRouter = require('./routes/live.routes');
 var leaguesRouter = require('./routes/league.routes');
 var teamsRouter = require('./routes/team.routes');
