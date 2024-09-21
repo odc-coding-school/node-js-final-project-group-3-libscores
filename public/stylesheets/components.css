@@ -138,7 +138,7 @@
     position: fixed;
     z-index: 1;
     right: 0;
-    left: 0;
+    left: 15%;
     top: 15%;
     overflow: auto;
     background-color: rgb(0,0,0); 
