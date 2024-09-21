@@ -21,7 +21,7 @@ router.get('/', function(req, res, next) {
      
 });
 router.get('/:tab', function(req, res, next) {
-    const {tab} = req.query
+    const {tab} = req.params
 
     let options = { 
         title: 'Orange Second Division League', 

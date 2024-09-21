@@ -4,12 +4,12 @@ var router = express.Router();
 
 
 router.get('/', function(req, res, next) {
-    const {tab} = req.query
+    const {tab} = req.params
 
     let options = { 
         title: 'Women League', 
         logo: "/images/women_league.jpg",
-        param: req.query,
+        param: req.params,
         league: "wl",
         page: "women_league",
         tab
@@ -19,12 +19,11 @@ router.get('/', function(req, res, next) {
     
 });
 router.get('/:tab', function(req, res, next) {
-    const {tab} = req.query
+    const {tab} = req.params
 
     let options = { 
         title: 'Women League', 
         logo: "/images/women_league.jpg",
-        param: req.query,
         league: "wl",
         page: "women_league",
         tab

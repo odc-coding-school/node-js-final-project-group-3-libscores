@@ -1,5 +1,9 @@
 import { formatDate, removeWordFromEnd, getPageUrl, getPage } from "/javascripts/utils.js";
-
+const leagueApiMap = {
+    'l1': 'https://www.scorebar.com/api/league//tournament/1534/liberia-first-division',
+    'l2': 'https://www.scorebar.com/api/league//tournament/2315/liberia-second-division',
+    'wl': 'https://www.scorebar.com/api/league//tournament/1565/liberia-national-league-women',
+  };
 
 function fetchLeagueData(apiUrl, page) {
     $.ajax({
@@ -18,7 +22,7 @@ function fetchLeagueData(apiUrl, page) {
           switch (page) {
             case 'live':
               return gameDate <= currentDate && item.status !== 3;  // Live games: in progress
-            case 'future':
+            case 'fixtures':
               return gameDate > currentDate;  // Future games
             case 'past':
               return gameDate < currentDate;  // Past games
@@ -64,6 +68,45 @@ function fetchLeagueData(apiUrl, page) {
   }
   
 
+  $(document).ready(function () {
+    let page = getPageUrl();
+
+    switch (getPage()) {
+      case "first_division":
+        switch (page) {
+          case "results":
+            fetchLeagueData(leagueApiMap.l1, page);
+            break;
+          case "fixtures":
+            fetchLeagueData(leagueApiMap.l1, "fixtures");
+            break;
+        }
+        break;
+    
+      case "second_division":
+        switch (page) {
+          case "results":
+            fetchLeagueData(leagueApiMap.l2, page);
+            break;
+          case "fixtures":
+            fetchLeagueData(leagueApiMap.l2, "fixtures");
+            break;
+        }
+        break;
+    
+      case "women_league":
+        switch (page) {
+          case "results":
+            fetchLeagueData(leagueApiMap.wl, page);
+            break;
+          case "fixtures":
+            fetchLeagueData(leagueApiMap.wl, "fixtures");
+            break;
+        }
+        break;
+    }
+    
+  });
 
   $(document).on({
     ajaxStart: function () {
@@ -73,16 +116,3 @@ function fetchLeagueData(apiUrl, page) {
       $("#loader").hide();
     }
   })
-
-  $(document).ready(function () {
-    if(getPage() == "first_division"){
-      let page = getPageUrl()
-      if(page == "results") {
-          fetchLeagueData('https://www.scorebar.com/api/league//tournament/1534/liberia-first-division', page)
-      }
-      if(page == "fixtures") {
-          fetchLeagueData('https://www.scorebar.com/api/league//tournament/1534/liberia-first-division', "future")
-      }
-    }
-  });
-

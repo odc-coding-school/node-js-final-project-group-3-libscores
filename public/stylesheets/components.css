@@ -187,13 +187,6 @@
     border-radius: 50%; /* Make logo circular */
 }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #444;
-    background-color: #f4f4f4;
-}
 
 
 
@@ -301,11 +294,28 @@ table, th, td {
     }
   }
 
-  .form-input{
-    width: 340px;
-    height: 40px;
-    border-radius: 8px;
-    margin: 0 auto;
-    margin-bottom: 20px;
-    margin-top: 10px;
+  .form-input,.input {
+    width: 100%;
+    height: 48px;
+    border-radius: var(--round-sm);
   }
+
+  .form-input:focus {
+    outline: unset;
+    caret-color: var(--crimson);
+  }
+
+  .button {
+    background-color: var(--crimson);
+    color: var(--white); 
+    cursor: pointer;
+  }
+
+
+  .constraint {
+    max-height: 75vh;
+    overflow-x: auto;
+    padding-bottom: 5rem;
+    position: relative;
+  }
+

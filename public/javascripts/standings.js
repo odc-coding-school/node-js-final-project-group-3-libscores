@@ -9,7 +9,7 @@ $(document).ready(function () {
           success: function (data) {
             const standing = data.table
             $.each(data.table, function (index, team) { 
-              console.log(team)
+              // console.log(team)
                
               $(` 
                   <tr class="tr ${team.intRank == 1 ? 'lead' : team.intRank >= 13 ? 'dead' : ''}">

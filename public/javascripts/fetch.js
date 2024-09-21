@@ -6,7 +6,12 @@ const leagueApiMap = {
     'l2': 'https://www.scorebar.com/api/league//tournament/2315/liberia-second-division',
     'l3': 'https://www.scorebar.com/api/league//tournament/1565/liberia-national-league-women',
   };
-  
+  // Define an array of league data
+  const leaguesHeaders = [
+    { id: "l1", name: "Orange First Division League", image: "/images/league_1.png", link: "/first_division" },
+    { id: "l2", name: "Orange Second Division League", image: "/images/league_2.jpg", link: "/second_division" },
+    { id: "l3", name: "National Women League", image: "/images/women_league.jpg", link: "/women_league" },
+];
   // Function to fetch data for a specific league from the given URL
   function fetchLeagueData(apiUrl, divId) {
     $.ajax({
@@ -42,7 +47,6 @@ const leagueApiMap = {
           </section>`
       ).appendTo(`#${divId}`);  // Adjust target as necessary
       });
-
       },
 
       error: function (err) {
@@ -59,11 +63,22 @@ const leagueApiMap = {
         const apiUrl = leagueApiMap[divId];  // Get the corresponding API URL
         if (apiUrl) {
           fetchLeagueData(apiUrl, divId);
+          leaguesHeaders.forEach(league => {
+            if($(`#${league.id}`).find("section.league-header").length == 0) {
+              $(`<section class="header-section league-header">
+                  <a href="${league.link}/results" class="bg-gray row margin-top small-round">
+                      <img src="${league.image}" alt="" class="xs-logo margin-left round">
+                      <h3 class="large bold">${league.name}</h3>
+                      <i class="fa-solid fa-chevron-right move-right margin-right"></i>
+                  </a>
+                </section>`).prependTo(`#${league.id}`)
+            }
+          });
           observer.unobserve(entry.target);  // Stop observing after data is fetched
         }
       }
     });
-  }, { threshold: 0.2 });  // Adjust threshold as needed
+  }, { threshold: 0.5 });  // Adjust threshold as needed
   
   // Observe each league div
   $('.league-container').each(function() {
@@ -77,24 +92,20 @@ const leagueApiMap = {
         $(".loader").show();
     },
     ajaxStop: function() {
-        // Define an array of league data
-        const leagues = [
-            { id: "l1", name: "Orange First Division League", image: "/images/league_1.png", link: "/first_division" },
-            { id: "l2", name: "Orange Second Division League", image: "/images/league_2.jpg", link: "/second_division" },
-            { id: "l3", name: "National Women League", image: "/images/women_league.jpg", link: "/women_league" },
-        ];
+        
 
         // Iterate through the leagues and insert the headers dynamically
-        leagues.forEach(league => {
-            $(`#${league.id}`).not($(`.league-header`))(`<section class="header-section league-header">
-                <a href="${league.link}" class="bg-gray row margin-top small-round">
-                    <img src="${league.image}" alt="" class="xs-logo margin-left round">
-                    <h3 class="large bold">${league.name}</h3>
-                    <i class="fa-solid fa-chevron-right move-right margin-right"></i>
-                </a>
-            </section>`).prependTo(`#${league.id}`);
-        });
-
+        // leaguesHeaders.forEach(league => {
+        //   if ($(`#${league.id}`).find("section.league-header").length == 0) {
+        //     $(`<section class="header-section league-header">
+        //         <a href="${league.link}" class="bg-gray row margin-top small-round">
+        //             <img src="${league.image}" alt="" class="xs-logo margin-left round">
+        //             <h3 class="large bold">${league.name}</h3>
+        //             <i class="fa-solid fa-chevron-right move-right margin-right"></i>
+        //         </a>
+        //     </section>`).prependTo(`#${league.id}`)
+        //   }
+        // });
         // Hide the loader after the AJAX call completes
     },
 });

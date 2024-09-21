@@ -1,17 +1,15 @@
 require('module-alias/register');
 var createError = require('http-errors');
+var cookieParser = require('cookie-parser');
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require("express-session")
 var SQLiteStore = require("connect-sqlite3")(session)
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var indexRouter = require('./routes/index.routes');
 var liveRouter = require('./routes/live.routes');
 var leaguesRouter = require('./routes/league.routes');
 var teamsRouter = require('./routes/team.routes');
-var apiRouter = require('./routes/api.routes');
 var apiRouter = require('./routes/api.routes');
 var createLeaguesRouter = require('./routes/create.leagues.routes');
 var firstDivisionRouter = require('./routes/first.division.routes');
@@ -20,6 +18,7 @@ var secondDivisionRouter = require('./routes/second.division.routes');
 var womenLeagueRouter = require('./routes/women.league.routes');
 var matchInfoRouter = require('./routes/match.info.routes');
 var signupRouter = require('./routes/signup.routes');
+var adminRouter = require('./routes/admin/admin.routes');
 const db = require('@js/db');
 var cors = require("cors")
 var app = express();
@@ -27,7 +26,6 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -60,8 +58,6 @@ db.serialize(() => {
 
 // Routes handlers
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/users', usersRouter);
 app.use('/live', liveRouter);
 app.use('/leagues', leaguesRouter);
 app.use('/teams', teamsRouter);
@@ -73,6 +69,7 @@ app.use('/women_league', womenLeagueRouter);
 app.use('/county_meet', countyMeetRouter);
 app.use('/match_info', matchInfoRouter);
 app.use('/signup', signupRouter);
+app.use('/admin', adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

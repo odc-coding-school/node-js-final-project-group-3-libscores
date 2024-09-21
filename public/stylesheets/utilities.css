@@ -308,7 +308,7 @@ hr.divider { border: 0; border-top: 1px solid var(--onyx); margin: var(--spacing
 .lg-child { grid-column: var(--grid-lg); }
 
 /* Sticky positioned element */
-.sticky { position: sticky; top: 0; }
+.sticky { position: sticky; top: 0; z-index: 1000; }
 
 /* Fixed positioned element */
 .fixed { position: fixed; }
@@ -317,7 +317,7 @@ hr.divider { border: 0; border-top: 1px solid var(--onyx); margin: var(--spacing
 .relative { position: relative; }
 
 /* Absolute positioned element */
-.absolute { position: absolute; }
+.absolute { position: absolute; overflow: hidden; }
 
 /* Float element to the left */
 .float-left { float: left; }
@@ -377,7 +377,7 @@ hr.divider { border: 0; border-top: 1px solid var(--onyx); margin: var(--spacing
 .full-width { width: 100vh; }
 
 /* Set full height */
-.full-height { height: 100vh; }
+.full-height { min-height: 100vh; }
 
 /* Set background color to white */
 .bg-white { background-color: white; }
@@ -389,3 +389,8 @@ hr.divider { border: 0; border-top: 1px solid var(--onyx); margin: var(--spacing
 
 /* set color to gray */
 .gray { color: var(--light-gray);}
+
+/* set overflow to hidden */
+.no-overflow {
+  overflow: hidden;
+}
