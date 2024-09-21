@@ -129,12 +129,27 @@
 }
 
 .pop {
-    width: 400px; /* Set container width */
+    width: 500px; /* Set container width */
     margin: 0 auto; /* Center container horizontally */
-    height: 400px; /* Set m imum height */
+    height: 450px; /* Set m imum height */
     align-items: flex-start; /* Align items to start */
     padding: var(--spacing-md); /* Apply padding */
+    display: none;
+    position: fixed;
+    z-index: 1;
+    right: 0;
+    left: 0;
+    top: 15%;
+    overflow: auto;
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+    padding-top: 60px;
 }
+
+
+
+
+
 
 /* Centered layout with constraint */
 .constrant {

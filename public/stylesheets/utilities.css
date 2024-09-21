@@ -98,7 +98,7 @@
 .huge { font-size: var(--huge); font-weight: bold; }
 
 /* Set font weight to bold (700) */
-.bold { font-weight: 700; }
+.bold { font-weight: 700;}
 
 /* Set text color to red */
 .error { color: var(--red); }
@@ -384,6 +384,8 @@ hr.divider { border: 0; border-top: 1px solid var(--onyx); margin: var(--spacing
 
 /* Set background color to gray */
 .bg-gray { background-color: var(--dark-gray); }
+
+.light-gray { background-color: #edecec94;}
 
 /* set color to gray */
 .gray { color: var(--light-gray);}
