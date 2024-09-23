@@ -1,3 +1,5 @@
+const dotenv = require('dotenv');
+dotenv.config();
 require('module-alias/register');
 var cookieParser = require('cookie-parser');
 var express = require('express');
@@ -16,13 +18,30 @@ var womenLeagueRouter = require('./routes/women.league.routes');
 var matchInfoRouter = require('./routes/match.info.routes');
 var signupRouter = require('./routes/signup.routes');
 var adminRouter = require('./routes/admin/admin.routes');
-var cors = require("cors")
+var cors = require("cors");
+const getDbInstance = require('@js/getDBInstance');
 var app = express();
 var port = process.env.PORT || '3000'
-var sqlite = require("sqlite3").verbose();
+var sqlite3 = require("sqlite3").verbose();
+var restrict = require("./middlewares/restrict");
+var session = require("express-session");
+var SQLiteStore = require("connect-sqlite3")(session)
+
 
 
 // view engine setup
+app.use(
+  session({
+    store: new SQLiteStore,
+    secret: "RSTUVWXYZabcdefghijklmyz0123456789!@#$%^&*()_+[]{}|;:,.<>?",
+    resave: true,
+    saveUninitialized: false,
+    cookie: { 
+      secure: false, 
+      // maxAge: 7*24*60*60*1000, //1 week
+      maxAge: 60*60*1000, //1 min
+    },
+  }));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(logger('dev'));
@@ -33,7 +52,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors()) 
 
 //create database table
-var db = new sqlite.Database("./libscores.db");
+const db = getDbInstance(sqlite3)
 
 db.serialize(function createDB() {
   db.run("CREATE TABLE IF NOT EXISTS editions (id INTEGER PRIMARY KEY AUTOINCREMENT,  year VARCHAR(50) NOT NULL, start DATE NOT NULL, end DATE NOT NULL)");
