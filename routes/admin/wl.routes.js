@@ -1,7 +1,11 @@
 var router = require('express').Router();
 
 router.get('/', async function(req, res, next) {
-       res.render('admin/wl-admin.ejs', {title: "Update Women League"});
+       let options = {
+              title: "Update Women League",
+              page: "wl"
+       }
+       res.render('admin/wl-admin.ejs', options);
 });
 
 module.exports = router;

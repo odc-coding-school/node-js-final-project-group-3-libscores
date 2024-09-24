@@ -117,12 +117,8 @@
     border: solid transparent; 
 }
 
-.nav-button:hover {
+.nav-button:hover, .nav-button.active {
     border-bottom-color: var(--red);
-    color: var(--red);
-}
-.nav-button.active {
-    border-color: var(--red);
     color: var(--red);
 }
 
