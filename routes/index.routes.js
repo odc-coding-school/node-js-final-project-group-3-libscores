@@ -1,9 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var cheerio = require("cheerio")
-var axios = require("axios")
-var allLeaguesApiUrl =""
-var app = require("../app")
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
