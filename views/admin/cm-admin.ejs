@@ -1,58 +1,16 @@
 <%- include("../partial/head") %>
 <body class="column no-gap">
     <%- include("./admin-nav") %>
-    <main class="row no-gap flex max top-align">
-        <section class="border-right max-fill">
-            
-            <h4 class="large align-center small-padding sticky light-gray">New County Meet Editions</h4>
-            <section class="padding">
-
-                <span class="row flex">
-                    <span>
-                        <label for="edition" class="label">County Meet Edition</label>
-                        <select name="edition" id="edition" class="block input">
-                        </select>
-                    </span>
-                    <span>
-                        <label for="editionHost" class="label">Host County</label>
-                        <select name="editionHost" id="editionHost" class="block input">
-                        </select>
-                    </span>
-                </span>
-
-
-                <section class="row flex">
-                    <span class="column no-gap">
-                        <label for="edition" class="label block">Start Date</label>
-                        <input type="date" name="editionStart" id="editionStart" class="input block">
-                    </span>
-                    <span class="column no-gap">
-                        <label for="edition" class="label block">End Date</label>
-                        <input type="date" name="editionEnd" id="editionEnd" class="input block">
-                    </span>
-                </section>
-
-                
-                <button class="button margin-top" id="saveEdition">Save Edition</button>
-            </section>
-
-            <section class="border-top">
-                <!-- <h4 class="large align-center small-padding border-bottom">All Editions</h4> -->
-                <div id="editionList" class="padding column">
-                  
-                </div>
-            </section>
-            
-        </section>
-
-        <section class="border-right max-fill small-padding">
+    <main class="max">
+        <div class="small-container full-height">
+            <%- include("./cm/tab.cm.ejs") %>
             <section class="box small-elevate small-padding">
                 <h1 class="padding">Add New Match</h1>
-
+            
                 <label class="label" for="matchEdition">Select Edition</label>
                 <select name="matchEdition" id="matchEdition" class="block input">
                 </select>
-
+            
                 <section class="row flex">
                     <span>
                         <label class="label" for="matchHomeTeam">Home Team</label>
@@ -65,7 +23,7 @@
                         </select>
                     </span>
                 </section>
-
+            
                 <section class="row flex">
                     <span>
                         <label class="label" for="matchDate">Date </label>
@@ -88,18 +46,12 @@
                     </span>
                     
                 </section>
-
+            
                 <button class="button margin-top" id="saveMatch"> Save Match</button>
-
             </section>
             <section id="matchList" class="column margin-top">
-
-               
-
-                </section>
             </section>
-        </section>
-        <section class="fill-height">actions</section>
+        </div>
     </main>
     <script type="module" src="/javascripts/jquery.js"></script>
     <script type="module" src="/javascripts/cm.admin.js"></script>

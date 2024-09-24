@@ -61,7 +61,7 @@ $(document).ready(function () {
         "json"
     );
 
-    $.get("/admin/cm/matches",
+    $.get("/admin/cm/matches/all",
         function (data, textStatus, jqXHR) {
             if(textStatus == "success") {
                 data.matches.forEach(match => {

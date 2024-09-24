@@ -3,7 +3,6 @@ const getDbInstance = require('@js/getDBInstance');
 var sqlite3 = require("sqlite3").verbose();
 var db = getDbInstance(sqlite3)
 
-/* GET home page. */
 router.get('/', async function(req, res, next) {
        let options = {
               title: "Update County Meet | Action Center ",
@@ -11,6 +10,7 @@ router.get('/', async function(req, res, next) {
        }
        res.render('admin/cm-admin.ejs', options);
 });
+
 router.get('/editions', async function(req, res, next) {
        try {
        db.all("SELECT * FROM editions", function (err, rows) {
@@ -49,6 +49,7 @@ router.post('/', async function(req, res, next) {
               res.status(400).json({error})
        }
 });
+
 router.post('/matches', async function(req, res, next) {
        try {
               let {home_team, away_team, score_1, score_2,match_date, start_time, edition_id} = req.body
@@ -74,7 +75,7 @@ router.post('/matches', async function(req, res, next) {
        }
 });
 
-router.get('/matches', async function(req, res, next) {
+router.get('/matches/all', async function(req, res, next) {
        try {
        db.all("SELECT * FROM county_meet_matches", function (err, rows) {
               if(err) {
@@ -86,6 +87,14 @@ router.get('/matches', async function(req, res, next) {
        } catch (error) {
               res.status(400).json(error)
        }
+});
+
+router.get('/matches', async function(req, res, next) {
+       let options = {
+              title: "Count Meet Matches",
+              page: "cmm"
+       }
+       res.render('admin/cm/match.cm.ejs', options);
 });
 
 
