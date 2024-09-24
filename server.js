@@ -18,6 +18,12 @@ var womenLeagueRouter = require('./routes/women.league.routes');
 var matchInfoRouter = require('./routes/match.info.routes');
 var signupRouter = require('./routes/signup.routes');
 var adminRouter = require('./routes/admin/admin.routes');
+var cmRouter = require('./routes/admin/cm.routes');
+var fdRouter = require('./routes/admin/fd.routes');
+var sdRouter = require('./routes/admin/sd.routes');
+var wlRouter = require('./routes/admin/wl.routes');
+
+
 var cors = require("cors");
 const getDbInstance = require('@js/getDBInstance');
 var app = express();
@@ -81,7 +87,13 @@ app.use('/women_league', womenLeagueRouter);
 app.use('/county_meet', countyMeetRouter);
 app.use('/match_info', matchInfoRouter);
 app.use('/signup', signupRouter);
+
+// dashboard route handlers
 app.use('/admin', adminRouter);
+app.use('/admin/cm', cmRouter);
+app.use('/admin/fd', fdRouter);
+app.use('/admin/sd', sdRouter);
+app.use('/admin/wl', wlRouter);
 
 
 // start server
