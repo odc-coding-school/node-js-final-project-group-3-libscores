@@ -38,7 +38,7 @@ const searchTeam = async (teamName) => {
         }
         const data = await response.json();
         console.log('Data fetched successfully:', data); // Debugging line
-        const allTeams = [...data.LFA_First_Division, ...data.LFA_Second_Division, ...data.LFA_Women_League];
+        const allTeams = [...data.LFA_First_Division, ...data.LFA_Second_Division, ...data.LFA_Women_League, ...data.County_Meet];
         const filteredTeams = allTeams.filter(team => team.name.toLowerCase().includes(teamName.toLowerCase()));
         console.log('Filtered teams:', filteredTeams); // Debugging line
         return filteredTeams;

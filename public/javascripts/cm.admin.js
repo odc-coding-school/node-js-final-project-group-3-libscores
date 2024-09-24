@@ -156,7 +156,6 @@ $(document).ready(function () {
             dataType: "json",
             success: function (response) {
                 let data = response.data[0]
-                alert(JSON.stringify(data))
                 $(
                     `<section class="box row padding matches">
                     <h3 class="${'black'} margin-right column center-align small">
