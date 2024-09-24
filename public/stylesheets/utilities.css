@@ -393,7 +393,7 @@ hr.divider { border: 0; border-top: 1px solid var(--onyx); margin: var(--spacing
 /* Set background color to gray */
 .bg-gray { background-color: var(--dark-gray); }
 
-.light-gray { background-color: #edecec94;}
+.light-gray { background-color: #edecec;}
 
 /* set color to gray */
 .gray { color: var(--light-gray);}
