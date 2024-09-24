@@ -1,0 +1,158 @@
+{
+    "LFA_First_Division": [
+        {
+            "name": "Watanga FC",
+            "logo": "https://example.com/watanga_logo.png",
+            "league": "LFA First Division"
+        },
+        {
+            "name": "LISCR FC",
+            "logo": "https://example.com/liscr_logo.png",
+            "league": "LFA First Division"
+        },
+        {
+            "name": "FC BEA Mountain",
+            "logo": "https://example.com/bea_mountain_logo.png",
+            "league": "LFA First Division"
+        },
+        {
+            "name": "Nimba Kwado",
+            "logo": "https://example.com/nimba_kwado_logo.png",
+            "league": "LFA First Division"
+        },
+        {
+            "name": "Mighty Barrolle",
+            "logo": "https://example.com/mighty_barrolle_logo.png",
+            "league": "LFA First Division"
+        },
+        {
+            "name": "LPRC Oilers",
+            "logo": "https://example.com/lprc_oilers_logo.png",
+            "league": "LFA First Division"
+        },
+        {
+            "name": "Nimba United",
+            "logo": "https://example.com/nimba_united_logo.png",
+            "league": "LFA First Division"
+        },
+        {
+            "name": "Freeport FC",
+            "logo": "https://example.com/freeport_fc_logo.png",
+            "league": "LFA First Division"
+        },
+        {
+            "name": "Heaven Eleven",
+            "logo": "https://example.com/heaven_eleven_logo.png",
+            "league": "LFA First Division"
+        },
+        {
+            "name": "Invincible Eleven",
+            "logo": "https://example.com/invincible_eleven_logo.png",
+            "league": "LFA First Division"
+        }
+    ],
+    "LFA_Second_Division": [
+        {
+            "name": "Cece United Football Academy",
+            "logo": "https://example.com/cece_united_logo.png",
+            "league": "LFA Second Division"
+        },
+        {
+            "name": "NPA Anchors",
+            "logo": "https://example.com/npa_anchors_logo.png",
+            "league": "LFA Second Division"
+        },
+        {
+            "name": "Jubilee FC",
+            "logo": "https://example.com/jubilee_fc_logo.png",
+            "league": "LFA Second Division"
+        },
+        {
+            "name": "Tony FC",
+            "logo": "https://example.com/tony_fc_logo.png",
+            "league": "LFA Second Division"
+        },
+        {
+            "name": "St. Joseph Warriors",
+            "logo": "https://example.com/st_joseph_warriors_logo.png",
+            "league": "LFA Second Division"
+        },
+        {
+            "name": "Gardnersville FC",
+            "logo": "https://example.com/gardnersville_fc_logo.png",
+            "league": "LFA Second Division"
+        },
+        {
+            "name": "Muscat FC",
+            "logo": "https://example.com/muscat_fc_logo.png",
+            "league": "LFA Second Division"
+        },
+        {
+            "name": "Mighty Blue Angels",
+            "logo": "https://example.com/mighty_blue_angels_logo.png",
+            "league": "LFA Second Division"
+        },
+        {
+            "name": "Sandi FC",
+            "logo": "https://example.com/sandi_fc_logo.png",
+            "league": "LFA Second Division"
+        },
+        {
+            "name": "Pags FC",
+            "logo": "https://example.com/pags_fc_logo.png",
+            "league": "LFA Second Division"
+        }
+    ],
+    "LFA_Women_League": [
+        {
+            "name": "Determine Girls FC",
+            "logo": "https://example.com/determine_girls_logo.png",
+            "league": "LFA Women's League"
+        },
+        {
+            "name": "Earth Angels",
+            "logo": "https://example.com/earth_angels_logo.png",
+            "league": "LFA Women's League"
+        },
+        {
+            "name": "Blanco FC",
+            "logo": "https://example.com/blanco_fc_logo.png",
+            "league": "LFA Women's League"
+        },
+        {
+            "name": "Senior Pro",
+            "logo": "https://example.com/senior_pro_logo.png",
+            "league": "LFA Women's League"
+        },
+        {
+            "name": "World Girls FC",
+            "logo": "https://example.com/world_girls_fc_logo.png",
+            "league": "LFA Women's League"
+        },
+        {
+            "name": "Pro Sisters FC",
+            "logo": "https://example.com/pro_sisters_fc_logo.png",
+            "league": "LFA Women's League"
+        },
+        {
+            "name": "Ambassadors FC",
+            "logo": "https://example.com/ambassadors_fc_logo.png",
+            "league": "LFA Women's League"
+        },
+        {
+            "name": "Island Queens",
+            "logo": "https://example.com/island_queens_logo.png",
+            "league": "LFA Women's League"
+        },
+        {
+            "name": "Hippo FC",
+            "logo": "https://example.com/hippo_fc_logo.png",
+            "league": "LFA Women's League"
+        },
+        {
+            "name": "Shaita Angels",
+            "logo": "https://example.com/shaita_angels_logo.png",
+            "league": "LFA Women's League"
+        }
+    ]
+}

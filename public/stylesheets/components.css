@@ -345,3 +345,53 @@ table, th, td {
     border-radius: var(--round-sm);
   }
 
+  #search-results {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background-color: #f0f0f0;
+}
+
+.team-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.team-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.team-name {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.league-name {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}

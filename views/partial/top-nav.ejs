@@ -1,42 +1,23 @@
-<nav class="row between nav padding relative">
-    <a href="/"><img class="logo" src="/images/logo.png" alt="Logo"></a>
-    <span class="row">
-        <button class="icon-button margin-right" id="openPopup">
-            <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
-        </button>
-        <button class="link-button" id="contribute"> + Contribute</button>
-    </span>
-</nav>
+<header>
+    <nav class="row between nav padding relative">
+        <a href="/"><img class="logo" src="/images/logo.png" alt="Logo"></a>
+        <span class="row">
+            <button class="icon-button margin-right" id="openPopup">
+                <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+            </button>
+            <button class="link-button" id="contribute"> + Contribute</button>
+        </span>
+    </nav>
+</header>
 <div id="overlay"></div>
 <div id="popup" class="pop border bg-white padding box huge-elevate">
     <div class="pop-content">
         <i class="fa-solid fa-close red large" id="closePopup" style="cursor: pointer;"></i>
-    <div class="row">
-        <input type="text" name="text" placeholder="Enter your team here" class=" form-input padding border" required >
-        <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
-    </div>
-    <p class="margin-top">Popular Search</p>
-    <a class="margin-bottom margin-top light-gray row mid-round">
-        <img src="/images/watanga_logo.png" alt="" class="lg-logo">
-        <div class="column">
-            <h4 class="bold">Watanga FC</h4>
-            <p>Orange First Division League</p>
+        <div class="row" style="position: relative;">
+            <input type="text" name="text" placeholder="Enter your team here" class="form-input padding border" required id="search-bar" oninput="performSearch()">
+            <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+            <ul id="search-results" class="dropdown"></ul>
         </div>
-    </a>
-    <a class="margin-bottom light-gray row mid-round">
-        <img src="/images/nimba_kwado.jpg" alt="" class="lg-logo">
-        <div class="column">
-            <h4 class="bold">Nimba Kwado</h4>
-            <p>Orange Second Division League</p>
-        </div>
-    </a>
-    <a class="margin-bottom light-gray row mid-round">
-        <img src="/images/Paynesville_FC.png" alt="" class="lg-logo">
-        <div class="column">
-            <h4 class="bold">FC Paynesville</h4>
-            <p>Orange First Division League</p>
-        </div>
-    </a>
     </div>
 </div>
 
