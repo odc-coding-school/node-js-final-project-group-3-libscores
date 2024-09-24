@@ -34,10 +34,12 @@
 
 /* Label styling */
 .label {
-    display: block; /* Make the label a block element */
-    margin-bottom: 4px; /* Add space below the label */
+    display: flex; /* Make the label a block element */
     font-weight: bold; /* Make the text bold */
     color: var(--midnight); /* Set label text color */
+    font-size: var(--small);
+    margin: 0;
+    margin-top: var(--spacing-sm);
 }
 
 /* Sidebar component */
@@ -316,5 +318,30 @@ table, th, td {
     & > * {
         width: 100%;
     }
+  }
+
+  /* Input */
+.input {
+    width: 100%;
+    padding: var(--spacing-xs);
+    border: 1px solid var(--light-gray);
+    font-size: var(--small);
+    background-color: var(--white);
+    color: var(--midnight);
+    caret-color: var(--red);
+    height: 38px;
+    font-weight: bold;
+    margin:0;
+  }
+
+  .input:focus {
+    outline: none;
+  }
+
+  .button {
+    padding: var(--spacing-sm);
+    height: 38px;
+    width: 100%;
+    border-radius: var(--round-sm);
   }
 
