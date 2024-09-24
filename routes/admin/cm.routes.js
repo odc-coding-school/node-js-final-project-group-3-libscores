@@ -11,7 +11,7 @@ router.get('/', async function(req, res, next) {
        }
        res.render('admin/cm-admin.ejs', options);
 });
-router.get('/all', async function(req, res, next) {
+router.get('/editions', async function(req, res, next) {
        try {
        db.all("SELECT * FROM editions", function (err, rows) {
               if(err) {

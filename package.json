@@ -29,7 +29,7 @@
     "@": "public",
     "@js": "public/javascripts",
     "@css": "public/stylesheets",
-    "@middleware": "middleware",
+    "@middleware": "middlewares",
     "@routes": "routes",
     "@views": "views"
   },

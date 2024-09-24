@@ -1,20 +1,21 @@
 import { formatDate, removeWordFromEnd } from "/javascripts/utils.js";
+    let year = new Date().getFullYear();
+    let years = Array.from(new Array(5), (v, idx) => year - idx);
 
 
 $(document).ready(function () {
 
     //get and display all editions
-    $.get("/admin/cm/all",
+    $.get("/admin/cm/editions",
         function (data, textStatus, jqXHR) {
             if(textStatus == "success") {
-                console.log(data.editions)
                 data.editions.forEach(edition => {
                    $( `
                       <section class="bg-white small-padding column small-round">
                         <span class="row large">
                             <h4>${edition.edition}</h4>
                             &middot;
-                            <small>${edition.host}</small>
+                            <small class="cap">${edition.host}</small>
                         </span>
                         <span class="row muted small">
                             <small>Start: ${formatDate(edition.start)}</small>
@@ -32,6 +33,29 @@ $(document).ready(function () {
         },
         "json"
     );
+
+    $.get("/api/counties",
+        function (data, textStatus, jqXHR) {
+            if(textStatus == "success") {
+                data.counties.forEach(county => {
+                   $( `
+                       <option value="${county.county}">${county.county}</option>
+                    `).prependTo("#editionHost");
+                })
+            } else {
+                console.error("An error occurred")
+            }
+        },
+        "json"
+    );
+
+     years.map((year,idx) =>  {
+        console.log(year)
+        $(`<option value="${year}">${year}</option>`).prependTo("#edition")
+    })
+
+
+    $("#edition").prependTo()
 
     $("#saveEdition").on("click", function saveEdition(evt) {
         let edition = $("#edition").val()
@@ -53,7 +77,7 @@ $(document).ready(function () {
                       <span class="row large">
                           <h4>${edition.edition}</h4>
                           &middot;
-                          <small>Host: ${edition.host}</small>
+                          <small class="cap">${edition.host}</small>
                       </span>
                       <span class="row muted small">
                           <small>Start: ${formatDate(edition.start)}</small>
