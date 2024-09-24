@@ -35,11 +35,11 @@
 /* Label styling */
 .label {
     display: flex; /* Make the label a block element */
-    font-weight: bold; /* Make the text bold */
     color: var(--midnight); /* Set label text color */
     font-size: var(--small);
     margin: 0;
     margin-top: var(--spacing-sm);
+    font-weight: bold;
 }
 
 /* Sidebar component */
@@ -290,6 +290,11 @@ table, th, td {
     width: 100%;
     height: 48px;
     border-radius: var(--round-sm);
+    font-weight: normal;
+  }
+
+  input[type="date"] {
+    text-transform: uppercase;
   }
 
   .form-input:focus {
@@ -330,7 +335,6 @@ table, th, td {
     color: var(--midnight);
     caret-color: var(--red);
     height: 38px;
-    font-weight: bold;
     margin:0;
   }
 
@@ -395,3 +399,6 @@ table, th, td {
     font-size: 14px;
     color: #666;
 }
+  select {
+    text-transform: capitalize;
+  }
