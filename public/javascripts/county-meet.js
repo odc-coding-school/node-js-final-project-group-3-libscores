@@ -4,7 +4,6 @@ import { formatDate, removeWordFromEnd } from "/javascripts/utils.js";
 $(document).ready(function () {
     $.get("/admin/cm/editions/all",
         function (data, textStatus, jqXHR) {
-            alert("cm.js")
             if(textStatus == "success") {
                 data.editions.forEach(edition => {
                     $( `

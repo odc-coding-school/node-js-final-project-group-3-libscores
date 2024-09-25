@@ -18,6 +18,8 @@ var womenLeagueRouter = require('./routes/women.league.routes');
 var matchInfoRouter = require('./routes/match.info.routes');
 var loginRouter = require('./routes/login.routes');
 var signupRouter = require('./routes/signup.routes');
+var countyRouter = require('./routes/api/county.routes');
+
 var adminRouter = require('./routes/admin/admin.routes');
 var cmRouter = require('./routes/admin/cm.routes');
 var fdRouter = require('./routes/admin/fd.routes');
@@ -80,7 +82,6 @@ app.use('/', indexRouter);
 app.use('/live', liveRouter);
 app.use('/leagues', leaguesRouter);
 app.use('/teams', teamsRouter);
-app.use('/api', apiRouter);
 app.use('/create_leagues', createLeaguesRouter);
 app.use('/first_division', firstDivisionRouter);
 app.use('/second_division', secondDivisionRouter);
@@ -89,9 +90,12 @@ app.use('/county_meet', countyMeetRouter);
 app.use('/match_info', matchInfoRouter);
 app.use('/signup', signupRouter);
 
+app.use("/counties", countyRouter)
+app.use('/api', apiRouter);
+
 // dashboard route handlers
 app.use('/login', loginRouter);
-app.use("/admin", restrict)
+// app.use("/admin", restrict)
 app.use('/admin', adminRouter);
 app.use('/admin/cm', cmRouter);
 app.use('/admin/fd', fdRouter);
