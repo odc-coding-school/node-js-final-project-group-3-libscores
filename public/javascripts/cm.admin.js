@@ -98,13 +98,11 @@ $(document).ready(function () {
         "json"
     );
 
+
+
      years.map((year,idx) =>  {
-        console.log(year)
         $(`<option value="${year}">${year}</option>`).prependTo("#edition")
     })
-
-
-    // $("#edition").prependTo()
 
     $("#saveEdition").on("click", function saveEdition(evt) {
         $("#saveEdition").disabled = true
@@ -193,22 +191,3 @@ $(document).ready(function () {
 });
 
 
-$("#saveGroup").on("click", function (evt) {
-    let edition = $('#groupEdition').val()
-    let county = $('#counties').val()
-    let group = $('#group').val()
-
-    let newData = {edition,county,group}
-    $.ajax({
-        type: "POST",
-        url: "/admin/cm/groups",
-        data: newData,
-        dataType: "json",
-        success: function (response) {
-            console.log(response)
-        },
-        error: function (err) {
-            console.error(err)
-        }
-    });
-})

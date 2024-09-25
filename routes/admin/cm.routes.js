@@ -144,6 +144,23 @@ router.post('/groups', async function(req, res, next) {
               res.status(400).json({error})
        }
 });
+router.get('/groups/all', async function(req, res, next) {
+       try {
+              
+              db.all(
+                     "SELECT *, groups.id FROM groups LEFT OUTER JOIN counties ON counties.id=groups.county_id LEFT OUTER JOIN editions ON editions.id=groups.edition_id",
+                     function (err, rows) {
+                            if (err) {
+                            throw new Error(err);
+                     } else {
+                            res.status(200).json({groups:rows})
+                            };
+                     }
+                     );
+       } catch (error) {
+              res.status(400).json({error})
+       }
+});
 
 
 
