@@ -81,7 +81,7 @@ router.get('/matches/all', async function(req, res, next) {
               if(err) {
                      throw new Error(err);
               } else {
-                     res.status(200).json({matches: rows})
+                     res.status(200).json({matches: rows, games: rows})
               }
               });
        } catch (error) {
