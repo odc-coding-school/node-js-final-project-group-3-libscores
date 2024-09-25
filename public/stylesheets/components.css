@@ -379,7 +379,8 @@ table, th, td {
     font-weight: bold;
   }
   .btn-group >  *:hover, .btn-group >  *.active  {
-    background-color: var(--red);
+    background-color: var(--crimson);
+    color: white;
   }
   .btn-group >  :first-child {
     border-top-left-radius: var(--round-lg);

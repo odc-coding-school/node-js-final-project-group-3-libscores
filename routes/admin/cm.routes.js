@@ -11,7 +11,7 @@ router.get('/', async function(req, res, next) {
        res.render('admin/cm-admin.ejs', options);
 });
 
-router.get('/editions', async function(req, res, next) {
+router.get('/editions/all', async function(req, res, next) {
        try {
        db.all("SELECT * FROM editions", function (err, rows) {
               if(err) {
@@ -95,6 +95,14 @@ router.get('/matches', async function(req, res, next) {
               page: "cmm"
        }
        res.render('admin/cm/match.cm.ejs', options);
+});
+
+router.get('/editions', async function(req, res, next) {
+       let options = {
+              title: "Count Meet Editions",
+              page: "cme"
+       }
+       res.render('admin/cm/edition.cm.ejs', options);
 });
 
 
