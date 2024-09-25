@@ -53,7 +53,7 @@ router.get('/editions/all', async function(req, res, next) {
 router.get('/editions', async function(req, res, next) {
        let options = {
               title: "Count Meet Editions",
-              page: "cme"
+              page: "editions"
        }
        res.render('admin/cm/edition.cm.ejs', options);
 });
@@ -110,7 +110,7 @@ router.get('/matches', async function(req, res, next) {
 router.get('/groups', async function(req, res, next) {
        let options = {
               title: "Create Grouping ",
-              page: "cm"
+              page: "groups"
        }
        res.render('admin/cm/group.cm.ejs', options);
 });
