@@ -116,6 +116,36 @@ router.get('/groups', async function(req, res, next) {
 });
 
 
+router.post('/groups', async function(req, res, next) {
+       try {
+              let{edition,county,group}= req.body
+              db.run(
+              "INSERT INTO groups VALUES (?,?,?,?)",
+              [null, edition, county, group],
+              function (err) {
+                     if(err) {
+                     throw new Error(err);
+                     } else {
+                     db.all(
+                            "SELECT *, groups.id FROM groups LEFT OUTER JOIN counties ON counties.id=groups.county_id LEFT OUTER JOIN editions ON editions.id=groups.edition_id WHERE groups.groups=?",
+                            [group],
+                            function (err, rows) {
+                                   if (err) {
+                                   throw new Error(err);
+                            } else {
+                                   res.status(200).json({group:rows})
+                                   };
+                            }
+                            );
+                     }
+              }
+              );
+       } catch (error) {
+              res.status(400).json({error})
+       }
+});
+
+
 
 
 module.exports = router;

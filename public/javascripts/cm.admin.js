@@ -31,7 +31,7 @@ $(document).ready(function () {
                      `).prependTo("#matchEdition");
                     $( `
                         <option value="${edition.id}">${edition.edition}</option>
-                     `).prependTo("#leagueEditions");
+                     `).prependTo("#groupEdition");
                 })
 
                 
@@ -57,7 +57,7 @@ $(document).ready(function () {
                        <option value="${county.county}">${county.county}</option>
                     `).prependTo("#matchAwayTeam");
                    $( `
-                       <option value="${county.county}">${county.county}</option>
+                       <option value="${county.id}">${county.county}</option>
                     `).prependTo("#counties");
                    
                 })
@@ -193,3 +193,22 @@ $(document).ready(function () {
 });
 
 
+$("#saveGroup").on("click", function (evt) {
+    let edition = $('#groupEdition').val()
+    let county = $('#counties').val()
+    let group = $('#group').val()
+
+    let newData = {edition,county,group}
+    $.ajax({
+        type: "POST",
+        url: "/admin/cm/groups",
+        data: newData,
+        dataType: "json",
+        success: function (response) {
+            console.log(response)
+        },
+        error: function (err) {
+            console.error(err)
+        }
+    });
+})
