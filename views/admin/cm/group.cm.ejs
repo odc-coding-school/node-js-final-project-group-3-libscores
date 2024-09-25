@@ -1,0 +1,17 @@
+<%- include("../../partial/head") %>
+<body class="column no-gap">
+    <%- include("../admin-nav") %>
+    <main class="max">
+        <div class="small-container full-height">
+            
+            <%- include("./tab.cm.ejs") %>
+            <%- include("./group.dialog.ejs") %>
+            
+        </div>
+    </main>
+    <div id="snackbar">Group added successfully!</div>
+
+    <script type="module" src="/javascripts/jquery.js"></script>
+    <script type="module" src="/javascripts/dialog.js"></script>
+    <script type="module" src="/javascripts/cm.admin.js"></script>
+</body>

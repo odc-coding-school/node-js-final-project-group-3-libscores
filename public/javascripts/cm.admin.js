@@ -29,6 +29,9 @@ $(document).ready(function () {
                     $( `
                         <option value="${edition.id}">${edition.edition}</option>
                      `).prependTo("#matchEdition");
+                    $( `
+                        <option value="${edition.id}">${edition.edition}</option>
+                     `).prependTo("#leagueEditions");
                 })
 
                 
@@ -53,6 +56,9 @@ $(document).ready(function () {
                    $( `
                        <option value="${county.county}">${county.county}</option>
                     `).prependTo("#matchAwayTeam");
+                   $( `
+                       <option value="${county.county}">${county.county}</option>
+                    `).prependTo("#counties");
                    
                 })
             } else {

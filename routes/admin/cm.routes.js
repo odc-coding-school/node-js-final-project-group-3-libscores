@@ -11,20 +11,6 @@ router.get('/', async function(req, res, next) {
        res.render('admin/cm-admin.ejs', options);
 });
 
-router.get('/editions/all', async function(req, res, next) {
-       try {
-       db.all("SELECT * FROM editions", function (err, rows) {
-              if(err) {
-                     throw new Error(err);
-              } else {
-                     res.status(200).json({editions: rows})
-              }
-              });
-       } catch (error) {
-              res.status(400).json(error)
-       }
-});
-
 router.post('/', async function(req, res, next) {
        try {
               let {edition,start,end,host} = req.body
@@ -50,6 +36,29 @@ router.post('/', async function(req, res, next) {
        }
 });
 
+router.get('/editions/all', async function(req, res, next) {
+       try {
+       db.all("SELECT * FROM editions", function (err, rows) {
+              if(err) {
+                     throw new Error(err);
+              } else {
+                     res.status(200).json({editions: rows})
+              }
+              });
+       } catch (error) {
+              res.status(400).json(error)
+       }
+});
+
+router.get('/editions', async function(req, res, next) {
+       let options = {
+              title: "Count Meet Editions",
+              page: "cme"
+       }
+       res.render('admin/cm/edition.cm.ejs', options);
+});
+
+// county meet matches routes
 router.post('/matches', async function(req, res, next) {
        try {
               let {home_team, away_team, score_1, score_2,match_date, start_time, edition_id} = req.body
@@ -97,13 +106,15 @@ router.get('/matches', async function(req, res, next) {
        res.render('admin/cm/match.cm.ejs', options);
 });
 
-router.get('/editions', async function(req, res, next) {
+// county meet groups routes
+router.get('/groups', async function(req, res, next) {
        let options = {
-              title: "Count Meet Editions",
-              page: "cme"
+              title: "Create Grouping ",
+              page: "cm"
        }
-       res.render('admin/cm/edition.cm.ejs', options);
+       res.render('admin/cm/group.cm.ejs', options);
 });
+
 
 
 
