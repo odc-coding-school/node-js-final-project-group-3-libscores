@@ -80,7 +80,7 @@ db.serialize(function createDB() {
 
 // Routes handlers
 app.use('/', indexRouter);
-app.use('/live', liveRouter);
+// app.use('/live', liveRouter);
 app.use('/leagues', leaguesRouter);
 app.use('/teams', teamsRouter);
 app.use('/create_leagues', createLeaguesRouter);
