@@ -18,7 +18,10 @@ var countyMeetRouter = require('./routes/county.meet.routes');
 var secondDivisionRouter = require('./routes/second.division.routes');
 var womenLeagueRouter = require('./routes/women.league.routes');
 var matchInfoRouter = require('./routes/match.info.routes');
+var loginRouter = require('./routes/login.routes');
 var signupRouter = require('./routes/signup.routes');
+var countyRouter = require('./routes/api/county.routes');
+
 var adminRouter = require('./routes/admin/admin.routes');
 var cmRouter = require('./routes/admin/cm.routes');
 var fdRouter = require('./routes/admin/fd.routes');
@@ -74,16 +77,20 @@ db.serialize(function createDB() {
   db.run("CREATE TABLE IF NOT EXISTS county_meet_cards(id INTEGER  PRIMARY KEY AUTOINCREMENT,  player_id VARCHAR(50)  NOT NULL, match_id INTEGER NOT NULL, card INTEGER NOT NULL, card_time VARCHAR(50) NOT NULL)");
   db.run("CREATE TABLE IF NOT EXISTS county_meet_standing(id INTEGER  PRIMARY KEY AUTOINCREMENT,  county_meet_id INTEGER NOT NULL, county_id INTEGER NOT NULL, play INTEGER NOT NULL, win INTEGER NOT NULL, loss INTEGER NOT NULL, draws INTEGER NOT NULL, goals_for INTEGER NOT NULL, goals_against INTEGER NOT NULL, points INTEGER NOT NULL)");
   db.run("CREATE TABLE IF NOT EXISTS county_meet_match_lineup(id INTEGER  PRIMARY KEY AUTOINCREMENT,  player_id INTEGER NOT NULL, county_id INTEGER NOT NULL, match_id INTEGER NOT NULL)");
+  db.run("CREATE TABLE IF NOT EXISTS groups(id INTEGER  PRIMARY KEY AUTOINCREMENT,  edition_id INTEGER NOT NULL, county_id INTEGER NOT NULL, groups VARCHAR(50) NOT NULL)");
 });
 
 // Routes handlers
 app.use('/', indexRouter);
+<<<<<<< HEAD
 app.use('/live', liveRouter);
 app.use('/results', resultRouter);
 app.use('/fixtures', fixtureRouter);
+=======
+// app.use('/live', liveRouter);
+>>>>>>> d4449d645a81eb121db18e37543afff1419c150d
 app.use('/leagues', leaguesRouter);
 app.use('/teams', teamsRouter);
-app.use('/api', apiRouter);
 app.use('/create_leagues', createLeaguesRouter);
 app.use('/first_division', firstDivisionRouter);
 app.use('/second_division', secondDivisionRouter);
@@ -92,7 +99,12 @@ app.use('/county_meet', countyMeetRouter);
 app.use('/match_info', matchInfoRouter);
 app.use('/signup', signupRouter);
 
+app.use("/counties", countyRouter)
+app.use('/api', apiRouter);
+
 // dashboard route handlers
+app.use('/login', loginRouter);
+// app.use("/admin", restrict)
 app.use('/admin', adminRouter);
 app.use('/admin/cm', cmRouter);
 app.use('/admin/fd', fdRouter);

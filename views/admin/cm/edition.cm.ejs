@@ -1,15 +1,15 @@
-<%- include("../partial/head") %>
+<%- include("../../partial/head") %>
 <body class="column no-gap">
-    <%- include("./admin-nav") %>
+    <%- include("../admin-nav") %>
     <main class="max">
         <div class="small-container full-height">
-
-            <%- include("./cm/tab.cm.ejs") %>
-            <%- include("./cm/match.cm.ejs") %>
-
+            <%- include("./tab.cm.ejs") %>
+            <%- include("./edition.dialog.ejs") %>
+            
+                <div id="editionList" class="padding column">
+                </div>
         </div>
     </main>
-
     <script type="module" src="/javascripts/jquery.js"></script>
     <script type="module" src="/javascripts/dialog.js"></script>
     <script type="module" src="/javascripts/cm.admin.js"></script>

@@ -1,4 +1,4 @@
-import { formatDate, removeWordFromEnd } from "/javascripts/utils.js";
+import { formatDate, showSnackbar } from "/javascripts/utils.js";
     let year = new Date().getFullYear();
     let years = Array.from(new Array(5), (v, idx) => year - idx);
 
@@ -6,7 +6,7 @@ import { formatDate, removeWordFromEnd } from "/javascripts/utils.js";
 $(document).ready(function () {
 
     //get and display all editions
-    $.get("/admin/cm/editions",
+    $.get("/admin/cm/editions/all",
         function (data, textStatus, jqXHR) {
             if(textStatus == "success") {
                 data.editions.forEach(edition => {
@@ -29,6 +29,12 @@ $(document).ready(function () {
                     $( `
                         <option value="${edition.id}">${edition.edition}</option>
                      `).prependTo("#matchEdition");
+                    $( `
+                        <option value="${edition.id}">${edition.edition}</option>
+                     `).prependTo("#groupEdition");
+                    // $( `
+                    //     <option value="${edition.id}">${edition.edition}</option>
+                    //  `).prependTo("#edition");
                 })
                 
             } else {
@@ -38,7 +44,7 @@ $(document).ready(function () {
         "json"
     );
 
-    $.get("/api/counties",
+    $.get("/admin/counties/all",
         function (data, textStatus, jqXHR) {
             if(textStatus == "success") {
                 data.counties.forEach(county => {
@@ -52,7 +58,9 @@ $(document).ready(function () {
                    $( `
                        <option value="${county.county}">${county.county}</option>
                     `).prependTo("#matchAwayTeam");
-                   
+                   $( `
+                       <option value="${county.id}">${county.county}</option>
+                    `).prependTo("#counties");
                 })
             } else {
                 console.error("An error occurred")
@@ -61,7 +69,7 @@ $(document).ready(function () {
         "json"
     );
 
-    $.get("/admin/cm/matches",
+    $.get("/admin/cm/matches/all",
         function (data, textStatus, jqXHR) {
             if(textStatus == "success") {
                 data.matches.forEach(match => {
@@ -91,13 +99,11 @@ $(document).ready(function () {
         "json"
     );
 
-     years.map((year,idx) =>  {
-        console.log(year)
-        $(`<option value="${year}">${year}</option>`).prependTo("#edition")
-    })
 
 
-    // $("#edition").prependTo()
+    //  years.map((year,idx) =>  {
+    //     $(`<option value="${year}">${year}</option>`).prependTo("#edition")
+    // })
 
     $("#saveEdition").on("click", function saveEdition(evt) {
         $("#saveEdition").disabled = true
@@ -110,7 +116,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: "/admin/cm",
+            url: "/admin/cm/editions",
             data: newData,
             dataType: "json",
             success: function (response) {
@@ -131,6 +137,8 @@ $(document).ready(function () {
                       </span>
                   </section>
                   `).prependTo("#editionList");
+                showSnackbar("Match Added Successfully")
+                window.location.reload()
             },
             error: function (err) {
                 console.error(err)
