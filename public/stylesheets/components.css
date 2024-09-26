@@ -130,7 +130,7 @@
     border-radius: var(--round-md); /* Apply medium border radius */
     display: grid; /* Use grid layout */
     place-items: center; /* Center icon within the button */
-    cursor: pointer; /* Change cursor to pointer on hover */
+    cursor: pointer; /* Change cursor to none on hover */
 }
 
 /* Full viewport container */
@@ -402,3 +402,9 @@ table, th, td {
   select {
     text-transform: capitalize;
   }
+
+  .none{
+    display: none;
+  }
+
+  

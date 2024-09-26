@@ -1,6 +1,9 @@
 <header>
     <nav class="row between nav padding relative">
         <a href="/"><img class="logo" src="/images/logo.png" alt="Logo"></a>
+        <div class="menu-toggle" ></div>
+                <i class="fas fa-bars" id="mobile-menu"></i>
+            </div>
         <span class="row">
             <button class="icon-button margin-right" id="openPopup">
                 <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
@@ -11,11 +14,10 @@
 </header>
 <div id="overlay"></div>
 <div id="popup" class="pop border bg-white padding box huge-elevate">
-    <div class="pop-content">
-        <i class="fa-solid fa-close red large" id="closePopup" style="cursor: pointer;"></i>
+    <i class="fa-solid fa-close red large icon-button padding" id="closePopup"></i>
+    <div class="pop-content margin-top">
         <div class="row" style="position: relative;">
             <input type="text" name="text" placeholder="Enter your team here" class="form-input padding border" required id="search-bar" oninput="performSearch()">
-            <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
             <ul id="search-results" class="dropdown"></ul>
         </div>
     </div>
@@ -23,7 +25,7 @@
 
 <div id="overactive"></div>
 <div class="pop border bg-white padding box huge-elevate" id="contributeButton">
-    <i class="fa-solid fa-close red large" id="closeBtn" style="cursor: pointer;"></i>
+    <i class="fa-solid fa-close red large icon-button padding" id="closeBtn"></i>
     <div class="align-center">
         <h1 class="huge margin-bottom">Login</h1>
     <form action="/login" method="POST">
@@ -35,5 +37,4 @@
     </form>
     </div>
 </div>
-
 <script src="/javascripts/pop.js"></script>

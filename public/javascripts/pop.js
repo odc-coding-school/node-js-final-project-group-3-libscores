@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('click', (event) => {
 const openPopup = document.getElementById("openPopup");
 const closePopup = document.getElementById("closePopup");
 const popup = document.getElementById("popup");
@@ -27,7 +27,7 @@ closeBtn.onclick = function(){
     overaActive.style.display = "none";
 };  
 
-})
+});
 
 const searchTeam = async (teamName) => {
     try {
@@ -84,7 +84,7 @@ const performSearch = () => {
                 });
             } else {
                 const li = document.createElement('li');
-                li.textContent = 'No teams found';
+                li.textContent = 'No teams found or check the spelling';
                 resultsUl.appendChild(li);
             }
         }).catch(error => {
@@ -94,3 +94,8 @@ const performSearch = () => {
         document.getElementById('search-results').innerHTML = ''; // Clear results if input is empty
     }
 };
+
+document.getElementById('mobile-menu').addEventListener('click', function() {
+    const navMenu = document.querySelector('.nav-menu');
+    navMenu.classList.toggle('active');
+});

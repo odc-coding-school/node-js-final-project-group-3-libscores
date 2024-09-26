@@ -7,6 +7,8 @@ var path = require('path');
 var logger = require('morgan');
 var indexRouter = require('./routes/index.routes');
 var liveRouter = require('./routes/live.routes');
+var resultRouter = require('./routes/results.routes');
+var fixtureRouter = require('./routes/fixtures.routes');
 var leaguesRouter = require('./routes/league.routes');
 var teamsRouter = require('./routes/team.routes');
 var apiRouter = require('./routes/api');
@@ -77,6 +79,8 @@ db.serialize(function createDB() {
 // Routes handlers
 app.use('/', indexRouter);
 app.use('/live', liveRouter);
+app.use('/results', resultRouter);
+app.use('/fixtures', fixtureRouter);
 app.use('/leagues', leaguesRouter);
 app.use('/teams', teamsRouter);
 app.use('/api', apiRouter);
