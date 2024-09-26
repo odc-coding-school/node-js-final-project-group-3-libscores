@@ -179,7 +179,7 @@ i {
 
 
   .constraint{
-    max-width: 100%;
+    max-width: 100vw;
   }
 
   #mobile-menu {
@@ -189,7 +189,7 @@ i {
   .nav-menu {
       display: none;
       flex-direction: column;
-      width: 100%;
+      width: 100vw;
       text-align: left;
   }
 
@@ -206,7 +206,7 @@ i {
     position: relative;
     min-height: 0;
     max-height: 42vh;
-    width: 100%;
+    width: 100vw;
   }
   #main-body{
     width: inherit;
@@ -231,6 +231,6 @@ i {
   }
 
   #main-body{
-    width: 100%;
+    width: 100vw;
   }
 }
