@@ -163,6 +163,15 @@ router.get('/groups/all', async function(req, res, next) {
 });
 
 
+router.get('/players', async function(req, res, next) {
+       let options = {
+              title: "Add New Player ",
+              page: "players"
+       }
+       res.render('admin/cm/players.cm.ejs', options);
+});
+
+
 
 
 module.exports = router;

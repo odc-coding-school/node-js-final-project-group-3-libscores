@@ -414,6 +414,10 @@ table, th, td {
   min-width: 320px;
 }
 
+.dialog.small {
+  width: 378px;
+}
+
 .dialog-header, .dialog-footer {
   border-bottom: thin solid var(--fog);
   display: flex;

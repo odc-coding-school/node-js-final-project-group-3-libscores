@@ -42,7 +42,7 @@ $(document).ready(function () {
         "json"
     );
 
-    $.get("/counties",
+    $.get("/admin/counties/all",
         function (data, textStatus, jqXHR) {
             if(textStatus == "success") {
                 data.counties.forEach(county => {
