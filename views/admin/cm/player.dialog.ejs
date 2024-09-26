@@ -14,43 +14,50 @@
         </button>
     </header>
 
-    <section class="dialog-content">
-        <span class="row flex">
-                <span>
-                    <label for="editionHost" class="label">County</label>
-                    <select name="editionHost" id="editionHost" class="block input" required>
-                    </select>
+    <form method="post" action="" enctype="multipart/form-data" id="addPlayer">
+
+        <div class="dialog-content">
+
+            <span class="row flex">
+                    <span>
+                        <label for="counties" class="label">County</label>
+                        <select name="county" id="counties" class="block input" required>
+                        </select>
+                    </span>
+                    <span class="column no-gap">
+                        <label for="firstName" class="label block">First Name</label>
+                        <input type="text" name="firstName" id="firstName" class="input block" required>
+                    </span>
+            </span>
+            
+            <section class="row flex">
+                <span class="column no-gap">
+                    <label for="middleName" class="label block">Middle Name</label>
+                    <input type="text" name="middleName" id="middleName" class="input block" required>
                 </span>
                 <span class="column no-gap">
-                    <label for="firstName" class="label block">First Name</label>
-                    <input type="text" name="firstName" id="firstName" class="input block" required>
+                    <label for="lastName" class="label block">Last Name</label>
+                    <input type="text" name="lastName" id="lastName" class="input block" required>
                 </span>
-        </span>
-        
-        <section class="row flex">
-            <span class="column no-gap">
-                <label for="middleName" class="label block">Middle Name</label>
-                <input type="text" name="middleName" id="middleName" class="input block" required>
-            </span>
-            <span class="column no-gap">
-                <label for="lastName" class="label block">Last Name</label>
-                <input type="text" name="lastName" id="lastName" class="input block" required>
-            </span>
-           
-        </section>
-        <section class="row flex">
-            <span class="column no-gap">
-                <label for="photo" class="label block">Photo</label>
-                <input type="file" name="photo" id="photo" class="input block" required>
-            </span>
-            <span class="column no-gap">
-                <label for="DOB" class="label block">Date of Birth</label>
-                <input type="date" name="DOB" id="DOB" class="input block" required>
-            </span>
-        </section>
-    </section>
-    
-    <footer class="dialog-footer">
-        <button class="button move-right" id="saveEdition">Save Player</button>
-    </footer>
+            
+            </section>
+
+            <section class="row flex">
+                <span class="column no-gap">
+                    <label for="photo" class="label block">Photo</label>
+                    <input type="file" name="photo" id="photo" class="input block" required>
+                </span>
+                <span class="column no-gap">
+                    <label for="DOB" class="label block">Date of Birth</label>
+                    <input type="date" name="DOB" id="DOB" class="input block" required>
+                </span>
+            </section>
+            
+            <footer class="dialog-footer">
+                <button type="submit" class="button move-right" >Save Player</button>
+            </footer>
+
+        </div>
+
+    </form>
 </dialog>
