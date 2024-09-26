@@ -82,13 +82,9 @@ db.serialize(function createDB() {
 
 // Routes handlers
 app.use('/', indexRouter);
-<<<<<<< HEAD
 app.use('/live', liveRouter);
 app.use('/results', resultRouter);
 app.use('/fixtures', fixtureRouter);
-=======
-// app.use('/live', liveRouter);
->>>>>>> d4449d645a81eb121db18e37543afff1419c150d
 app.use('/leagues', leaguesRouter);
 app.use('/teams', teamsRouter);
 app.use('/create_leagues', createLeaguesRouter);
@@ -98,7 +94,6 @@ app.use('/women_league', womenLeagueRouter);
 app.use('/county_meet', countyMeetRouter);
 app.use('/match_info', matchInfoRouter);
 app.use('/signup', signupRouter);
-
 app.use("/counties", countyRouter)
 app.use('/api', apiRouter);
 
