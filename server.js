@@ -5,6 +5,40 @@ var cookieParser = require('cookie-parser');
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
+
+var cors = require("cors");
+const getDbInstance = require('@js/getDBInstance');
+var app = express();
+var port = process.env.PORT || '3000'
+var sqlite3 = require("sqlite3").verbose();
+var restrict = require("@middleware/restrict");
+var protected = require("@middleware/restrict");
+var session = require("express-session");
+var SQLiteStore = require("connect-sqlite3")(session)
+
+app.use(cors()) 
+app.use(
+  session({
+    store: new SQLiteStore,
+    secret: "RSTUVWXYZabcdefghijklmyz0123456789!@#$%^&*()_+[]{}|;:,.<>?",
+    resave: true,
+    saveUninitialized: false,
+    cookie: { 
+      secure: false, 
+      // maxAge: 7*24*60*60*1000, //1 week
+      maxAge: 60*60*1000, //1 hr
+    },
+  }));
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+const db = getDbInstance(sqlite3)
+
+// leagues and frontend routes
 var indexRouter = require('./routes/index.routes');
 var liveRouter = require('./routes/live.routes');
 var resultRouter = require('./routes/results.routes');
@@ -18,52 +52,19 @@ var countyMeetRouter = require('./routes/county.meet.routes');
 var secondDivisionRouter = require('./routes/second.division.routes');
 var womenLeagueRouter = require('./routes/women.league.routes');
 var matchInfoRouter = require('./routes/match.info.routes');
-var loginRouter = require('./routes/login.routes');
 var signupRouter = require('./routes/signup.routes');
-var countyRouter = require('./routes/api/county.routes');
 
+// dashboard/admin routes
 var adminRouter = require('./routes/admin/admin.routes');
 var cmRouter = require('./routes/admin/cm.routes');
 var fdRouter = require('./routes/admin/fd.routes');
 var sdRouter = require('./routes/admin/sd.routes');
 var wlRouter = require('./routes/admin/wl.routes');
+var loginRouter = require('./routes/login.routes');
 
 
-var cors = require("cors");
-const getDbInstance = require('@js/getDBInstance');
-var app = express();
-var port = process.env.PORT || '3000'
-var sqlite3 = require("sqlite3").verbose();
-var restrict = require("@middleware/restrict");
-var session = require("express-session");
-var SQLiteStore = require("connect-sqlite3")(session)
-
-
-
-// view engine setup
-app.use(
-  session({
-    store: new SQLiteStore,
-    secret: "RSTUVWXYZabcdefghijklmyz0123456789!@#$%^&*()_+[]{}|;:,.<>?",
-    resave: true,
-    saveUninitialized: false,
-    cookie: { 
-      secure: false, 
-      // maxAge: 7*24*60*60*1000, //1 week
-      maxAge: 60*60*1000, //1 min
-    },
-  }));
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors()) 
-
-//create database table
-const db = getDbInstance(sqlite3)
+// fetch data api routes
+var countyRouter = require('./routes/api/county.routes');
 
 db.serialize(function createDB() {
   db.run("CREATE TABLE IF NOT EXISTS editions (id INTEGER PRIMARY KEY AUTOINCREMENT,  edition VARCHAR(50) NOT NULL UNIQUE, start DATE NOT NULL, end DATE NOT NULL, host VARCHAR(50) NOT NULL)");
@@ -95,17 +96,19 @@ app.use('/county_meet', countyMeetRouter);
 app.use('/match_info', matchInfoRouter);
 app.use('/signup', signupRouter);
 app.use("/counties", countyRouter)
-app.use('/api', apiRouter);
 
-// dashboard route handlers
-app.use('/login', loginRouter);
-// app.use("/admin", restrict)
 app.use('/admin', adminRouter);
 app.use('/admin/cm', cmRouter);
 app.use('/admin/fd', fdRouter);
 app.use('/admin/sd', sdRouter);
 app.use('/admin/wl', wlRouter);
 
+// DASHBOARD ROUTES HANDLERS
+app.use("/dashboard",protected)
+
+// API v1 Endpoints
+app.use("/login", loginRouter)
+app.use("/v1/api", apiRouter)
 
 // start server
 app.listen(port, function listener() {

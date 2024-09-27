@@ -3,14 +3,16 @@
 <body class="no-overflow">
     <%- include("./partial/top-nav.ejs") %>
     <div class="container center">
-        <form method="post" action="/v1/api/login" class="border box padding small-round small-box column">
-            <h1 class="huge border-bottom align-center">Login</h1>
+        <div method="post" class="border box padding small-round small-box column">
+            <h1 class="huge align-center">Contributor Login</h1>
+
+            <hr class="divider">
     
-            <label for="email" class="label bold">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="Enter your Email" class="form-input large-input" required>
+            <label for="username" class="label bold">What's your usename?</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" class="form-input large-input" required>
             
             <label for="password" class="label bold">Password</label>
-            <input type="password" id="password" name="password" placeholder="Enter your password" required class="form-input large-input">
+            <input type="password" id="password" name="password" placeholder="********" required class="form-input large-input">
 
             <small class="small error" id="errorMsg">Email or password incorrect. Try again.</small>
     
@@ -20,12 +22,11 @@
             </button>
     
             <span>
-                <p class="margin-top">You don't have an account?
-                
-                <a class="bold link" href="https://docs.google.com/forms/d/e/1FAIpQLScq4_j1NquFzSMxXI5Qu7iyj0gMVcULoNDcZAOpJSIm18kfRg/viewform?usp=pp_url" target="_blank" > Register now </a>
+                <p class="margin-top align-center ">You're not a contributor?
+                <a class="bold link" href="https://docs.google.com/forms/d/e/1FAIpQLScq4_j1NquFzSMxXI5Qu7iyj0gMVcULoNDcZAOpJSIm18kfRg/viewform?usp=pp_url" target="_blank" > Fill in contributor form </a>
             </p>
             </span>
-        </form>
+        </d>
 </div>
 <script type="module" src="/javascripts/jquery.js"></script>
 <script type="module" src="/javascripts/login.js"></script>
