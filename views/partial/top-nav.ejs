@@ -4,8 +4,8 @@
         <a href="/"><img class="logo" src="/images/logo.png" alt="Logo"></a>
         
         <span class="row">
-            <button class="icon-button margin-right" id="openPopup">
-                <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+            <button class="icon-button margin-right" >
+                <i class="fa-sharp fa-solid fa-magnifying-glass" id="openPopup" style="cursor: pointer;"></i>
             </button>
             <button class="link-button" id="contribute"> + Contribute</button>
         </span>
@@ -13,7 +13,7 @@
 </header>
 <div id="overlay"></div>
 <div id="popup" class="pop border bg-white padding box huge-elevate">
-    <i class="fa-solid fa-close red large icon-button padding" id="closePopup"></i>
+    <i class="fa-solid fa-close red large padding button" id="closePopup" style="cursor: pointer;"></i>
     <div class="pop-content margin-top">
         <div class="row" style="position: relative;">
             <input type="text" name="text" placeholder="Enter your team here" class="form-input padding border" required id="search-bar" oninput="performSearch()">
@@ -24,7 +24,7 @@
 
 <div id="overactive"></div>
 <div class="pop border bg-white padding box huge-elevate" id="contributeButton">
-    <i class="fa-solid fa-close red large icon-button padding" id="closeBtn"></i>
+    <i class="fa-solid fa-close red large padding button" id="closeBtn" style="cursor: pointer;"></i>
     <div class="align-center">
         <h1 class="huge margin-bottom">Login</h1>
     <form action="/login" method="POST">
