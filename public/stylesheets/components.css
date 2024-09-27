@@ -180,6 +180,11 @@
     min-width: inherit; /* Set minimum width */
 }
 
+.small-box {
+  width: 450px;
+  min-height: 378px;
+}
+
 /* Logo sizes */
 .xs-logo {
     width: 20px; /* Set width for small logo */
@@ -366,6 +371,8 @@ table, th, td {
     border-radius: var(--round-sm);
   }
 
+
+
   #search-results {
     list-style-type: none;
     padding: 0;
@@ -440,12 +447,22 @@ table, th, td {
   }
 
   .button.large {
-    min-width: 278px;
+    min-width: 200px;
+    height: 48px;
     padding: unset;
-    height: unset;
   }
+
+  .large-input {
+    height: 48px;
+  }
+
   .button.round {
     border-radius: 14px;
+  }
+
+  .button:disabled {
+    background-color: var(--light-gray);
+    color: var(--misty);
   }
 
   .secondary {
@@ -567,5 +584,41 @@ body.dialog-active::before {
 @keyframes fadeout {
   from { left: 0; opacity: 1; }
   to { left: -300px; opacity: 0; }
+}
+
+.link {
+  color: var(--blue);
+}
+
+/* HTML: <div class="loader"></div> */
+.spinner {
+  width: 30px;
+  aspect-ratio: 1;
+  display:grid;
+  -webkit-mask: conic-gradient(from 15deg,#0000,#000);
+  animation: l26 1s infinite steps(12);
+  pointer-events: none;
+}
+.spinner,
+.spinner:before,
+.spinner:after{
+  background:
+    radial-gradient(closest-side at 50% 12.5%,
+     var(--white) 96%,#0000) 50% 0/20% 80% repeat-y,
+    radial-gradient(closest-side at 12.5% 50%,
+     var(--white) 96%,#0000) 0 50%/80% 20% repeat-x;
+}
+.spinner:before,
+.spinner:after {
+  content: "";
+  grid-area: 1/1;
+  transform: rotate(30deg);
+}
+.spinner:after {
+  transform: rotate(60deg);
+}
+
+@keyframes l26 {
+  100% {transform:rotate(1turn)}
 }
 
