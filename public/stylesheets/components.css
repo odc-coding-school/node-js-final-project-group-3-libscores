@@ -129,13 +129,9 @@
     border-radius: var(--round-md); /* Apply medium border radius */
     display: grid; /* Use grid layout */
     place-items: center; /* Center icon within the button */
-<<<<<<< HEAD
-    cursor: pointer; /* Change cursor to none on hover */
-=======
     cursor: pointer; /* Change cursor to pointer on hover */
     background-color: var(--light-gray);
     font-size: larger;
->>>>>>> d4449d645a81eb121db18e37543afff1419c150d
 }
 
 /* Full viewport container */
@@ -346,7 +342,6 @@ table, th, td {
     }
   }
 
-<<<<<<< HEAD
   /* Input */
 .input {
     width: 100%;
@@ -421,20 +416,16 @@ table, th, td {
     font-size: 14px;
     color: #666;
 }
-=======
   
->>>>>>> d4449d645a81eb121db18e37543afff1419c150d
   select {
     text-transform: capitalize;
   }
 
-<<<<<<< HEAD
   .none{
     display: none;
   }
 
   
-=======
   
 
 
@@ -578,4 +569,3 @@ body.dialog-active::before {
   to { left: -300px; opacity: 0; }
 }
 
->>>>>>> d4449d645a81eb121db18e37543afff1419c150d
