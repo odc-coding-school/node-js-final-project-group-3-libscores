@@ -67,8 +67,6 @@ var dashboardRouter = require('./routes/dashboard');
 var clubsRouter = require('./routes/dashboard/clubs.routes');
 
 
-// fetch data api routes
-var countyRouter = require('./routes/api/county.routes');
 
 db.serialize(function createDB() {
   db.run("CREATE TABLE IF NOT EXISTS editions (id INTEGER PRIMARY KEY AUTOINCREMENT,  edition VARCHAR(50) NOT NULL UNIQUE, start DATE NOT NULL, end DATE NOT NULL, host VARCHAR(50) NOT NULL)");
@@ -128,7 +126,6 @@ app.use('/women_league', womenLeagueRouter);
 app.use('/county_meet', countyMeetRouter);
 app.use('/match_info', matchInfoRouter);
 app.use('/signup', signupRouter);
-app.use("/counties", countyRouter)
 
 app.use('/admin', adminRouter);
 app.use('/admin/cm', cmRouter);
@@ -141,9 +138,16 @@ app.use("/dashboard", protected)
 app.use("/dashboard", dashboardRouter)
 app.use("/dashboard/clubs", clubsRouter)
 
+// fetch data api routes
+var countyRouter = require('./routes/api/county.routes');
+var clubApiRouter = require('./routes/api/clubs.api');
+
+
 // API v1 Endpoints
+app.use("/counties", countyRouter)
 app.use("/login", loginRouter)
 app.use("/v1/api", apiRouter)
+app.use("/v1/api/clubs", clubApiRouter)
 
 // start server
 app.listen(port, function listener() {
