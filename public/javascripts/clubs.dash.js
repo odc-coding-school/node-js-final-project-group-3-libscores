@@ -10,7 +10,9 @@ $(document).ready(function () {
                           <img src="/images/${team.badge}" class="tiny-logo">
                           </td>
                           <td class="first wide td row">
-                              <span>${team.club}</span>
+                              <a href="/dashboard/clubs/${team.id}">
+                              ${team.club}
+                              </a>
                           </td>
                           <td class="td">${team.squad == null ? '0': team.squad}</td>
                           <td class="td">${team.country_id == 1 ? 'Liberia' : team.country_id}</td>
@@ -18,7 +20,9 @@ $(document).ready(function () {
                           <td class="td">${team.stadium}</td>
                           <td class="td">${team.founded}</td>
                           <td class="td">  
-                             <button data-ui="#clubDialog" class="icon-button round"> <i class="fa fa-pen"></i></button>
+                             <button class="icon-button small round"> 
+                                <i class="fa fa-pen"></i>
+                             </button>
                           </td>
                       </tr>
                       `
@@ -32,7 +36,7 @@ $(document).ready(function () {
     );
 });
 
-function getClubs() {
+export function getClubs() {
     let res = {clubs: null}
     $.get("/v1/api/clubs",
         function (data, textStatus, jqXHR) {
@@ -48,7 +52,7 @@ function getClubs() {
     return res
 }
 
-function getClubsById(id) {
+export function getClubById(id) {
     let res = {club: null}
     $.get(`/v1/api/clubs/${id}`,
         function (data, textStatus, jqXHR) {

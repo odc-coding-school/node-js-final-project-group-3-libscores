@@ -1,0 +1,46 @@
+<%- include("./dash.nav.ejs") %>
+<body class="bg-rose">
+    <main class="wall row top-align">
+        <% if (club) { %>
+            <div class="bg-white padding column no-gap">
+                <img src="/images/<%= club.badge %>" alt="<%= club.club %> Badge" class="xl-logo">
+                <h3 class="large"><%= club.club %></h3>
+                <small><strong>Coach:</strong> Mark K. Paye </small>
+                <small><strong>Founded:</strong> <%= club.founded %></small>
+                <small><strong>Stadium:</strong> <%= club.stadium %></small>
+                <small><strong>Squard:</strong> <%= club.squad %></small>
+                <small><strong>Maket Value:</strong> <%= club.market_value %></small>
+                <small><strong>Competition:</strong> League Name</small>
+                <small><strong>Country:</strong> <%= club.country_id == 1 ? "Liberia" : club.country_id %></small>
+                <button class="link-btn margin-top"> 
+                    <i class="fa fa-pen"></i>
+                    Update Info
+                </button>
+            </div>
+            <div class="max">
+                <section class="bg-white  padding long ">
+                    <table class="table tiny">
+                        <thead class="thead">
+                            <tr class="tr tiny">
+                                <th class="th">-</th>
+                                <th class="th">Player</th>
+                                <th class="th">Position</th>
+                                <th class="th">Age</th>
+                                <th class="th">Country</th>
+                                <th class="th">Market Value</th>
+                                <!-- <th class="th">Status</th> -->
+                                <th class="th">Agent</th>
+                            </tr>
+                        </thead>
+                        <tbody class="tbody" id="">
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+         <% }  else {%>
+            <% msg %>
+        <% }%>
+    </main>
+    <%- include("./dash.foot.ejs") %>
+    <script type="module" src="/javascripts/clubs.dash.js"></script>
+</body>

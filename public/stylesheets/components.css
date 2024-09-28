@@ -138,6 +138,13 @@
   border-radius: 50%;
 }
 
+.icon-button.small {
+  width: 28px;
+  height: 28px;
+  font-size: var(--small);
+  padding: var(--space-sm);
+}
+
 /* Full viewport container */
 .container {
     width: 950px; /* Set container width */
@@ -211,6 +218,15 @@
     border-radius: 50%; /* Make logo circular */
 }
 
+.xl-logo {
+  width: 110px;
+  border-radius: 20px/20px;
+}
+
+.club-logo {
+
+}
+
 .nav-logo {
     width: 28px;
     height: 28px;
@@ -236,6 +252,8 @@ table, th, td {
     border: unset;
 }
 
+
+
 .th {
     background-color: transparent;
     border-bottom: 1px solid var(--light-gray);
@@ -247,6 +265,24 @@ table, th, td {
 .th, .td {
     padding: var(--spacing-sm);
     font-size: var(--small);
+}
+
+/* styles for small table */
+
+.tr.small th {
+  font-size: var(--small);
+  text-transform: capitalize;
+  color: var(--void);
+}
+
+.table.small tr {
+  border: thin solid var(--light-gray);
+}
+
+.table.tiny th {
+  font-size: var(--tiny);
+  text-transform: capitalize;
+  color: var(--navy-blue);
 }
 
 .first{
@@ -277,6 +313,14 @@ table, th, td {
     width: 28px;
     /* height: 150px; */
 }
+
+.xs-logo {
+  width: 24px;
+  height: 26px;
+
+}
+
+
 
   .dash {
     margin: var(--spacing-lg) 0;
@@ -631,21 +675,36 @@ body.dialog-active::before {
   100% {transform:rotate(1turn)}
 }
 
-.framer {
-  border-radius: 40px/40px;
-  border: solid red;
+.wall {
+  border-radius: 40px;
+  border-end-end-radius: unset;
+  border-bottom-left-radius: unset;
   width: 900px;
   height: 99.98vh;
   margin: 0 auto;
   overflow: hidden;
-  padding: var(--spacing-lg);
 }
 
 .frame {
+  height: 100%;
+  width: 100%;
   overflow: auto;
+  padding: var(--spacing-sm);
+}
+
+.bg-rose {
+  background-color: var(--rosemist);
 }
 
 .long {
   height: 220vh;
 }
 
+.link-btn {
+  color: var(--blue);
+  font-size: var(--tiny);
+  cursor: pointer;
+}
+.link-btn:hover {
+  color: var(--ocean-wave);
+}

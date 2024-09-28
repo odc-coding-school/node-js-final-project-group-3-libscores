@@ -9,6 +9,25 @@ router.get('/', function(req, res, next) {
     res.render('dashboard/clubs.dash.ejs', { title: 'Manage Clubs' });
 });
 
+router.get('/:id', async function(req, res, next) {
+       let {id} = req.params
+       if(id) {
+              db.all("SELECT * FROM clubs WHERE id=?",[id], function (err, rows) {
+                     if(err || rows.length == 0) {
+                            res.render('dashboard/club.info.ejs', 
+                                   {title: "Club doesn't exist",  error:err, 
+                                   msg: "Club doesn't exist", club: null})
+                     } else {
+                            let club = rows[0]
+                            res.render('dashboard/club.info.ejs', { title: club.club, club });
+                     }
+              });
+       } else {
+              res.redirect('/dashboard/clubs')
+       }
+      
+   });
+
 
 router.post('/', upload.single("badge"), async function(req, res, next) {
     let options = {
