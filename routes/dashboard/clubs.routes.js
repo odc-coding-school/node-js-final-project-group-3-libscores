@@ -54,5 +54,67 @@ router.post('/', upload.single("badge"), async function(req, res, next) {
     }
 });
 
+router.put("/", async function (req, res) {
+    const { coach, club, founded, squad, stadium, market_value, competition, team_country, id } = req.body;
+
+    // Input validation
+    if (!id || !team_country || !stadium || !club) {
+        return res.status(400).json({ error: "Missing required fields." });
+    }
+
+    // Prepare the SQL statement for updating the club
+    const updateSql = `
+        UPDATE clubs 
+        SET 
+            club = ?, 
+            founded = ?, 
+            country_id = ?, 
+            squad = ?, 
+            stadium = ?, 
+            market_value = ?, 
+            badge = ? 
+        WHERE id = ?
+    `;
+
+    // Prepare values in the order specified
+    const values = [club, founded, 1,squad, stadium, market_value, badge, id];
+
+    try {
+        // Execute the update query
+        await new Promise((resolve, reject) => {
+            db.run(updateSql, values, function (err) {
+                if (err) {
+                    console.error(err);
+                    return reject(err); // Reject the promise if there's an error
+                }
+                resolve(this.changes); // Resolve with the number of changes
+            });
+        });
+
+        // Prepare SQL statement to retrieve the updated club data
+        const selectSql = `SELECT * FROM clubs WHERE id = ?`;
+
+        // Fetch the updated data
+        db.get(selectSql, [id], (err, updatedClub) => {
+            if (err) {
+                console.error("Error fetching updated data:", err);
+                return res.status(500).json({ error: "An error occurred while retrieving the updated club data." });
+            }
+
+            if (!updatedClub) {
+                return res.status(404).json({ error: "Club not found." });
+            }
+
+            // Return the updated club data
+            res.status(200).json({ message: "Club updated successfully.", club: updatedClub });
+        });
+
+    } catch (error) {
+        console.error("Database update error:", error);
+        res.status(500).json({ error: "An error occurred while updating the club." });
+    }
+});
+
+
 
 module.exports = router;

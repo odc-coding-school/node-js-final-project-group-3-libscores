@@ -62,12 +62,6 @@ var sdRouter = require('./routes/admin/sd.routes');
 var wlRouter = require('./routes/admin/wl.routes');
 var loginRouter = require('./routes/login.routes');
 
-// dashbaord routes
-var dashboardRouter = require('./routes/dashboard');
-var clubsRouter = require('./routes/dashboard/clubs.routes');
-
-
-
 db.serialize(function createDB() {
   db.run("CREATE TABLE IF NOT EXISTS editions (id INTEGER PRIMARY KEY AUTOINCREMENT,  edition VARCHAR(50) NOT NULL UNIQUE, start DATE NOT NULL, end DATE NOT NULL, host VARCHAR(50) NOT NULL)");
   db.run("CREATE TABLE IF NOT EXISTS counties(id INTEGER PRIMARY KEY AUTOINCREMENT,  county VARCHAR(50)  NOT NULL, flag VARCHAR(50) NULL)");
@@ -133,15 +127,21 @@ app.use('/admin/fd', fdRouter);
 app.use('/admin/sd', sdRouter);
 app.use('/admin/wl', wlRouter);
 
+// DASHBOARD ROUTES
+// dashbaord routes
+var dashboardRouter = require('./routes/dashboard');
+var clubsRouter = require('./routes/dashboard/clubs.routes');
+var competitionRouter = require('./routes/dashboard/competition.routes');
+
 // DASHBOARD ROUTES HANDLERS
 app.use("/dashboard", protected)
 app.use("/dashboard", dashboardRouter)
 app.use("/dashboard/clubs", clubsRouter)
+app.use("/dashboard/competitions", competitionRouter)
 
 // fetch data api routes
 var countyRouter = require('./routes/api/county.routes');
 var clubApiRouter = require('./routes/api/clubs.api');
-
 
 // API v1 Endpoints
 app.use("/counties", countyRouter)

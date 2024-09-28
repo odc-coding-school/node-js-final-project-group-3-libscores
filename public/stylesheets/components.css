@@ -254,7 +254,7 @@ table, th, td {
 
 
 
-.th {
+.th, th {
     background-color: transparent;
     border-bottom: 1px solid var(--light-gray);
     text-align: left;
@@ -262,30 +262,30 @@ table, th, td {
     text-transform: uppercase;
 }
 
-.th, .td {
+.th, .td, th, td {
     padding: var(--spacing-sm);
     font-size: var(--small);
 }
 
 /* styles for small table */
 
-.tr.small th {
+.tr.small th, tr.small th  {
   font-size: var(--small);
   text-transform: capitalize;
   color: var(--void);
 }
 
-.table.small tr {
+.table.small tr, table.small tr {
   border: thin solid var(--light-gray);
 }
 
-.table.tiny th {
+.table.tiny th, table.tiny th {
   font-size: var(--tiny);
   text-transform: capitalize;
   color: var(--navy-blue);
 }
 
-.first{
+.first {
     width: 200px;
 }
 
@@ -707,4 +707,48 @@ body.dialog-active::before {
 }
 .link-btn:hover {
   color: var(--ocean-wave);
+}
+
+.editable {
+  background-color: #e7f3fe;  /* Slightly darker blue for better contrast */
+  border: 1px dashed #007bff; /* Keep the dashed blue border */
+  border-radius: 4px;         /* Rounded corners */
+  padding: 4px;               /* Padding for spacing */
+  cursor: text;               /* Indicate text can be edited */
+  transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition */
+}
+
+/* Improve focus styles */
+.editable:focus {
+  outline: none;              /* Remove default outline */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.7); /* Stronger glow effect */
+  border-color: #0056b3;     /* Darker border on focus for better visibility */
+}
+
+/* Adding an aria-live region for dynamic content updates */
+.editable[aria-live] {
+  position: relative;         /* Positioning to ensure it stays in flow */
+}
+
+/* Adding a visual indication for editing state */
+.editable::after {
+  content: 'Editing...';     /* Text to indicate edit mode */
+  font-size: 0.8em;          /* Slightly smaller font for clarity */
+  color: #007bff;            /* Match the primary color */
+  position: absolute;         /* Positioning */
+  top: -20px;                /* Above the element */
+  left: 0;
+  right: 0;
+  text-align: center;        /* Center the text */
+  z-index: 1;                /* Ensure it appears above */
+  visibility: hidden;        /* Hidden by default */
+}
+
+/* Show editing indication when in editable mode */
+.editable:focus::after {
+  visibility: visible;        /* Make it visible when editing */
+}
+
+.teaminfo {
+  margin-top: var(--spacing-md);
 }
