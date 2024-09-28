@@ -1,0 +1,56 @@
+
+    <button data-ui="#clubDialog" class="icon-button round">
+        <i class="fa fa-plus"></i>
+    </button>
+
+    <dialog class="dialog small" data-ui="clubDialog">
+        <header class="dialog-header">
+            <h4 class="large align-center">Add Team</h4>
+            <button class="icon-button">
+                <i class="fa fa-close" data-ui="#clubDialog"></i>
+            </button>
+        </header>
+
+        <form action="/dashboard/clubs" method="post" enctype="multipart/form-data">
+            <section class="dialog-content">
+                    <section class="row flex">
+                        <span>
+                            <label for="club" class="label">Team Name</label>
+                            <input name="club" id="club" class="block input" placeholder="Watanga FC">
+                        </span>
+                        <span>
+                            <label for="founded" class="label">Year Founded</label>
+                            <input name="founded" id="founded" class="block input" placeholder="Feb 18, 1980">
+                        </span>
+                    </section>
+                    
+                    <section class="row flex">
+                        <span>
+                            <label for="country" class="label">Country</label>
+                            <select name="country" id="country" class="block input">
+                                <option value="1">Liberia</option>
+                            </select>
+                        </span>
+                        <span class="column no-gap">
+                            <label for="stadium" class="label block">Stadium</label>
+                            <input placeholder="Samuel K. Doe Sport Complex" type="text" name="stadium" id="stadium" class="input block">
+                        </span>
+                    </section>
+
+                <section class="row flex">
+                    <span class="column no-gap">
+                        <label for="value" class="label block">Market Value</label>
+                        <input type="number" name="value" id="value" class="input block" placeholder="US$ 300,3500">
+                    </span>
+                    <span class="column no-gap">
+                        <label for="badge" class="label block">Team badge</label>
+                        <input type="file" name="badge" id="badge" class="input block">
+                    </span>
+                </section>
+            </section>
+            
+            <footer class="dialog-footer">
+                <button type="submit" class="button move-right" id="saveClub">Save Club</button>
+            </footer>
+        </form>
+    </dialog>

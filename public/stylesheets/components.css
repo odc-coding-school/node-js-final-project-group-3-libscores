@@ -134,6 +134,10 @@
     font-size: larger;
 }
 
+.icon-button.round {
+  border-radius: 50%;
+}
+
 /* Full viewport container */
 .container {
     width: 950px; /* Set container width */
@@ -440,16 +444,21 @@ table, th, td {
   padding: var(--spacing-sm);
   height: 38px;
   border-radius: var(--round-sm);
-  background-color: var(--crimson);
+  background-color: var(--blue);
   color: var(--white); 
   cursor: pointer;
 
+  }
+
+  .button:hover {
+    background-color: var(--ocean-wave);
   }
 
   .button.large {
     min-width: 200px;
     height: 48px;
     padding: unset;
+    font-size: var(--small);
   }
 
   .large-input {

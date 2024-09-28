@@ -1,0 +1,26 @@
+<%- include("./dash.nav.ejs") %>
+<body class="center">
+    <main class="max-filled">
+<%- include("./club.dialog.ejs") %>
+        
+        <section class="bg-white  mid-round small-padding">
+            <h2 class="large align-center">Group A</h2>
+            <table class="table">
+                <thead class="thead">
+                    <tr class="tr">
+                        <th class="th">#</th>
+                        <th class="th">GP</th>
+                        <th class="th">W</th>
+                        <th class="th">D</th>
+                        <th class="th">L</th>
+                        <th class="th cap">Goals</th>
+                        <th class="th">PTS</th>
+                    </tr>
+                </thead>
+                <tbody class="tbody" id="tabody">
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <%- include("./dash.foot.ejs") %>
+</body>

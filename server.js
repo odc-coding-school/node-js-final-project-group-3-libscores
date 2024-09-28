@@ -64,6 +64,7 @@ var loginRouter = require('./routes/login.routes');
 
 // dashbaord routes
 var dashboardRouter = require('./routes/dashboard');
+var clubsRouter = require('./routes/dashboard/clubs.routes');
 
 
 // fetch data api routes
@@ -87,7 +88,7 @@ db.serialize(function createDB() {
 
   db.run("CREATE TABLE IF NOT EXISTS competitions (id INTEGER PRIMARY KEY AUTOINCREMENT,  competition VARCHAR(50) NOT NULL, country_id INTEGER NOT NULL, players INTEGER NULL, market_value INTEGER NULL, continent VARCHAR(50) NOT NULL, logo VARCHAR(50) NULL, founded DATE NULL,  type VARCHAR(50) NOT NULL)");
 
-  db.run("CREATE TABLE IF NOT EXISTS clubs (id INTEGER PRIMARY KEY AUTOINCREMENT, club VARCHAR(50) NOT NULL, country_id INTEGER NOT NULL, squad INTEGER NOT NULL, stadium VARCHAR(50) NULL, market_value INTEGER NULL  )");
+  db.run("CREATE TABLE IF NOT EXISTS clubs (id INTEGER PRIMARY KEY AUTOINCREMENT, club VARCHAR(50) NOT NULL, founded VARCHAR(50) NULL, country_id INTEGER NOT NULL, squad INTEGER NULL, stadium VARCHAR(50) NULL, market_value INTEGER NULL, badge VARCHAR (50) NOT NULL )");
 
   db.run("CREATE TABLE IF NOT EXISTS games (id INTEGER PRIMARY KEY AUTOINCREMENT, home INTEGER NOT NULL, away INTEGER NOT NULL, start DATE NOT NULL, status INTEGER NOT NULL, period INTEGER NOT NULL, home_goal INTEGER NOT NULL, away_goal INTEGER NOT NULL, season_id INTEGER NOT NULL)");
 
@@ -138,6 +139,7 @@ app.use('/admin/wl', wlRouter);
 // DASHBOARD ROUTES HANDLERS
 app.use("/dashboard", protected)
 app.use("/dashboard", dashboardRouter)
+app.use("/dashboard/clubs", clubsRouter)
 
 // API v1 Endpoints
 app.use("/login", loginRouter)
