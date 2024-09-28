@@ -631,3 +631,21 @@ body.dialog-active::before {
   100% {transform:rotate(1turn)}
 }
 
+.framer {
+  border-radius: 40px/40px;
+  border: solid red;
+  width: 900px;
+  height: 99.98vh;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: var(--spacing-lg);
+}
+
+.frame {
+  overflow: auto;
+}
+
+.long {
+  height: 220vh;
+}
+

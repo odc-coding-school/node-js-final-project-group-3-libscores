@@ -1,26 +1,29 @@
 <%- include("./dash.nav.ejs") %>
 <body >
-    <main class="max-filled">
-<%- include("./club.dialog.ejs") %>
-        
-        <section class="bg-white  mid-round small-padding">
-            <table class="table">
-                <thead class="thead">
-                    <tr class="tr">
-                        <th class="th"></th>
-                        <th class="th">Club</th>
-                        <th class="th">Squad</th>
-                        <th class="th">Country</th>
-                        <th class="th">Market Value</th>
-                        <th class="th">Stadium</th>
-                        <th class="th">Founded</th>
-                        <th class="th"></th>
-                    </tr>
-                </thead>
-                <tbody class="tbody" id="clubs">
-                </tbody>
-            </table>
-        </section>
+    <main class="framer">
+        <div class="frame">
+            <%- include("./club.dialog.ejs") %>
+            
+            <section class="bg-white  mid-round small-padding long">
+                <table class="table">
+                    <thead class="thead">
+                        <tr class="tr">
+                            <th class="th"></th>
+                            <th class="th">Club</th>
+                            <th class="th">Squad</th>
+                            <th class="th">Country</th>
+                            <th class="th">Market Value</th>
+                            <th class="th">Stadium</th>
+                            <th class="th">Founded</th>
+                            <th class="th"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody" id="clubs">
+                    </tbody>
+                </table>
+            </section>
+        </div>
+
     </main>
     <%- include("./dash.foot.ejs") %>
     <script type="module" src="/javascripts/clubs.dash.js"></script>
