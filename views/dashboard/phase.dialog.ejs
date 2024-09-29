@@ -1,13 +1,13 @@
 <!-- Button to open dialog -->
-<button class="small-button blue" data-ui="#phaseDialog">
+<button class="small-button" data-ui="#phaseDialog">
     <i class="fa fa-plus"></i>
-    New Phase
+    New Edition
 </button>
 
 <!-- Dialog to add phase -->
 <dialog class="dialog small" data-ui="phaseDialog">
     <header class="dialog-header">
-        <h4 class="large align-center">New Phase</h4>
+        <h4 class="large align-center">New Edition</h4>
         <button class="icon-button" id="closeDialog">
             <i class="fa fa-close" data-ui="#phaseDialog"></i>
         </button>
@@ -24,8 +24,8 @@
         <section class="row flex">
             <span>
                 <label for="season" class="label">Season</label>
-                <select name="season" id="seasons" class="block input">
-                    <option value="" disabled >Select a season</option>
+                <select name="season" id="phaseSeasons" class="block input">
+                    <option value="" disabled>Select a season</option>
                     <option value="">2023/2025</option>
                 </select>
             </span>

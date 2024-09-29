@@ -8,11 +8,25 @@ const handleError = (res, err, customMessage = 'An error occurred') => {
     res.status(500).json({ message: customMessage });
 };
 
-// GET route to fetch all phases
+// GET route to fetch all phases with season and club details
 router.get('/', async (req, res) => {
     try {
         const db = await createDbConnection();
-        const phases = await dbQuery(db, 'SELECT * FROM phases ORDER BY id DESC');
+
+        // Query to join the phases table with seasons and clubs using foreign keys
+        const query = `
+             SELECT
+                *, 
+                phases.id AS phase_id, 
+                phases.status AS phase_status, 
+                clubs.club AS team_name
+            FROM phases
+            LEFT JOIN seasons ON phases.season_id = seasons.id
+            LEFT JOIN clubs ON phases.team_id = clubs.id
+            ORDER BY phases.id DESC;
+        `;
+
+        const phases = await dbQuery(db, query);
 
         if (phases.length === 0) {
             return res.status(404).json({ message: 'No phases found.' });
@@ -24,9 +38,10 @@ router.get('/', async (req, res) => {
     }
 });
 
+
 // POST route to save a new phase
 router.post('/', async (req, res) => {
-    const { season, team } = req.body;
+    const { season, selectedTeamId:team } = req.body;
 
     // Validate required fields
     if (season === undefined || team === undefined) {

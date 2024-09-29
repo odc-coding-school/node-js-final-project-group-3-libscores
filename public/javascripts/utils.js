@@ -157,7 +157,67 @@ export function fetchTeamSuggestions(query) {
           }
       });
   });
+  
 }
+
+// Helper function to handle errors
+export const handleError = (res, err, customMessage = 'An error occurred') => {
+  console.error(err);
+  res.status(500).json({ message: customMessage });
+};
+
+/**
+ * Fetches all phases by making an AJAX GET request to the /dashboard/phases route.
+ * Returns a promise that resolves with the phase data or rejects if there's an error.
+ *
+ * @returns {Promise<Array>} A promise that resolves to an array of phase objects.
+ */
+export function getPhases() {
+  return new Promise((resolve, reject) => {
+      const apiRoute = '/dashboard/phases'; // Endpoint for fetching phases
+
+      $.get(apiRoute, function(data, textStatus) {
+          if (textStatus === "success") {
+              resolve(data); // Assuming the response contains an array of phase objects
+          } else {
+              reject("Error fetching phases.");
+          }
+      }, "json").fail(function(jqXHR, textStatus, errorThrown) {
+          reject(`Error fetching phases: ${textStatus} - ${errorThrown}`);
+      });
+  });
+}
+
+
+/**
+ * Populate the phases select dropdown.
+ * @param {string} selectId - The ID of the select element to populate.
+ */
+export function populatePhasesSelect(selectId) {
+    if (!selectId) {
+        console.error("Select ID is required.");
+        return;
+    }
+
+    const $select = $(`#${selectId}`);
+
+    // Fetch phases from the API and populate the dropdown
+    getPhases().then(phases => {
+        // Clear existing options
+        $select.empty();
+
+        // Populate the select with new options
+        phases.forEach(phase => {
+          const formattedDate = formatSeasonDates(phase.start, phase.end); // Use the updated utility function
+         
+            const option = $('<option></option>').val(phase.phase_id).text(formattedDate);
+            $select.append(option);
+        });
+    }).catch(err => {
+        console.error('Error populating phases:', err);
+    });
+}
+
 
 
 
