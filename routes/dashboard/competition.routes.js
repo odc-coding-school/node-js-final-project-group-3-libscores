@@ -3,26 +3,28 @@ const router = require('express').Router();
 const sqlite3 = require('sqlite3').verbose();
 const getDbInstance = require('@js/getDBInstance');
 const upload = require('@middleware/upload');
+const { dbQuery, dbRun, dbGet, createDbConnection } = require('@utils/dbUtils');
+
 
 // Utility function for database queries
-const dbQuery = (db, query, params = []) => {
-    return new Promise((resolve, reject) => {
-        db.all(query, params, (err, rows) => {
-            if (err) return reject(err);
-            resolve(rows);
-        });
-    });
-};
+// const dbQuery = (db, query, params = []) => {
+//     return new Promise((resolve, reject) => {
+//         db.all(query, params, (err, rows) => {
+//             if (err) return reject(err);
+//             resolve(rows);
+//         });
+//     });
+// };
 
 // Utility function for running insert queries
-const dbRun = (db, query, params = []) => {
-    return new Promise((resolve, reject) => {
-        db.run(query, params, function(err) {
-            if (err) return reject(err);
-            resolve(this);
-        });
-    });
-};
+// const dbRun = (db, query, params = []) => {
+//     return new Promise((resolve, reject) => {
+//         db.run(query, params, function(err) {
+//             if (err) return reject(err);
+//             resolve(this);
+//         });
+//     });
+// };
 
 // GET route to display the competitions (leagues) page
 router.get('/', async (req, res) => {
@@ -65,13 +67,18 @@ router.get('/:id', async (req, res) => {
 
     try {
         const competition = await getItemById('competitions', id);
+         // Check if the season exists
+         const db = await createDbConnection();
+        const seasons = await dbQuery(db, 'SELECT * FROM seasons ORDER BY id DESC');
+
 
         if (!competition) {
             return res.render('dashboard/competition.info.ejs', {
                 title: "Competition Doesn't Exist",
                 error: null,
                 msg: "Competition doesn't exist.",
-                competition: null
+                competition: null,
+                seasons
             });
         }
 
@@ -85,7 +92,8 @@ router.get('/:id', async (req, res) => {
             title: "Error Fetching Competition",
             error: err,
             msg: "An error occurred while fetching the competition. Please try again later.",
-            competition: null
+            competition: null,
+            seasons
         });
     }
 });

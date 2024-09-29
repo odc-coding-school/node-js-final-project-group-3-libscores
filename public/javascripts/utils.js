@@ -136,5 +136,35 @@ export function getSeasons() {
       }, "json");
   });
 }
+/**
+ * Fetches team suggestions based on the provided query.
+ * 
+ * @param {string} query - The search term for team suggestions.
+ * @returns {Promise<Array>} A promise that resolves to an array of team suggestions.
+ * @throws {Error} Throws an error if the AJAX request fails.
+ */
+export function fetchTeamSuggestions(query) {
+  return new Promise((resolve, reject) => {
+      $.ajax({
+          url: '/v1/api/clubs/suggest', // This is the endpoint we just defined
+          method: 'GET',
+          data: { q: query },
+          success: function (data) {
+              resolve(data);
+          },
+          error: function (err) {
+              reject(err);
+          }
+      });
+  });
+}
+
+
+
+
+
+
+
+
 
 
