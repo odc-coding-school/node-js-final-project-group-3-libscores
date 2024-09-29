@@ -28,31 +28,68 @@ router.get('/:id', async function(req, res, next) {
       
    });
 
-
-router.post('/', upload.single("badge"), async function(req, res, next) {
-    let options = {
-        title: "Manage Clubs"
-    }
-    console.log(req.body)
+router.post('/', upload.single("badge"), async function (req, res, next) {
+    const { club, founded, country, stadium, value } = req.body;
 
     try {
-           let badge = req.file.filename
-           let{club,founded,country,stadium,value}= req.body
-           db.run(
-           "INSERT INTO clubs VALUES (?,?,?,?,?,?,?,?)",
-           [null,club,founded, country,null,stadium,value,badge],
-           function (err) {
-                  if(err) {
-                         throw new Error(err);
-                  } else {
-                         res.render('dashboard/clubs.dash.ejs', options);
-                  }
-           }
-           );
+        let badge = req.file.filename;
+
+        // Prepare the SQL statement for inserting a new club
+        const insertSql = `
+            INSERT INTO clubs (id, club, founded, country_id, squad, stadium, market_value, badge) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        `;
+        const values = [null, club, founded, country, null, stadium, value, badge];
+
+        // Execute the insert query
+        await new Promise((resolve, reject) => {
+            db.run(insertSql, values, function (err) {
+                if (err) {
+                    return reject(err); // Reject the promise if there's an error
+                }
+                resolve(this.lastID); // Resolve with the last inserted ID
+            });
+        });
+
+        // Fetch the newly created club data
+        db.get(`SELECT * FROM clubs WHERE club = ?`, [club], (err, newClub) => {
+            if (err) {
+                return res.status(500).json({ error: "An error occurred while retrieving the new club data." });
+            }
+            res.status(201).json(newClub); // Return the newly created club data
+        });
     } catch (error) {
-           res.status(400).json({error})
+        console.error("Database insert error:", error);
+        res.status(500).json({ error: "An error occurred while adding the club." });
     }
 });
+
+
+
+// router.post('/', upload.single("badge"), async function(req, res, next) {
+//     let options = {
+//         title: "Manage Clubs"
+//     }
+//     console.log(req.body)
+
+//     try {
+//            let badge = req.file.filename
+//            let{club,founded,country,stadium,value}= req.body
+//            db.run(
+//            "INSERT INTO clubs VALUES (?,?,?,?,?,?,?,?)",
+//            [null,club,founded, country,null,stadium,value,badge],
+//            function (err) {
+//                   if(err) {
+//                          throw new Error(err);
+//                   } else {
+//                          res.render('dashboard/clubs.dash.ejs', options);
+//                   }
+//            }
+//            );
+//     } catch (error) {
+//            res.status(400).json({error})
+//     }
+// });
 
 router.put("/", async function (req, res) {
     const { coach, club, founded, squad, stadium, market_value, competition, team_country, id } = req.body;

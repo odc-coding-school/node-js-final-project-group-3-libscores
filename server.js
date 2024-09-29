@@ -142,12 +142,14 @@ app.use("/dashboard/competitions", competitionRouter)
 // fetch data api routes
 var countyRouter = require('./routes/api/county.routes');
 var clubApiRouter = require('./routes/api/clubs.api');
+var creatorRouter = require('./routes/api/creator.routes')
 
 // API v1 Endpoints
 app.use("/counties", countyRouter)
 app.use("/login", loginRouter)
 app.use("/v1/api", apiRouter)
 app.use("/v1/api/clubs", clubApiRouter)
+app.use("/v1/api/creates", creatorRouter)
 
 // start server
 app.listen(port, function listener() {
