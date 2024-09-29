@@ -113,7 +113,7 @@ app.use('/results', resultRouter);
 app.use('/fixtures', fixtureRouter);
 app.use('/leagues', leaguesRouter);
 app.use('/teams', teamsRouter);
-app.use('/create_leagues', createLeaguesRouter);
+// app.use('/create_leagues', createLeaguesRouter);
 app.use('/first_division', firstDivisionRouter);
 app.use('/second_division', secondDivisionRouter);
 app.use('/women_league', womenLeagueRouter);
