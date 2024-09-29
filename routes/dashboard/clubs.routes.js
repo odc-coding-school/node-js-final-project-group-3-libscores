@@ -59,6 +59,7 @@ router.put("/", async function (req, res) {
 
     // Input validation
     if (!id || !team_country || !stadium || !club) {
+
         return res.status(400).json({ error: "Missing required fields." });
     }
 
@@ -71,13 +72,12 @@ router.put("/", async function (req, res) {
             country_id = ?, 
             squad = ?, 
             stadium = ?, 
-            market_value = ?, 
-            badge = ? 
+            market_value = ? 
         WHERE id = ?
     `;
 
     // Prepare values in the order specified
-    const values = [club, founded, 1,squad, stadium, market_value, badge, id];
+    const values = [club, founded, 1,squad, stadium, market_value, id];
 
     try {
         // Execute the update query

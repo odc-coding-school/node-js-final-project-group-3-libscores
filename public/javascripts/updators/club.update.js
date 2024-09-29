@@ -55,7 +55,7 @@ $(document).ready(function () {
 
     function handleSuccessResponse(response) {
         // Update teaminfo spans with the new values from the response
-        $.each(response, function (key, value) {
+        $.each(response.club, function (key, value) {
             $('#' + key).text(value); // Update the content of each teaminfo span
         });
 

@@ -4,7 +4,7 @@
         <% if (club) { %>
             <div class="bg-white padding column no-gap" aria-live="polite">
                 <img src="/images/<%= club.badge %>" alt="<%= club.club %> Badge" class="xl-logo">
-                <h3 class="large teaminfo"><%= club.club %></h3>
+                <h3 class="large teaminfo" id="club"><%= club.club %></h3>
                 <section class="column">
                 <small>
                     <strong>Coach:</strong> 
@@ -33,6 +33,9 @@
                     <small>
                         <strong>Country:</strong>
                         <span class="teaminfo" id="team_country"><%= club.country_id == 1 ? 'Liberia' : club.country_id %></span>
+                    </small>
+                    <small style="visibility: hidden;" >
+                        <span class="teaminfo" id="id" ><%= club.id %></span>
                     </small>
                 </section>
                     <hr class="divider">
