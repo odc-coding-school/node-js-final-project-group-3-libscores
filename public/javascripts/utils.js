@@ -103,14 +103,20 @@ export function populateSeasonsSelect(selectId) {
 
 
 /**
- * Format season dates into a display string.
- * @param {string} startDate - The start date in ISO format (YYYY-MM-DD).
- * @param {string} endDate - The end date in ISO format (YYYY-MM-DD).
- * @returns {string} Formatted season date string (e.g., "Jun 2015 - Aug 2016").
+ * Format season dates from start and end date strings to a readable format.
+ * @param {string} startDate - The start date in a string format.
+ * @param {string} endDate - The end date in a string format.
+ * @returns {string} Formatted date range or an error message.
  */
 export function formatSeasonDates(startDate, endDate) {
   const start = new Date(startDate); // Create Date object from start date
   const end = new Date(endDate); // Create Date object from end date
+
+  // Check if the dates are valid
+  if (isNaN(start.getTime()) || isNaN(end.getTime())) {
+      console.error("Invalid date format:", { startDate, endDate });
+      return "Invalid Date Range"; // Return a fallback value
+  }
 
   const startMonth = start.toLocaleString('default', { month: 'short' }); // Short month name
   const startYear = start.getFullYear(); // Extract year from start date
@@ -119,6 +125,9 @@ export function formatSeasonDates(startDate, endDate) {
 
   return `${startMonth} ${startYear} - ${endMonth} ${endYear}`; // Format and return
 }
+
+
+
 /**
 * Fetch the list of seasons from the API
 * @returns {Promise<Array>} A promise that resolves with the list of seasons
@@ -211,12 +220,68 @@ export function populatePhasesSelect(selectId) {
           const formattedDate = formatSeasonDates(phase.start, phase.end); // Use the updated utility function
          
             const option = $('<option></option>').val(phase.phase_id).text(formattedDate);
+            // $select.append(`<option value="001" selected>Select Phases</option>`)
             $select.append(option);
+
         });
     }).catch(err => {
         console.error('Error populating phases:', err);
     });
 }
+
+
+/**
+ * Fetch and render phases dynamically based on the presence of phaseId.
+ * If phaseId is provided, fetch that specific phase, otherwise fetch all phases.
+ * @param {number|string|null} [phaseId=null] - The ID of the phase to fetch. If not provided, fetches all phases.
+ * @returns {Promise} - A promise that resolves with the fetched data.
+ */export function renderPhases(phaseId = null) {
+  // Construct the URL based on whether a phase ID is provided
+  const url = phaseId ? `/dashboard/phases/${phaseId}` : '/dashboard/phases';
+
+  return new Promise((resolve, reject) => {
+    // Make an AJAX GET request to fetch the phase(s)
+    $.get(url, function (data) {
+      console.log("data", data);
+
+      // Clear the existing list of phases
+      $('#phaseList').empty();
+
+      // Check if data is an object and has a 'phase' property
+      if (data.phase) {
+        // Render the details for the specific phase
+        const phase = data.phase;
+        $('#phaseList').append(
+          `<li>Phase: ${phase.phase_id} - Status: ${phase.phase_status} - Team: ${phase.team_names} - Season Start: ${phase.season_start} - Season End: ${phase.season_end}</li>`
+        );
+      } else if (Array.isArray(data) && data.length > 0) {
+        // If fetching all phases, render them all
+        $.each(data, function (index, phase) {
+          if (phase.teams && phase.teams.length > 0) {
+            $.each(phase.teams, function (index, team) {
+              $('#phaseList').append(
+                `<li>Phase: ${phase.phase_id} - Team: ${team.team_name} (Club: ${team.club_name})</li>`
+              );
+            });
+          } else {
+            $('#phaseList').append(`<li>Phase: ${phase.phase_id} - No teams found.</li>`);
+          }
+        });
+      } else {
+        $('#phaseList').append('<li>No phases found.</li>');
+      }
+
+      resolve(data); // Resolve the promise with the fetched data
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+      // Handle error
+      console.error('Error fetching phase(s):', textStatus, errorThrown);
+      alert('Failed to fetch the phase(s). Please try again later.');
+      reject(errorThrown); // Reject the promise in case of failure
+    });
+  });
+}
+
+
 
 
 

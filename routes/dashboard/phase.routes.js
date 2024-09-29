@@ -74,10 +74,31 @@ router.post('/', async (req, res) => {
 // GET a single phase by ID
 router.get('/:id', async (req, res) => {
     const { id } = req.params;
+    console.log(id)
 
     try {
         const db = await createDbConnection();
-        const phase = await dbGet(db, 'SELECT * FROM phases WHERE id = ?', [id]);
+        const query = `
+SELECT 
+    phases.id AS phase_id,
+    phases.status AS phase_status,
+    seasons.start AS season_start,
+    seasons.end AS season_end,
+    clubs.id AS team_id,
+    clubs.club AS team_name
+FROM 
+    phases
+LEFT JOIN 
+    seasons ON phases.season_id = seasons.id
+LEFT JOIN 
+    clubs ON phases.team_id = clubs.id
+WHERE 
+    phases.season_id = ?
+ORDER BY 
+    phases.id DESC;
+`
+
+const phase = await dbGet(db, query, [id]);
 
         if (!phase) {
             return res.status(404).json({ message: 'Phase not found.' });
