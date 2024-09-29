@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../db'); // Assuming db.js is your database connection file
+const db = require('../db'); // Import the database connection
 
 // Route to handle search requests
 router.get('/search', (req, res) => {
@@ -25,7 +25,7 @@ router.get('/search', (req, res) => {
     // Query players
     db.all(playerQuery, [searchParam], (err, rows) => {
         if (err) {
-            console.error('Error fetching players:', err);
+            console.error('Error querying players:', err);
         } else {
             results.players = rows;
         }
@@ -33,7 +33,7 @@ router.get('/search', (req, res) => {
         // Query clubs
         db.all(clubQuery, [searchParam], (err, rows) => {
             if (err) {
-                console.error('Error fetching clubs:', err);
+                console.error('Error querying clubs:', err);
             } else {
                 results.clubs = rows;
             }
@@ -41,7 +41,7 @@ router.get('/search', (req, res) => {
             // Query games
             db.all(gameQuery, [searchParam, searchParam], (err, rows) => {
                 if (err) {
-                    console.error('Error fetching games:', err);
+                    console.error('Error querying games:', err);
                 } else {
                     results.games = rows;
                 }
@@ -49,12 +49,12 @@ router.get('/search', (req, res) => {
                 // Query competitions
                 db.all(competitionQuery, [searchParam], (err, rows) => {
                     if (err) {
-                        console.error('Error fetching competitions:', err);
+                        console.error('Error querying competitions:', err);
                     } else {
                         results.competitions = rows;
                     }
 
-                    // Render the search results
+                    // Render the search results page
                     res.render('search', {
                         searchTerm,
                         players: results.players,
