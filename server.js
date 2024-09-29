@@ -53,6 +53,10 @@ var secondDivisionRouter = require('./routes/second.division.routes');
 var womenLeagueRouter = require('./routes/women.league.routes');
 var matchInfoRouter = require('./routes/match.info.routes');
 var signupRouter = require('./routes/signup.routes');
+const searchRoutes = require('./routes/search.routes'); 
+
+
+
 
 // dashboard/admin routes
 var adminRouter = require('./routes/admin/admin.routes');
@@ -106,6 +110,12 @@ db.serialize(function createDB() {
 
 });
 
+
+
+
+
+
+
 // Routes handlers
 app.use('/', indexRouter);
 app.use('/live', liveRouter);
@@ -113,6 +123,10 @@ app.use('/results', resultRouter);
 app.use('/fixtures', fixtureRouter);
 app.use('/leagues', leaguesRouter);
 app.use('/teams', teamsRouter);
+app.use('/search', searchRoutes); // Make sure this points to where your search routes are defined
+
+
+
 // app.use('/create_leagues', createLeaguesRouter);
 app.use('/first_division', firstDivisionRouter);
 app.use('/second_division', secondDivisionRouter);
