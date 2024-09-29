@@ -223,9 +223,6 @@
   border-radius: 20px/20px;
 }
 
-.club-logo {
-
-}
 
 .nav-logo {
     width: 28px;
@@ -648,7 +645,7 @@ body.dialog-active::before {
   width: 30px;
   aspect-ratio: 1;
   display:grid;
-  -webkit-mask: conic-gradient(from 15deg,#0000,#000);
+  --webkit-mask: conic-gradient(from 15deg,#0000,#000);
   animation: l26 1s infinite steps(12);
   pointer-events: none;
 }
@@ -757,4 +754,53 @@ body.dialog-active::before {
 .small-pane {
   max-width: 200px;
 }
+.dropdown {
+  max-height: 300px;
+  overflow-y: auto;
+  width: 100%;
+  z-index: 999;
+  border: 1px solid #ccc;
+}
 
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+
+.dropdown-item img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}
+
+
+.form-input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 250px;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+}
+
+.link-button {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.link-button:hover {
+  background-color: darkred;
+}
