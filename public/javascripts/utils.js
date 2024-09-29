@@ -73,3 +73,68 @@ return segments.length > 1 ? segments[segments.length - 2] : null;
     }
 }
 
+/**
+ * Populate the seasons select dropdown
+ * @param {string} selectId - The ID of the select element to populate
+ */
+export function populateSeasonsSelect(selectId) {
+  if (!selectId) {
+      console.error("Select ID is required.");
+      return;
+  }
+
+  const $select = $(`#${selectId}`);
+
+  // Fetch seasons from API and populate the dropdown
+  getSeasons().then(seasons => {
+      // Clear existing options
+      $select.empty();
+
+      // Populate the select with new options
+      seasons.forEach(season => {
+          const formattedDate = formatSeasonDates(season.start, season.end); // Use the updated utility function
+          const option = $('<option></option>').val(season.id).text(formattedDate);
+          $select.append(option);
+      });
+  }).catch(err => {
+      console.error(err);
+  });
+}
+
+
+/**
+ * Format season dates into a display string.
+ * @param {string} startDate - The start date in ISO format (YYYY-MM-DD).
+ * @param {string} endDate - The end date in ISO format (YYYY-MM-DD).
+ * @returns {string} Formatted season date string (e.g., "Jun 2015 - Aug 2016").
+ */
+export function formatSeasonDates(startDate, endDate) {
+  const start = new Date(startDate); // Create Date object from start date
+  const end = new Date(endDate); // Create Date object from end date
+
+  const startMonth = start.toLocaleString('default', { month: 'short' }); // Short month name
+  const startYear = start.getFullYear(); // Extract year from start date
+  const endMonth = end.toLocaleString('default', { month: 'short' }); // Short month name for end date
+  const endYear = end.getFullYear(); // Extract year from end date
+
+  return `${startMonth} ${startYear} - ${endMonth} ${endYear}`; // Format and return
+}
+/**
+* Fetch the list of seasons from the API
+* @returns {Promise<Array>} A promise that resolves with the list of seasons
+*/
+export function getSeasons() {
+  return new Promise((resolve, reject) => {
+      const apiRoute = '/dashboard/seasons'; // Updated to point to the seasons endpoint
+      
+      $.get(apiRoute, function(data, textStatus) {
+          if (textStatus === "success") {
+              resolve(data); // Assuming the response contains an array of season objects
+          } else {
+              reject("Error fetching seasons.");
+          }
+      }, "json");
+  });
+}
+
+

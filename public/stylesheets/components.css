@@ -804,3 +804,45 @@ body.dialog-active::before {
 .link-button:hover {
   background-color: darkred;
 }
+.toolbar {
+  background-color: var(--white);
+  margin: var(--space-sm);
+  border-radius: var(--round-md);
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.small-button {
+  font-size: var(--tiny);
+  background-color: var(--light-gray);
+  border-radius: var(--round-sm);
+  min-width: 80px;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm);
+  cursor: pointer;
+  transition: transform .1 ease-out;
+}
+
+button.blue {
+  color: var(--white);
+  background-color: var(--blue);
+}
+
+.small-button:active {
+  transform: scale(0.98);
+}
+
+.small-select {
+  border-radius: var(--round-sm);
+  padding: var(--spacing-sm);
+  border: thin solid var(--light-gray);
+  font-size: var(--tiny);
+  font-weight: bold;
+}
+
+.small-select:focus  {
+  outline: thin solid var(--light-gray);
+}
