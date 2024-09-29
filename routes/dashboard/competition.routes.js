@@ -118,4 +118,52 @@ router.post('/', upload.single('logo'), async (req, res) => { // Changed the pat
     }
 });
 
+// PUT route to update an existing competition (league)
+router.put('/', async (req, res) => {
+       const { id, competition, founded, continent, country, market_value, type } = req.body;
+       console.log(req.body)
+   
+       // Input validation
+       // if (!id || !league || !founded || !continent || !country || !market_value) {
+       //     return res.status(400).json({ message: 'All fields are required.' });
+       // }
+   
+       try {
+           const db = await getDbInstance(sqlite3);
+           
+           // Prepare the SQL statement for updating the competition
+           const sql = `
+               UPDATE competitions 
+               SET 
+                   competition = ?, 
+                   country_id = ?, 
+                   players = ?, 
+                   market_value = ?, 
+                   continent = ?, 
+                   founded = ?, 
+                   type = ? 
+               WHERE id = ?
+           `;
+           const values = [competition, country, 0, market_value, continent, founded, type, id];
+   
+           // Execute the update query
+           const result = await dbRun(db, sql, values);
+   
+           // Check if any rows were affected
+           if (result.changes === 0) {
+               return res.status(404).json({ message: 'Competition not found.' });
+           }
+   
+           // Fetch the updated competition data
+           const updatedCompetition = await dbQuery(db, `SELECT * FROM competitions WHERE id = ?`, [id]);
+   
+           // Send the updated competition back as a response
+           res.status(200).json({ competition: updatedCompetition });
+       } catch (err) {
+           console.error('Error updating competition:', err);
+           res.status(500).json({ message: 'An error occurred while updating the competition.' });
+       }
+   });
+   
+
 module.exports = router;

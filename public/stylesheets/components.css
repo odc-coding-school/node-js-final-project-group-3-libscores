@@ -749,6 +749,12 @@ body.dialog-active::before {
   visibility: visible;        /* Make it visible when editing */
 }
 
-.teaminfo {
-  margin-top: var(--spacing-md);
+.teaminfo, .info {
+  /* margin-top: var(--spacing-md); */
+  text-transform: capitalize;
 }
+
+.small-pane {
+  max-width: 200px;
+}
+

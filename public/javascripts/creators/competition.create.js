@@ -44,7 +44,6 @@ $(document).ready(function () {
                 $('#logo').val('');
 
                 // Dynamically append the new league data to the table
-                console.log(data.league)
                 appendNewLeagueToTable(data.league[0]);
                 
                 // Close the dialog
