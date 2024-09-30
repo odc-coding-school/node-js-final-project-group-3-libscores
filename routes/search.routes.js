@@ -1,9 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const db = require('../db'); // Import the database connection
+var express = require('express');
+var router = express.Router();
+var db = require('../db'); // Import the database connection
 
 // Route to handle search requests
-router.get('/search', (req, res) => {
+router.get('/', (req, res) => {
     const searchTerm = req.query.q;
 
     // Queries for players, clubs, games, and competitions
@@ -60,7 +60,7 @@ router.get('/search', (req, res) => {
                         players: results.players,
                         clubs: results.clubs,
                         games: results.games,
-                        competitions: results.competitions
+                        competitions: results.competitions, title: 'LibScores'
                     });
                 });
             });

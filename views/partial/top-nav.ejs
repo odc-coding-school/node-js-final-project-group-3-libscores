@@ -6,8 +6,9 @@
         <span class="row">
             <!-- Update search form to submit to /search -->
             <form action="/search" method="get" class="row">
-                <input type="text" name="q" id="search-bar" placeholder="Search teams..." class="form-input padding border" required>
-                <button type="submit"><i class="fa-magnifying-glass"></i></button>
+                <input type="text" name="q" id="search-bar" placeholder="Search teams..." class="form-input padding border" required oninput="performSearch()">
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <ul id="search-results" class="dropdown"></ul>
             </form>
             <button id="contribute" style="cursor: pointer;"> + Contribute</button>
         </span>
@@ -30,5 +31,5 @@
     </div>
 </div>
 
-<ul id="search-results" class="dropdown"></ul>
+
 <script src="/javascripts/pop.js"></script>

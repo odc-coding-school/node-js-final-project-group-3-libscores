@@ -434,17 +434,6 @@ table, th, td {
     z-index: 1000;
 }
 
-.dropdown-item {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #eee;
-    cursor: pointer;
-}
-
-.dropdown-item:hover {
-    background-color: #f0f0f0;
-}
 
 .team-logo {
     width: 40px;
@@ -760,6 +749,12 @@ body.dialog-active::before {
   width: 100%;
   z-index: 999;
   border: 1px solid #ccc;
+  position: absolute;
+}
+
+#search-results{
+  left: unset;
+  width: 300px;
 }
 
 .dropdown-item {
@@ -767,6 +762,7 @@ body.dialog-active::before {
   align-items: center;
   border-bottom: 1px solid #ddd;
   padding: 10px;
+  color: #000;
 }
 
 .dropdown-item img {
