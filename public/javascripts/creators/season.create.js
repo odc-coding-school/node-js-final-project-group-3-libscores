@@ -1,7 +1,7 @@
-import { populateSeasonsSelect, fetchTeamSuggestions } from "../utils.js";
+import { populateSeasonsSelect, fetchTeamSuggestions, populatePhasesSelect } from "../utils.js";
 
 $(document).ready(function () {
-    populateSeasonsSelect("seasons");
+    populatePhasesSelect("seasons");
 
     // Function to update the status based on start and end dates
     function updateStatus() {

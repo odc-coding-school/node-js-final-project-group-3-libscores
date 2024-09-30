@@ -1,7 +1,8 @@
-import { populateSeasonsSelect, fetchTeamSuggestions } from "../utils.js";
+import { populateSeasonsSelect, fetchTeamSuggestions, populatePhasesSelect } from "../utils.js";
 
 $(document).ready(function () {
-    populateSeasonsSelect("seasons");
+    populateSeasonsSelect("phaseSeasons");
+    let selectedTeamId
 
    
     // Event listener for team input to fetch suggestions
@@ -29,6 +30,7 @@ $(document).ready(function () {
     // Event listener for selecting a team from suggestions
     $(document).on('click', '.suggestion', function () {
         const selectedTeam = $(this).text();
+        selectedTeamId = Number($(this).attr("id"));
         $('#team').val(selectedTeam); // Set the team input value
         $('#team-suggestions').hide(); // Hide suggestions
     });
@@ -54,7 +56,7 @@ $(document).ready(function () {
         $.ajax({
             url: '/dashboard/phases',
             type: 'POST',
-            data: JSON.stringify({ season, team }), // Send data as JSON
+            data: JSON.stringify({ season, selectedTeamId }), // Send data as JSON
             contentType: 'application/json',
             success: function (data) {
                 // Show success message
@@ -65,7 +67,7 @@ $(document).ready(function () {
                 $('#season').val('');
 
                 // Repopulate the select dropdown if necessary
-                populateSeasonsSelect("seasons");
+                populatePhasesSelect("seasons");
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 // Show error message
