@@ -859,3 +859,44 @@ button.blue {
 .suggestion:hover {
   background-color: #f0f0f0; /* Highlight on hover */
 }
+
+.main-title {
+  color: #333;
+  text-align: center;
+}
+
+.section-title {
+  color: #444;
+  border-bottom: 2px solid var(--navy-blue);
+  padding-bottom: 10px;
+  margin-top: 30px;
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.results-table th, .results-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.results-table th {
+  background-color: var(--navy-blue);
+  color: white;
+}
+
+.results-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.no-results {
+  text-align: center;
+  font-style: italic;
+  color: #888;
+}
