@@ -6,13 +6,14 @@ var db = require('../db'); // Import the database connection
 router.get('/', (req, res) => {
     const searchTerm = req.query.q;
 
-    // Queries for players, clubs, games, and competitions
-    const playerQuery = `SELECT name, club, position, age FROM players WHERE name LIKE ?`;
-    const clubQuery = `SELECT name, country, founded FROM clubs WHERE name LIKE ?`;
-    const gameQuery = `SELECT home_team, away_team, date, score FROM games WHERE home_team LIKE ? OR away_team LIKE ?`;
-    const competitionQuery = `SELECT name, country, season FROM competitions WHERE name LIKE ?`;
-
+    // Prepare search parameter
     const searchParam = `%${searchTerm}%`; // SQL wildcard search
+
+    // Queries for players, clubs, games, and competitions
+    const playerQuery = `SELECT fullname, club, position, DOB FROM players WHERE fullname LIKE ? OR club LIKE ? OR position LIKE ?`;
+    const clubQuery = `SELECT club, country_id, founded FROM clubs WHERE club LIKE ?`;
+    const gameQuery = `SELECT home, away, date, score FROM games WHERE home LIKE ? OR away LIKE ?`;
+    const competitionQuery = `SELECT competition, country_id, season FROM competitions WHERE competition LIKE ?`;
 
     // Results object to store all data
     let results = {
@@ -23,7 +24,7 @@ router.get('/', (req, res) => {
     };
 
     // Query players
-    db.all(playerQuery, [searchParam], (err, rows) => {
+    db.all(playerQuery, [searchParam, searchParam, searchParam], (err, rows) => {
         if (err) {
             console.error('Error querying players:', err);
         } else {
@@ -60,7 +61,8 @@ router.get('/', (req, res) => {
                         players: results.players,
                         clubs: results.clubs,
                         games: results.games,
-                        competitions: results.competitions, title: 'LibScores'
+                        competitions: results.competitions,
+                        title: 'LibScores'
                     });
                 });
             });
