@@ -10,7 +10,6 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var liveRouter = require('./routes/live.routes');
 var leaguesRouter = require('./routes/league.routes');
-var teamsRouter = require('./routes/team.routes');
 var apiRouter = require('./routes/api.routes');
 var apiRouter = require('./routes/api.routes');
 var createLeaguesRouter = require('./routes/create.leagues.routes');
@@ -64,7 +63,6 @@ app.use('/users', usersRouter);
 app.use('/users', usersRouter);
 app.use('/live', liveRouter);
 app.use('/leagues', leaguesRouter);
-app.use('/teams', teamsRouter);
 app.use('/api', apiRouter);
 app.use('/create_leagues', createLeaguesRouter);
 app.use('/first_division', firstDivisionRouter);
@@ -84,6 +82,13 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // Catch-all error handler
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!'); // Customize as needed
+});
+
 
   // render the error page
   res.status(err.status || 500);

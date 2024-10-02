@@ -1,33 +1,103 @@
 <%- include("./partial/head") %>
 <%- include("./partial/top-nav") %>
-
-<div class="container row">
-    <div class="bg-gray mid-round border padding">
-        <img src="/images/bea_logo_lg.png" alt="">
+<div id="main-body">
+    
+    <div class="team-header">
+        <h1 class="team-title"><%= team.club %></h1>
+        <div class="team-details">
+            <p><strong>Founded:</strong> <%= team.founded %></p>
+            <p><strong>Country:</strong> <%= team.country_id %></p>
+        </div>
     </div>
-    <div class="max">
-        <%- include("./partial/team-tabs.ejs") %>
-        <section>
-            <h1 class="huge ">BEA Mountain FC</h1>
-            <p class="font-large">The BEA Mountain Football Club is a Liberian football club . The club is based in the capital city of Monrovia . The club currently plays in the country's first league, the First Division. <a href="www.wikipedia/wiki">Learn More</a>
-            </p>
-            <span class="space"></span>
-            <span class="row large">
-                <p class="max">Head Coach: </p> 
-                <h3>Jane N. Doe</h3>
-            </span>
-            <span class="row large">
-                <p class="max">League Position: </p> 
-                <h3>2</h3>
-            </span>
-            <span class="row large">
-                <p class="max">Stadium: </p> 
-                <h3>Samuel K. Doe</h3>
-            </span>
-            <span class="row large">
-                <p class="max">Capacity: </p> 
-                <h3>15,000</h3>
-            </span>
-        </section>
+    
+    <div class="tabs">
+        <div class="tab active-tab" onclick="showContent('summary')">Summary</div>
+        <div class="tab" onclick="showContent('matches')">Matches</div>
+        <div class="tab" onclick="showContent('squad')">Squad</div>
     </div>
-</div>
+    
+    <!-- Matches Section -->
+    <div class="content" id="matches">
+        <h2 class="matches-title">Matches</h2>
+    
+        <% if (matches.length === 0) { %>
+            <p class="no-matches">No matches found for this team.</p>
+        <% } else { %>
+            <table class="matches-table">
+                <thead class="matches-header">
+                    <tr class="matches-row">
+                        <th class="matches-col">Date</th>
+                        <th class="matches-col">Home Team</th>
+                        <th class="matches-col">Away Team</th>
+                        <th class="matches-col">Home Goals</th>
+                        <th class="matches-col">Away Goals</th>
+                        <th class="matches-col">Score</th>
+                        <th class="matches-col">Status</th>
+                        <th class="matches-col">Season</th>
+                    </tr>
+                </thead>
+                <tbody class="matches-body">
+                    <% matches.forEach(match => { %>
+                        <tr class="matches-row">
+                            <td class="matches-cell"><%= match.date %></td>
+                            <td class="matches-cell"><%= match.home %></td>
+                            <td class="matches-cell"><%= match.away %></td>
+                            <td class="matches-cell"><%= match.home_goal %></td>
+                            <td class="matches-cell"><%= match.away_goal %></td>
+                            <td class="matches-cell"><%= match.score || 'N/A' %></td>
+                            <td class="matches-cell"><%= match.status %></td>
+                            <td class="matches-cell"><%= match.season_id %></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        <% } %>
+    </div>
+    
+    <!-- Squad Section -->
+    <div class="content" id="squad">
+        <h2 class="squad-title">Squad</h2>
+        <% 
+        // Group players by position
+        const playersByPosition = squad.reduce((acc, player) => {
+            acc[player.position] = acc[player.position] || [];
+            acc[player.position].push(player);
+            return acc;
+        }, {});
+        %>
+    
+        <% if (squad.length === 0) { %>
+            <div class="no-players">No players found for this team.</div>
+        <% } else { %>
+            <% Object.keys(playersByPosition).forEach(position => { %>
+                <div class="position-group">
+                    <div class="position-title"><%= position %></div>
+                    <% playersByPosition[position].forEach(player => { %>
+                        <div class="squad-card">
+                            <p><strong>Full Name:</strong> <%= player.fullname %></p>
+                        </div>
+                    <% }); %>
+                </div>
+            <% }); %>
+        <% } %>
+    </div>
+</div>  
+    <script>
+        function showContent(contentId) {
+            // Hide all content
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+    
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active-tab');
+            });
+    
+            // Show the selected content and add active class to the tab
+            document.getElementById(contentId).classList.add('active');
+            document.querySelector(`.tab[onclick="showContent('${contentId}')"]`).classList.add('active-tab');
+        }
+    </script>

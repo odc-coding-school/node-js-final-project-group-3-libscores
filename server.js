@@ -44,7 +44,7 @@ var liveRouter = require('./routes/live.routes');
 var resultRouter = require('./routes/results.routes');
 var fixtureRouter = require('./routes/fixtures.routes');
 var leaguesRouter = require('./routes/league.routes');
-var teamsRouter = require('./routes/team.routes');
+const teamRoutes = require('./routes/team.routes');
 var apiRouter = require('./routes/api');
 var createLeaguesRouter = require('./routes/create.leagues.routes');
 var firstDivisionRouter = require('./routes/first.division.routes');
@@ -122,7 +122,7 @@ app.use('/live', liveRouter);
 app.use('/results', resultRouter);
 app.use('/fixtures', fixtureRouter);
 app.use('/leagues', leaguesRouter);
-app.use('/teams', teamsRouter);
+app.use('/', teamRoutes); 
 app.use('/search', searchRoutes); // Make sure this points to where your search routes are defined
 
 
