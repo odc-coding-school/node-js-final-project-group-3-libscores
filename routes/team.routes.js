@@ -45,7 +45,7 @@ router.get('/team/:clubName', function(req, res, next) {
                     `SELECT home, away, start, status, date, home_goal, away_goal, season_id, score 
                     FROM games 
                     WHERE home = ? OR away = ? 
-                    ORDER BY date DESC`, 
+                    ORDER BY date DESC`, // Order by date in descending order
                     [clubName, clubName], 
                     (err, rows) => {
                         if (err) {

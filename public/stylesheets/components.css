@@ -920,101 +920,6 @@ button.blue {
   text-align: center;
   margin: 20px;
   padding-bottom: 20px;
-  border-bottom: 3px solid; /* Add color later */
-}
-.team-title {
-  font-size: 2.5em;
-}
-.team-details {
-  padding: 15px;
-  border-radius: 8px;
-  margin: 20px auto;
-  max-width: 600px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Customize later */
-}
-.team-details p {
-  margin: 5px 0;
-  font-size: 1.1em;
-}
-.tabs {
-  display: flex;
-  justify-content: space-around;
-  margin: 20px auto;
-  border-bottom: 2px solid; /* Add color later */
-  max-width: 600px;
-}
-.tab {
-  padding: 10px 20px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s, color 0.3s;
-  border-radius: 5px 5px 0 0;
-  background-color: transparent; /* Add color later */
-}
-.active-tab {
-  background-color: transparent; /* Add color later */
-  border-bottom: 3px solid; /* Add color later */
-}
-.content {
-  display: none;
-  margin-top: 20px;
-  padding: 15px;
-  background-color: transparent; /* Add color later */
-  border-radius: 8px;
-}
-.content.active {
-  display: block;
-}
-.squad-title {
-  font-size: 1.8em;
-  margin: 20px 0 10px 0;
-}
-.position-group {
-  margin-bottom: 20px;
-  padding: 10px;
-  border: 1px solid; /* Add color later */
-  border-radius: 8px;
-  background-color: transparent; /* Add color later */
-}
-.position-title {
-  font-size: 1.5em;
-  margin-bottom: 10px;
-}
-.squad-card {
-  background-color: transparent; /* Add color later */
-  border: 1px solid; /* Add color later */
-  border-radius: 8px;
-  margin-bottom: 10px;
-  padding: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Customize later */
-}
-.squad-card p {
-  margin: 5px 0;
-  font-size: 1em;
-}
-.no-players {
-  text-align: center;
-  font-style: italic;
-  padding: 15px 0;
-}
-
-/* Matches Section */
-.matches-title {
-  font-size: 1.8em;
-  margin-bottom: 20px;
-  font-weight: bold;
-}
-
-.no-matches {
-  color: #888;
-  font-style: italic;
-}
-
-/* Matches Table */
-.team-header {
-  text-align: center;
-  margin: 20px;
-  padding-bottom: 20px;
   border-bottom: 3px solid;
 }
 .team-title {
@@ -1073,12 +978,10 @@ button.blue {
   font-style: italic;
 }
 
-/* Matches Table */
 .matches-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
-  border: 1px solid #ccc;
 }
 
 .matches-header th {
@@ -1099,4 +1002,31 @@ button.blue {
 
 .matches-cell {
   text-align: center;
+}
+
+/* Squad Section */
+.squad-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.squad-header th {
+  background-color: #f5f5f5;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.squad-body td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.squad-row:hover {
+  background-color: #f1f1f1;
+}
+
+.squad-position {
+  font-weight: bold;
+  padding: 10px 0;
 }

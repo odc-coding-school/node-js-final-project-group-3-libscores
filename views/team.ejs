@@ -16,6 +16,12 @@
         <div class="tab" onclick="showContent('squad')">Squad</div>
     </div>
     
+    <!-- Summary Section -->
+    <div class="content active" id="summary">
+        <h2>Summary</h2>
+        <p>Here you can add a summary of the team, including achievements, history, or other important information.</p>
+    </div>
+    
     <!-- Matches Section -->
     <div class="content" id="matches">
         <h2 class="matches-title">Matches</h2>
@@ -26,14 +32,14 @@
             <table class="matches-table">
                 <thead class="matches-header">
                     <tr class="matches-row">
-                        <th class="matches-col">Date</th>
-                        <th class="matches-col">Home Team</th>
-                        <th class="matches-col">Away Team</th>
-                        <th class="matches-col">Home Goals</th>
-                        <th class="matches-col">Away Goals</th>
-                        <th class="matches-col">Score</th>
-                        <th class="matches-col">Status</th>
-                        <th class="matches-col">Season</th>
+                        <th>Date</th>
+                        <th>Home Team</th>
+                        <th>Away Team</th>
+                        <th>Home Goals</th>
+                        <th>Away Goals</th>
+                        <th>Score</th>
+                        <th>Status</th>
+                        <th>Season</th>
                     </tr>
                 </thead>
                 <tbody class="matches-body">
@@ -70,18 +76,25 @@
             <div class="no-players">No players found for this team.</div>
         <% } else { %>
             <% Object.keys(playersByPosition).forEach(position => { %>
-                <div class="position-group">
-                    <div class="position-title"><%= position %></div>
-                    <% playersByPosition[position].forEach(player => { %>
-                        <div class="squad-card">
-                            <p><strong>Full Name:</strong> <%= player.fullname %></p>
-                        </div>
-                    <% }); %>
-                </div>
+                <div class="squad-position"><%= position %></div>
+                <table class="squad-table">
+                    <thead class="squad-header">
+                        <tr class="squad-row">
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody class="squad-body">
+                        <% playersByPosition[position].forEach(player => { %>
+                            <tr class="squad-row">
+                                <td><%= player.fullname %></td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
             <% }); %>
         <% } %>
     </div>
-</div>  
+</div>
     <script>
         function showContent(contentId) {
             // Hide all content
