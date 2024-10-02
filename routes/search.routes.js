@@ -10,21 +10,25 @@ router.get('/', (req, res) => {
     const searchParam = `%${searchTerm}%`; // SQL wildcard search
 
     // Queries for players, clubs, games, and competitions
-    const playerQuery = `SELECT fullname, club, position, DOB FROM players WHERE fullname LIKE ? OR club LIKE ? OR position LIKE ?`;
-    const clubQuery = `SELECT club, country_id, founded FROM clubs WHERE club LIKE ?`;
+    const playerQuery = `SELECT fullname, club, position, DOB FROM players WHERE fullname LIKE ? OR club LIKE ?`;
+    const clubQuery = `SELECT badge, club, country_id, squad, founded FROM clubs WHERE club LIKE ?`;
+    const countyQuery = `SELECT county, flag FROM counties WHERE county LIKE ?`;
     const gameQuery = `SELECT home, away, date, score FROM games WHERE home LIKE ? OR away LIKE ?`;
-    const competitionQuery = `SELECT competition, country_id, season FROM competitions WHERE competition LIKE ?`;
+    const competitionQuery = `SELECT competition, country_id, players, clubs FROM competitions WHERE competition LIKE ?`;
+    
 
     // Results object to store all data
     let results = {
         players: [],
         clubs: [],
+        counties: [],
         games: [],
-        competitions: []
+        competitions: [],
+        
     };
 
     // Query players
-    db.all(playerQuery, [searchParam, searchParam, searchParam], (err, rows) => {
+    db.all(playerQuery, [searchParam, searchParam], (err, rows) => {
         if (err) {
             console.error('Error querying players:', err);
         } else {
@@ -39,6 +43,13 @@ router.get('/', (req, res) => {
                 results.clubs = rows;
             }
 
+            db.all(countyQuery, [searchParam], (err, rows) => {
+                if (err) {
+                    console.error('Error querying games:', err);
+                } else {
+                    results.counties = rows;
+                }
+
             // Query games
             db.all(gameQuery, [searchParam, searchParam], (err, rows) => {
                 if (err) {
@@ -46,6 +57,7 @@ router.get('/', (req, res) => {
                 } else {
                     results.games = rows;
                 }
+    
 
                 // Query competitions
                 db.all(competitionQuery, [searchParam], (err, rows) => {
@@ -60,9 +72,11 @@ router.get('/', (req, res) => {
                         searchTerm,
                         players: results.players,
                         clubs: results.clubs,
+                        counties: results.counties,
                         games: results.games,
                         competitions: results.competitions,
                         title: 'LibScores'
+                        });
                     });
                 });
             });
