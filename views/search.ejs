@@ -24,7 +24,7 @@
                 <% players.forEach(player => { %>
                     <tr>
                         <td><%= player.fullname %></td>
-                        <td><%= player.club %></td>
+                        <td><a href="/team/<%= player.club %>"><%= player.club %></a></td>
                         <td><%= player.position %></td>
                         <td><%= player.DOB %></td>
                     </tr>
@@ -53,8 +53,11 @@
             <% } else { %>
                 <% clubs.forEach(club => { %>
                     <tr>
-                        <td><%= club.badge %></td>
-                        <td><%= club.club %></td>
+                        <td>
+                            <img src="<%= club.badge %>" alt="Club Badge" style="width: 20px; height: auto; margin-left: 20px;">
+                        </td>
+
+                        <td><a href="/team/<%= club.club %>"><%= club.club %></a></td>
                         <td><%= club.squad %></td>
                         <td><%= club.founded %></td>
                     </tr>
@@ -107,8 +110,8 @@
                 <% } else { %>
                     <% games.forEach(game => { %>
                         <tr>
-                            <td><%= game.home %></td>
-                            <td><%= game.away %></td>
+                            <td><a href="/team/<%= game.home %>"><%= game.home %></a></td>
+                            <td><a href="/team/<%= game.away %>"><%= game.away %></a></td>
                             <td><%= game.date %></td>
                             <td><%= game.score %></td>
                         </tr>
