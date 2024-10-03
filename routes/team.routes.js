@@ -17,7 +17,7 @@ router.get('/team/:clubName', function(req, res, next) {
         try {
             // Query for the team details
             results.team = await new Promise((resolve, reject) => {
-                db.get(`SELECT club, country_id, founded FROM clubs WHERE club = ?`, [clubName], (err, row) => {
+                db.get(`SELECT club, country_id, founded, badge FROM clubs WHERE club = ?`, [clubName], (err, row) => {
                     if (err) {
                         console.error('Error querying team:', err);
                         reject(err);

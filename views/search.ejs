@@ -71,8 +71,8 @@
     <table class="results-table">
         <thead>
             <tr>
+                <th></th>
                 <th>County</th>
-                <th>Flag</th>
             </tr>
         </thead>
         <tbody>
@@ -83,8 +83,9 @@
             <% } else { %>
                 <% counties.forEach(county => { %>
                     <tr>
+                        <td><img src="<%= county.flag %>" alt="County Flag" style="width: 50px; height: auto; margin-left: 20px;"></td>
                         <td style="text-transform: capitalize;"><%= county.county %></td>
-                        <td><%= county.flag %></td>
+                        
                     </tr>
                 <% }); %>
             <% } %>

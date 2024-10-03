@@ -17,7 +17,7 @@ var firstDivisionRouter = require('./routes/first.division.routes');
 var countyMeetRouter = require('./routes/county.meet.routes');
 var secondDivisionRouter = require('./routes/second.division.routes');
 var womenLeagueRouter = require('./routes/women.league.routes');
-var matchInfoRouter = require('./routes/match.info.routes');
+// var matchInfoRouter = require('./routes/match.info.routes');
 var signupRouter = require('./routes/signup.routes');
 const db = require('@js/db');
 var cors = require("cors")
@@ -69,7 +69,7 @@ app.use('/first_division', firstDivisionRouter);
 app.use('/second_division', secondDivisionRouter);
 app.use('/women_league', womenLeagueRouter);
 app.use('/county_meet', countyMeetRouter);
-app.use('/match_info', matchInfoRouter);
+// app.use('/', matchInfoRouter);
 app.use('/signup', signupRouter);
 
 // catch 404 and forward to error handler
@@ -82,13 +82,6 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // Catch-all error handler
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send('Something broke!'); // Customize as needed
-});
-
 
   // render the error page
   res.status(err.status || 500);

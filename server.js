@@ -51,7 +51,7 @@ var firstDivisionRouter = require('./routes/first.division.routes');
 var countyMeetRouter = require('./routes/county.meet.routes');
 var secondDivisionRouter = require('./routes/second.division.routes');
 var womenLeagueRouter = require('./routes/women.league.routes');
-var matchInfoRouter = require('./routes/match.info.routes');
+var matchInfoRoutes = require('./routes/match.info.routes');
 var signupRouter = require('./routes/signup.routes');
 const searchRoutes = require('./routes/search.routes'); 
 
@@ -132,7 +132,7 @@ app.use('/first_division', firstDivisionRouter);
 app.use('/second_division', secondDivisionRouter);
 app.use('/women_league', womenLeagueRouter);
 app.use('/county_meet', countyMeetRouter);
-app.use('/match_info', matchInfoRouter);
+app.use('/', matchInfoRoutes);
 app.use('/signup', signupRouter);
 
 app.use('/admin', adminRouter);

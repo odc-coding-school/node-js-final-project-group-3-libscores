@@ -1,14 +1,17 @@
 <%- include("./partial/head") %>
 <%- include("./partial/top-nav") %>
-<div id="main-body">
+<div id="main-body" class="container row">
     
-    <div class="team-header">
+    <div class="team-header max" >
+        <img src="<%= team.badge %>" alt="<%= team.club %> Logo" class="team-logo bg-gray mid-round border padding" style="vertical-align: middle; width: 50px; height: auto; ">
         <h1 class="team-title"><%= team.club %></h1>
         <div class="team-details">
             <p><strong>Founded:</strong> <%= team.founded %></p>
             <p><strong>Country:</strong> <%= team.country_id %></p>
         </div>
     </div>
+    
+    
     
     <div class="tabs">
         <div class="tab active-tab" onclick="showContent('summary')">Summary</div>
