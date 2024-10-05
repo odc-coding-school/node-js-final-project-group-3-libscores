@@ -42,7 +42,7 @@ router.get('/team/:clubName', function(req, res, next) {
             // Query for the matches from the 'games' table where the team plays as either home or away
             results.matches = await new Promise((resolve, reject) => {
                 db.all(
-                    `SELECT home, away, start, status, date, home_goal, away_goal, season_id, score 
+                    `SELECT home, away, start, status, date, home_goal, away_goal, score 
                     FROM games 
                     WHERE home = ? OR away = ? 
                     ORDER BY date DESC`, // Order by date in descending order
