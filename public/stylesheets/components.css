@@ -924,3 +924,7 @@ button.blue {
   font-size: 1.2em;
   color: #6c757d;
 }
+
+#contributeButton{
+  box-shadow: white 3px 4px 8px;
+}
