@@ -1,0 +1,73 @@
+<%- include("./dash.nav.ejs") %>
+<body class="">
+<%- include("./dash.bar.ejs") %>
+    <main class="min-wide">
+        <small id="formmsg"></small>
+        <section class="bg-white">
+            <section class="margin-bottom small-padding border-bottom row">
+                <%- include("./back.btn.ejs") %>
+                <h4 class="small bold">New Game</h4>
+                <select name="season" id="competition-selector" title="Select competition" class="small-select competitions season-selector" >
+                </select>
+                <button class="icon-button small round" title="refresh"><i class="fa fa-sync"></i></button>
+                
+                <span class="move-right"><%- include("./players.dialog.ejs") %></span>
+                <button class="small-button blue " id="saveGame" title="save game">Save Game</button>
+            </section>
+            
+            <!-- team tag -->
+            <section class="row top-align around center-align">
+                <span>
+                    <label for="home" class="label no-top">Home Team</label>
+                    <select name="home" id="home" class="small-select season-teams" title="Select home team">
+                        <option value="name">FC Fassell</option>
+                    </select>
+                </span>
+                <section class="tiny-box margin-top">
+                    <span class="row">
+                        <input type="text" name="home_goals" class="small-input input" placeholder="0" title="Home team goal">
+                        <h5>VS</h5>
+                        <input type="text" name="away_goals" class="small-input input" placeholder="0" title="Away team goal">
+                    </span>
+                    <about id="countdownDisplay" class="tiny bold  small-padding text-center gameCountdown"></about>
+                    <input type="datetime-local" id="gameTimeInput" class="mid-input input" title="Select game time">                        
+                </section>
+                <span>
+                    <label for="away" class="label no-top">Away Team</label>
+                    <select name="away" id="away" class="small-select season-teams" title="Select away team">
+                        <option value="name">BEA Mountain FC</option>
+                    </select>
+                </span>
+            </section>
+        </section>
+
+           <!-- line up tag -->
+        <h3 class="small text-center bold padding  bg-white border-bottom text-center">Lineup</h3>
+           <div class="row flex bg-white small-padding no-gap top-align" id="lineup">
+                <!-- home team -->
+                <section class="border-right padding-right">
+                        <span class="row small-bottom">
+                            <small class="tiny bold" style="min-width: 250px;">Player</small>
+                            <small class="tiny bold" style="min-width: 38px;">No</small>
+                            <small class="tiny bold">Position</small>
+                        </span>
+                        <section id="" class="home"></section>
+                </section>
+                <!-- away team -->
+                <section class="padding-left">
+                        <span class="row small-bottom">
+                                <small class="tiny bold" style="min-width: 250px;">Player</small>
+                                <small class="tiny bold" style="min-width: 38px;">No</small>
+                                <small class="tiny bold">Position</small>
+                        </span>
+                        <section id="" class="away"></section>
+                </section>
+           </div>
+    </main>
+    <%- include("./dash.foot.ejs") %>
+    <script type="module" src="/javascripts/games.form.js"></script>
+    <script type="module" src="/javascripts/readers/players.read.js"></script>
+    <script type="module" src="/javascripts/creators/players.create.js"></script>
+    <script type="module" src="/javascripts/creators/games.create.js"></script>
+</body>
+

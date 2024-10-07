@@ -1,132 +1,33 @@
-<%- include("./partial/head") %> 
+<%- include("./partial/head") %>
 <%- include("./partial/top-nav") %>
-<div id="main-body" class="container row constraint">
+
+<div class="container row">
     <div class="bg-gray mid-round border padding">
-        <img src="<%= team.badge %>" alt="<%= team.club %> Logo" style="width: 150px; height: 150px;">
+        <img src="/images/bea_logo_lg.png" alt="">
     </div>
-    <div class="max" >
-        <%- include("./partial/team-tabs") %>
-        <!-- Summary Section -->
-        <div class="column">
-
-       
-            <section id="summaryDisplay" class="display">
-                    <h1 class="huge"><%= team.club %></h1>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam corporis tempora nostrum, incidunt, saepe nesciunt minima quia impedit quidem, voluptatem commodi nobis. Molestiae asperiores rem itaque molestias officia quas illum corrupti, sunt facere cupiditate vitae dignissimos soluta tenetur voluptatibus quisquam saepe magnam nesciunt dicta dolorem ea voluptatum. Nihil, eligendi voluptatibus!</p>
-                        <div class="team-details">
-                            <p><strong>Founded:</strong> <%= team.founded %></p>
-                            <p><strong>Country:</strong> <%= team.country_id %></p>
-                        </div>
-            </section>
-                
-                <!-- Matches Section -->
-            <section id="matchesDisplay" class="none">
-                <% if (matches.length === 0) { %>
-                    <p class="no-matches">No matches found for this team.</p>
-                <% } else { %>
-                            <% matches.forEach(match => { %>
-                                <div class="border row max bg-white padding mid-round margin-bottom space" style="width: 350px;">
-                                    <div class="column">
-                                        <h5 style="margin-right: 20px;"><%= match.date %></h5>
-                                        <h5 style="text-align: center;">
-                                            <%= match.start %>
-                                        </h5>
-                                    </div>
-                                    
-                                    <div class="column" style="width: 220px; height: auto;">
-                                        <span class="row" style="justify-content:space-between; align-items:baseline;">
-                                            <img src="/images/shield.webp" alt="" style="float: left;">
-                                            <h3><%= match.home %></h3>
-                                            <h4><%= match.home_goal %></h4>
-                                        </span>
-                                        <span class="row" style="justify-content: space-between; align-items:baseline;">
-                                            <img src="/images/shield.webp" alt="" style="float: left;">
-                                            <h3><%= match.away %></h3>
-                                            <h4><%= match.away_goal %></h4>
-                                        </span>
-                                    </div> 
-                                </div>
-                            <% }); %>
-                <% } %>
-            </section>
-
-            <!-- Squad Section -->
-            <section id="squadDisplay" class="none">
-                <% 
-                // Group players by position
-                const playersByPosition = squad.reduce((acc, player) => {
-                    acc[player.position] = acc[player.position] || [];
-                    acc[player.position].push(player);
-                    return acc;
-                }, {});
-                %>
-            
-                <% if (squad.length === 0) { %>
-                    <div class="no-players">No players found for this team.</div>
-                <% } else { %>
-                    <% Object.keys(playersByPosition).forEach(position => { %>
-                            <h3 style="color: var(--navy-blue);"><%= position %></h3>
-                                <% playersByPosition[position].forEach(player => { %>
-
-                                    <div class="row">
-                                        <img src="/images/shield.webp" alt="" style="width: 30px; height: auto;">
-                                        <h3><%= player.fullname %></h3> 
-                                    </div>
-                                        
-                                <% }); %>
-                    <% }); %>   
-                <% } %>
-            </section>
-        </div>
+    <div class="max">
+        <%- include("./partial/team-tabs.ejs") %>
+        <section>
+            <h1 class="huge ">BEA Mountain FC</h1>
+            <p class="font-large">The BEA Mountain Football Club is a Liberian football club . The club is based in the capital city of Monrovia . The club currently plays in the country's first league, the First Division. <a href="www.wikipedia/wiki">Learn More</a>
+            </p>
+            <span class="space"></span>
+            <span class="row large">
+                <p class="max">Head Coach: </p> 
+                <h3>Jane N. Doe</h3>
+            </span>
+            <span class="row large">
+                <p class="max">League Position: </p> 
+                <h3>2</h3>
+            </span>
+            <span class="row large">
+                <p class="max">Stadium: </p> 
+                <h3>Samuel K. Doe</h3>
+            </span>
+            <span class="row large">
+                <p class="max">Capacity: </p> 
+                <h3>15,000</h3>
+            </span>
+        </section>
     </div>
-</div> 
 </div>
-
-<script>
-    document.addEventListener('click', (event) => {
-        const summary = document.getElementById('summary');
-        const matches = document.getElementById('matches');
-        const squad = document.getElementById('squad');
-        const summaryDisplay = document.getElementById('summaryDisplay');
-        const matchesDisplay = document.getElementById('matchesDisplay');
-        const squadDisplay = document.getElementById('squadDisplay');
-
-        matches.onclick = function(){
-            console.log('good');
-            summaryDisplay.style.display = 'none';
-            squadDisplay.style.display = 'none';
-            matchesDisplay.style.display ='block';
-            matches.style.backgroundColor = 'var(--crimson)'
-            matches.style.color = 'white'
-            squad.style.backgroundColor = 'var(--dark-gray)';
-            squad.style.color = 'black';
-            summary.style.backgroundColor = 'var(--dark-gray)';
-            summary.style.color = 'black';
-        };
-
-        summary.onclick = function(){
-            summaryDisplay.style.display = 'block';
-            squadDisplay.style.display = 'none';
-            matchesDisplay.style.display = 'none';
-            summary.style.backgroundColor = 'var(--crimson)';
-            summary.style.color = 'white';
-            matches.style.backgroundColor = 'var(--dark-gray)';
-            matches.style.color = 'black';
-            squad.style.backgroundColor = 'var(--dark-gray)';
-            squad.style.color = 'black';
-         };
-
-        squad.onclick = function(){
-            summaryDisplay.style.display = 'none';
-            squadDisplay.style.display = 'block';
-            matchesDisplay.style.display = 'none';
-            squad.style.backgroundColor = 'var(--crimson)'
-            squad.style.color = 'white'
-            matches.style.backgroundColor = 'var(--dark-gray)';
-            matches.style.color = 'black';
-            summary.style.backgroundColor = 'var(--dark-gray)';
-            summary.style.color = 'black';
-        }
-    })
-</script>
-    
