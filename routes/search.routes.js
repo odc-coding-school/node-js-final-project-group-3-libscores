@@ -1,34 +1,29 @@
-var express = require('express');
-var router = express.Router();
-var db = require('../db'); // Import the database connection
+const express = require('express');
+const router = express.Router();
+const db = require('../db'); // Import the database connection
 
 // Route to handle search requests
-router.get('/', (req, res) => {
+router.get('/search', (req, res) => {
     const searchTerm = req.query.q;
 
-    // Prepare search parameter
-    const searchParam = `%${searchTerm}%`; // SQL wildcard search
-
     // Queries for players, clubs, games, and competitions
-    const playerQuery = `SELECT fullname, club, position, DOB FROM players WHERE fullname LIKE ? OR club LIKE ?`;
-    const clubQuery = `SELECT badge, club, country_id, squad, founded FROM clubs WHERE club LIKE ?`;
-    const countyQuery = `SELECT county, flag FROM counties WHERE county LIKE ?`;
-    const gameQuery = `SELECT home, away, date, score FROM games WHERE home LIKE ? OR away LIKE ?`;
-    const competitionQuery = `SELECT competition, country_id, players, clubs FROM competitions WHERE competition LIKE ?`;
-    
+    const playerQuery = `SELECT name, club, position, age FROM players WHERE name LIKE ?`;
+    const clubQuery = `SELECT name, country, founded FROM clubs WHERE name LIKE ?`;
+    const gameQuery = `SELECT home_team, away_team, date, score FROM games WHERE home_team LIKE ? OR away_team LIKE ?`;
+    const competitionQuery = `SELECT name, country, season FROM competitions WHERE name LIKE ?`;
+
+    const searchParam = `%${searchTerm}%`; // SQL wildcard search
 
     // Results object to store all data
     let results = {
         players: [],
         clubs: [],
-        counties: [],
         games: [],
-        competitions: [],
-        
+        competitions: []
     };
 
     // Query players
-    db.all(playerQuery, [searchParam, searchParam], (err, rows) => {
+    db.all(playerQuery, [searchParam], (err, rows) => {
         if (err) {
             console.error('Error querying players:', err);
         } else {
@@ -43,13 +38,6 @@ router.get('/', (req, res) => {
                 results.clubs = rows;
             }
 
-            db.all(countyQuery, [searchParam], (err, rows) => {
-                if (err) {
-                    console.error('Error querying games:', err);
-                } else {
-                    results.counties = rows;
-                }
-
             // Query games
             db.all(gameQuery, [searchParam, searchParam], (err, rows) => {
                 if (err) {
@@ -57,7 +45,6 @@ router.get('/', (req, res) => {
                 } else {
                     results.games = rows;
                 }
-    
 
                 // Query competitions
                 db.all(competitionQuery, [searchParam], (err, rows) => {
@@ -72,11 +59,8 @@ router.get('/', (req, res) => {
                         searchTerm,
                         players: results.players,
                         clubs: results.clubs,
-                        counties: results.counties,
                         games: results.games,
-                        competitions: results.competitions,
-                        title: 'LibScores'
-                        });
+                        competitions: results.competitions
                     });
                 });
             });
