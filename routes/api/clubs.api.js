@@ -1,12 +1,13 @@
-const { dbQuery, dbRun, dbGet, dbAll, createDbConnection } = require('@utils/dbUtils');
+const { dbQuery, dbRun, dbGet, dbAll, useLeaguesDB  } = require('@utils/dbUtils');
 var router = require('express').Router();
 // var sqlite3 = require("sqlite3").verbose();
 // var getDbInstance = require('@js/getDBInstance');
-// var db = getDbInstance(sqlite3);
+// const { useLeaguesDB  } = require('@utils/dbUtils');
+const db = useLeaguesDB();
 
 router.get('/', async (req, res) => {
     try {
-        const db = await createDbConnection(); // Consistent database connection method
+        const db = await useLeaguesDB(); // Consistent database connection method
         
         const query = `SELECT * FROM clubs`;
         const clubs = await dbAll(db, query);  // Use dbAll for querying all rows
@@ -35,7 +36,7 @@ router.get('/suggest', async (req, res) => {
         const query = `SELECT id, club FROM clubs WHERE club LIKE ? LIMIT 10`; // Adjust the query as necessary
         const params = [`%${q}%`]; // Use parameterized query to prevent SQL injection
 
-        let db = await createDbConnection();
+        let db = await useLeaguesDB();
 
         // Execute the database query
         const teams = await dbQuery(db, query, params); // Assuming dbQuery is defined in your dbUtils
@@ -53,7 +54,7 @@ router.get('/:clubId/players', async (req, res) => {
     const { clubId } = req.params;
 
     try {
-        const db = await createDbConnection();
+        const db = await useLeaguesDB();
         
         const query = `
             SELECT 

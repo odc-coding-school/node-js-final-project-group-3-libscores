@@ -4,7 +4,7 @@ require('module-alias/register');
 var cookieParser = require('cookie-parser');
 var path = require('path');
 var logger = require('morgan');
-
+const { useLeaguesDB  } = require('@utils/dbUtils');
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
@@ -46,7 +46,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-const db = getDbInstance(sqlite3)
+const db = useLeaguesDB()
 // Export io for use in other files
 
 // leagues and frontend routes

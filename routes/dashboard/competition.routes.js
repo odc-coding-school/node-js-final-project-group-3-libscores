@@ -3,7 +3,7 @@ const router = require('express').Router();
 const sqlite3 = require('sqlite3').verbose();
 const getDbInstance = require('@js/getDBInstance');
 const upload = require('@middleware/upload');
-const { dbQuery, dbRun, dbGet,dbAll, createDbConnection } = require('@utils/dbUtils');
+const { dbQuery, dbRun, dbGet,dbAll, useLeaguesDB  } = require('@utils/dbUtils');
 
 
 // PUT, DELETE, and other specific methods related to competitions can go here.
@@ -13,7 +13,7 @@ router.get('/:id/games/new', async (req, res) => {
     const competitionId = req.params.id;
 
     try {
-        const db = await createDbConnection();
+        const db = await useLeaguesDB();
         const competition = await dbQuery(db, 'SELECT * FROM competitions WHERE id = ?', [competitionId]);
 
         if (!competition.length) {
@@ -48,7 +48,7 @@ router.get('/:id', async (req, res) => {
 
     try {
         const competition = await getItemById('competitions', id);
-        const db = await createDbConnection();
+        const db = await useLeaguesDB();
         const seasons = await dbQuery(db, 'SELECT * FROM seasons ORDER BY id DESC');
 
         if (!competition) {
