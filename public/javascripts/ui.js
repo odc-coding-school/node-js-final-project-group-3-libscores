@@ -30,7 +30,7 @@ $(document).ready(function() {
                     const competitionItem = `
                     
                         <a href="/competitions/3/name-of-thecomp" class="side-tab small-round bg-gray row tiny-padding">
-                            <img src="/images/${competition.logo}" class="sm-logo small-round" alt="">  <small class="tiny bold black" title="${competition.name}">${competition.name.substring(1, 20)}...</small>
+                            <img src="/images/${competition.logo}" class="sm-logo small-round" alt="">  <small class="tiny bold black" title="${competition.name}">${competition.name.substring(0, 19)}...</small>
                         </a>
                     `;
                     $competitionList.append(competitionItem);
