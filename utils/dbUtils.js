@@ -41,7 +41,7 @@ function useTournamentDB() {
             if (err) {
                 console.error('Error connecting to the local leagues database:', err.message);
             } else {
-                console.log('Connected to the local tournaments database.');
+                console.log('Connected to the local TOURNAMENTS database.)');
             }
         });
     } else if (process.env.NODE_ENV === 'production') {
