@@ -1,15 +1,12 @@
 const fs = require('fs');
 var router = require('express').Router()
-var sqlite3 = require("sqlite3").verbose();
-var getDbInstance = require('@js/getDBInstance');
-const { useLeaguesDB  } = require('@utils/dbUtils');
-const db = useLeaguesDB()
-const path = require('path');
+const { useLeaguesDB } = require('@utils/dbUtils');
+const { useTournamentDB } = require('../../utils/dbUtils');
 
 // const countriesData = require('@public/data/westAfricanCountries.json');
 
 
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
     res.send("for creating data");
 });
 
@@ -17,6 +14,7 @@ router.get('/', function(req, res, next) {
 router.get('/countries', function (req, res) {
     // Check if the countries table already has data
     const checkQuery = 'SELECT COUNT(*) as count FROM countries';
+    const db = useLeaguesDB()
     
     db.get(checkQuery, (err, row) => {
         if (err) {
@@ -36,7 +34,7 @@ router.get('/countries', function (req, res) {
 
 
 // Route to handle root
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
     res.send("for creating counties data");
 });
 
@@ -44,6 +42,9 @@ router.get('/', function(req, res, next) {
 router.get('/counties', function (req, res) {
     // Check if the counties table already has data
     const checkQuery = 'SELECT COUNT(*) as count FROM counties';
+
+    const db = useTournamentDB()
+
     
     db.get(checkQuery, (err, row) => {
         if (err) {

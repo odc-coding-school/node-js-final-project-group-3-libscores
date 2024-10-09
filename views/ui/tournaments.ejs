@@ -6,12 +6,15 @@
         <aside class="small-pane" id="sidebar" data-modal="sidebar">
             <%- include("./sidebar.ui.ejs") %>
         </aside>
-        <div class="column no-gap small-main">
-           <div class="bg-white small-border">
-            <header class="tiny row small-padding bg-green">
+        <div class="small-main">
+           <div class="bg-white small-round">
+            <header class="row small-padding border-bottom">
                 <span class="row">
                     <img src="/images/county_meet_new.png" alt="" class="mid-logo">
-                    <h3 class="large bold">National County Meet</h3>
+                    <span class="colum no-gap">
+                        <h3 class="bold navy"> National County Meet </h3>
+                        <small class="bold">Edition: 2025</small>
+                    </span>
                 </span>
                 <select name="years" class="small-select move-right">
                     <option>Filter by year</option>
@@ -19,15 +22,37 @@
                     <option value="2023">2024</option>
                 </select>
             </header>
-            <hr class="divider no-space">
             <nav class="row small-padding">
-                <button class="tab-btn link-btn" >Overviews</button>
-                <button class="link-btn small-button round grey">Standings</button>
+                <button class="small-chip active" >Overviews</button>
+                <button class="small-chip">Standings</button>
             </nav>
            </div>
-            <span class="space small"></span>
-            
+           <span class="space small"></span>
+           <header class="small-padding dark-gray bold align-center">Results</header>
+           <div class=" small-round column">
+                <div class="row bg-white small-round small-padding" data-game-id="">
+                    <small class="time small-padding" id="" data-start-time="">9AM</small>
+                    <section class="column max">
+                        <section class="row">
+                            <span class="row max">
+                                <img src="/images/logo" alt="logo" class="tiny-logo mid-round">
+                                <h5 class="mid bold">home team</h5>
+                            </span>
+                            <h5 class="mid bold">0</h5>
+                        </section>
+                        <section class="row between">
+                            <span class="row max">
+                                <img src="/images/logo" alt="logo" class="tiny-logo mid-round">
+                                <h5 class="mid bold">away team</h5>
+                            </span>
+                            <h5 class="mid bold move-right">0</h5>
+                        </section>
+                    </section>
+                </div>
+                <%- include("./group.ui.ejs") %>
+            </div>
         </div>
+        
     </main>
     <%- include("./foot.ui.ejs") %>
 </body>

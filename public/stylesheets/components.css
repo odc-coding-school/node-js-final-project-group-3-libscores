@@ -712,6 +712,8 @@ body.dialog-active::before {
   font-size: var(--tiny);
   cursor: pointer;
 }
+
+
 .link-btn:hover {
   color: var(--ocean-wave);
 }
@@ -830,7 +832,7 @@ body.dialog-active::before {
   gap: var(--spacing-sm);
 }
 
-.small-button {
+.small-button,.small-chip {
   font-size: var(--tiny);
   background-color: var(--light-gray);
   border-radius: var(--round-sm);
@@ -1118,4 +1120,13 @@ button.gray {
 
 .mid-side {
   min-width: 200px;
+}
+
+.small-chip {
+  border-radius: var(--round-lg);
+}
+
+.small-chip:hover {
+  background-color: var(--crimson);
+  color: var(--white);
 }
