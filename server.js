@@ -108,7 +108,6 @@ var gamesRouter = require('./routes/dashboard/games.routes');
 var playersRouter = require('./routes/dashboard/players.routes');
 var tournamentsDashRouter = require('./routes/dashboard/tournaments.routes');
 
-
 // DASHBOARD ROUTES HANDLERS
 app.use("/dashboard", protected)
 app.use("/dashboard", dashboardRouter)

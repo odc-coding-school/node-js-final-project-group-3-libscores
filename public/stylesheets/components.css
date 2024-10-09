@@ -206,6 +206,11 @@
     height: 28px; /* Set width for small logo */
 }
 
+.tiny-logo {
+  width: 16px; /* Set width for small logo */
+  height: 16px; /* Set width for small logo */
+}
+
 .mid-logo {
     width: 38px; /* Set width for medium logo */
     height: 38px; /* Set height for medium logo */
@@ -909,7 +914,7 @@ button.gray {
   display: block;
 }
 
-.small-pane{
+.small-pane {
   width: 190px;
 }
 .small-main {
@@ -1111,3 +1116,6 @@ button.gray {
   gap: 16px; /* Adjust the gap as needed */
 }
 
+.mid-side {
+  min-width: 200px;
+}
