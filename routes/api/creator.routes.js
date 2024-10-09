@@ -1,7 +1,6 @@
 const fs = require('fs');
 var router = require('express').Router()
-const { useLeaguesDB } = require('@utils/dbUtils');
-const { useTournamentDB } = require('../../utils/dbUtils');
+const { useLeaguesDB, useTournamentDB } = require('@utils/dbUtils');
 
 // const countriesData = require('@public/data/westAfricanCountries.json');
 
@@ -14,7 +13,7 @@ router.get('/', function(req, res) {
 router.get('/countries', function (req, res) {
     // Check if the countries table already has data
     const checkQuery = 'SELECT COUNT(*) as count FROM countries';
-    const db = useLeaguesDB()
+    let db = useLeaguesDB()
     
     db.get(checkQuery, (err, row) => {
         if (err) {
@@ -43,7 +42,7 @@ router.get('/counties', function (req, res) {
     // Check if the counties table already has data
     const checkQuery = 'SELECT COUNT(*) as count FROM counties';
 
-    const db = useTournamentDB()
+    let db = useTournamentDB()
 
     
     db.get(checkQuery, (err, row) => {
@@ -65,6 +64,7 @@ router.get('/counties', function (req, res) {
 // Function to get all counties data
 function getCountiesData(res) {
     const getAllCountiesQuery = 'SELECT * FROM counties';
+    let db = useTournamentDB()
 
     db.all(getAllCountiesQuery, [], (err, rows) => {
         if (err) {
@@ -80,6 +80,8 @@ function getCountiesData(res) {
 function populateCountiesTable(req, res) {
     // Correctly reference the public folder and file path
     const filePath = './public/data/counties.json';
+    let db = useTournamentDB()
+
 
     // Read the JSON file
     fs.readFile(filePath, 'utf8', (err, data) => {
@@ -117,10 +119,10 @@ function populateCountiesTable(req, res) {
 }
 
 
-
 // Function to get all countries data
 function getCountriesData(res) {
     const getAllCountriesQuery = 'SELECT * FROM countries';
+    let db = useLeaguesDB()
 
     db.all(getAllCountriesQuery, [], (err, rows) => {
         if (err) {
@@ -136,6 +138,7 @@ function getCountriesData(res) {
 function populateCountriesTable(req, res) {
     // Correctly reference the public folder and file path
     const filePath = './public/data/westAfricanCountries.json';
+    let db = useLeaguesDB()
 
     // Read the JSON file
     fs.readFile(filePath, 'utf8', (err, data) => {

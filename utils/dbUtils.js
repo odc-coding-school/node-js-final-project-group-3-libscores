@@ -228,6 +228,17 @@ async function getScorersInGame(gameId) {
     return scorers;
 }
 
+/**
+ * Helper function to handle errors and send a response.
+ * @param {Response} res - Express response object.
+ * @param {Error} err - The error object.
+ * @param {string} [customMessage='An error occurred'] - Optional custom error message.
+ */
+const handleError = (res, err, customMessage = 'An error occurred') => {
+    console.error(err);
+    res.status(500).json({ message: customMessage });
+};
+
 
 // Export the utility functions
 module.exports = {
@@ -242,4 +253,5 @@ module.exports = {
     dbGet,
     dbAll,
     useTournamentDB,
+    handleError
 };

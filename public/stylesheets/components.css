@@ -1130,3 +1130,11 @@ button.gray {
   background-color: var(--crimson);
   color: var(--white);
 }
+
+.fa  {
+  transition: all .2s ease-in-out;
+}
+
+a:hover .fa.fa-arrow-right  {
+  transform: scale(1.2);
+}
