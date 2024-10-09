@@ -391,6 +391,10 @@ table, th, td {
         width: 100%;
     }
   }
+.avatar.medium {
+  width:34px ;
+  height: 34px;
+}
 
   /* Input */
 .input {
@@ -1099,3 +1103,11 @@ button.gray {
 #contributeButton{
   box-shadow: white 3px 4px 8px;
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  grid-template-rows: repeat(2, 1fr); /* Two rows */
+  gap: 16px; /* Adjust the gap as needed */
+}
+

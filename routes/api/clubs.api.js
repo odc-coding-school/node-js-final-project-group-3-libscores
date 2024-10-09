@@ -115,15 +115,18 @@ router.get('/:clubId/players', async (req, res) => {
 router.get('/:id', async function(req, res, next) {
     let { id } = req.params;
     try {
-        db.all("SELECT * FROM clubs WHERE id=?", [id], function (err, rows) {
-            if (err || rows.length === 0) {
-                throw new Error(err);
-            } else {
-                res.status(200).json({ club: rows, msg: false });
-            }
-        });
+        const db = await useLeaguesDB(); // Consistent database connection method
+        
+        const query = `SELECT * FROM clubs WHERE id=?`;
+        const clubs = await dbAll(db, query, [id]);  // Use dbAll for querying all rows
+
+        if (!clubs.length) {
+            return res.status(404).json({ message: 'No clubs found.' });
+        }
+        res.status(200).json({ clubs });
     } catch (error) {
-        res.status(400).json({ error, msg: "Club doesn't exist" });
+        console.error('Error fetching clubs:', error);
+        res.status(500).json({ message: 'An error occurred while fetching the clubs.' });
     }
 });
 

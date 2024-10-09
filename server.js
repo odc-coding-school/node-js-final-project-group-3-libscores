@@ -4,7 +4,6 @@ require('module-alias/register');
 var cookieParser = require('cookie-parser');
 var path = require('path');
 var logger = require('morgan');
-const { useLeaguesDB  } = require('@utils/dbUtils');
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
@@ -43,7 +42,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-const db = useLeaguesDB()
 // Export io for use in other files
 
 // leagues and frontend routes
@@ -68,6 +66,8 @@ var fdRouter = require('./routes/admin/fd.routes');
 var sdRouter = require('./routes/admin/sd.routes');
 var wlRouter = require('./routes/admin/wl.routes');
 var loginRouter = require('./routes/login.routes');
+var tournamentsRouter = require('./routes/tournaments');
+
 
 // NEW UI ROUTES HANDLERS
 var homeUIRouter = require('./routes/ui/index.ui.routes');
@@ -79,7 +79,9 @@ app.use('/results', resultRouter);
 app.use('/fixtures', fixtureRouter);
 app.use('/leagues', leaguesRouter);
 app.use('/teams', teamsRouter);
-app.use('/search', searchRoutes); // Make sure this points to where your search routes are defined
+app.use('/search', searchRoutes); 
+app.use('/tournaments', tournamentsRouter);
+
 
 // app.use('/create_leagues', createLeaguesRouter);
 app.use('/first_division', firstDivisionRouter);
@@ -104,6 +106,8 @@ var seasonRouter = require('./routes/dashboard/season.routes');
 var phaseRouter = require('./routes/dashboard/phase.routes');
 var gamesRouter = require('./routes/dashboard/games.routes');
 var playersRouter = require('./routes/dashboard/players.routes');
+var tournamentsDashRouter = require('./routes/dashboard/tournaments.routes');
+
 
 // DASHBOARD ROUTES HANDLERS
 app.use("/dashboard", protected)
@@ -114,6 +118,7 @@ app.use("/dashboard/seasons", seasonRouter)
 app.use("/dashboard/phases", phaseRouter)
 app.use("/dashboard/games", gamesRouter)
 app.use("/dashboard/players", playersRouter)
+app.use("/dashboard/tournaments", tournamentsDashRouter)
 
 // fetch data api routes
 var countyRouter = require('./routes/api/county.routes');
