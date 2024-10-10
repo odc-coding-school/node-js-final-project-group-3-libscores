@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
             }
 
             return {
-                tournaments: tournamentResults, groups
+                groups
             };
         }));
 
