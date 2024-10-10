@@ -6,7 +6,7 @@ const { dbAll, useTournamentDB } = require('@utils/dbUtils');
 async function getGroupsData(tournamentId) {
     const db = await useTournamentDB();
     const groupsQuery = `
-        SELECT groups.id AS group_id, groups.name AS group_name, teams.*, teams.id AS team_id, teams.name AS team_name
+        SELECT groups.id AS group_id, groups.name AS group_name, teams.id AS team_id, teams.name AS team_name, teams.badge AS badge
         FROM groups 
         JOIN teams ON groups.team_id = teams.id 
         WHERE groups.tournament_id = ?

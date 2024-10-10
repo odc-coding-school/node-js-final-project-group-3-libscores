@@ -129,7 +129,6 @@ var activitiesApiRouter = require('./routes/api/activities.api');
 var tournamentsApiRouter = require('./routes/api/tournaments.api');
 var ajaxApiRouter = require('./routes/api/ajax.api');
 
-
 const { createLeagueTables, createTournamentTables } = require('./utils/tablesUtils');
 // CREATE TABLES FOR LEAGUES DB
 createLeagueTables()

@@ -20,6 +20,7 @@ router.get('/:type/:id', async (req, res) => {
         // Determine which function to call based on the type
         if (type === 'groups') {
             data = await getGroupsData(id);
+            console.log(data)
         } else if (type === 'teams') {
             data = await getTeamsData(id);
         } else if (type === 'matches') {
