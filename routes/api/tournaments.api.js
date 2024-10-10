@@ -42,7 +42,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const db = await useTournamentDB();
-        let { id } = req.params
+        let { id } = req.params;
 
         const tournamentQuery = `
             SELECT * FROM tournaments WHERE id = ?
@@ -53,17 +53,43 @@ router.get('/:id', async (req, res) => {
             return res.status(404).json({ message: 'No tournament found.' });
         }
 
-            const groupQuery    = `
-                SELECT teams.id AS team_id, teams.name AS team_name, teams.badge FROM groups JOIN teams ON groups.team_id = teams.id
-                WHERE tournament_id = ?
-            `;
-            const groups = await dbAll(db, groupQuery , [id]);
-            return res.status(200).json({tournament, groups});
+        // Fetch teams and their groups for the tournament
+        const groupQuery = `
+            SELECT 
+                groups.name AS group_name, 
+                teams.id AS team_id, 
+                teams.name AS team_name, 
+                teams.badge 
+            FROM groups 
+            JOIN teams ON groups.team_id = teams.id
+            WHERE groups.tournament_id = ?
+        `;
+        const groupResults = await dbAll(db, groupQuery, [id]);
+
+        // Group teams by group name
+        const groups = groupResults.reduce((acc, group) => {
+            const { group_name, team_id, team_name, badge } = group;
+
+            if (!acc[group_name]) {
+                acc[group_name] = [];
+            }
+            
+            acc[group_name].push({
+                team_id,
+                team_name,
+                badge
+            });
+
+            return acc;
+        }, {});
+
+        return res.status(200).json({ tournament, groups });
 
     } catch (err) {
         handleError(res, err, 'Error fetching competition details.');
     }
 });
+
 
 
 module.exports = router
