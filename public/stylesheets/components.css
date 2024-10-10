@@ -1143,3 +1143,13 @@ button.gray {
 a:hover .fa.fa-arrow-right  {
   transform: scale(1.2);
 }
+
+.link-card {
+  color: inherit;
+}
+
+.squard-img {
+  width: 128px; 
+  height: 64px; 
+  border-radius: var(--round-md);
+}

@@ -112,7 +112,7 @@ $(document).ready(function () {
 
     // Optional: Close dialog on clicking close button
     $('#closeDialog').on('click', function () {
-        $('.dialog').hide(); // Close dialog
+        // $('.dialog').hide(); // Close dialog
         toggleSuggestions(false); // Hide suggestions
         $message.hide(); 
     });

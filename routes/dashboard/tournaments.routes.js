@@ -1,6 +1,7 @@
 var router = require('express').Router();
 const upload = require('@middleware/upload');
 const { dbQuery, dbRun, dbGet,dbAll, useTournamentDB  } = require('@utils/dbUtils');
+const axios = require('axios');
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
@@ -48,7 +49,6 @@ router.post('/teams', upload.single('badge'), async (req, res) => { // Changed t
   }
 });
 
-
 // POST route to save a new competition (league)
 router.post('/', upload.single('badge'), async (req, res) => { // Changed the path to '/'
   const { name, host, start, end, } = req.body;
@@ -77,32 +77,40 @@ router.post('/', upload.single('badge'), async (req, res) => { // Changed the pa
   }
 });
 
-router.get('/:id', async function(req, res, next) {
-  let options = { title: 'Tournaments Dashboard', league: "tournaments" }
 
-  try {
-    const db = await useTournamentDB();
-    let { id } = req.params
-    const tournamentQuery = `SELECT * FROM tournaments WHERE id = ?`;
-    const tournament = await dbGet(db, tournamentQuery, [id]);
+router.get('/:id', async (req, res) => {
+    // Use the base URL from the environment variables, fallback to localhost if undefined
+const baseURL = process.env.API_BASE_URL || 'http://localhost:3000';
+let { id } = req.params;
+let options = { title: 'Tournaments Dashboard', league: "tournaments", msg: '' };
 
-    if (!tournament || tournament.length === 0) {
-        return res.status(404).json({ message: 'No tournament found.' });
+try {
+    // Make a dynamic request to the API using the base URL from the environment
+    const response = await axios.get(`${baseURL}/v1/api/tournaments/${id}`);
+
+    // Destructure the tournament and groupedTeams from the API response
+    const { tournament, groupedTeams } = response.data;
+
+    if (!tournament) {
+        options.msg = 'No tournament found.';
+        return res.render('dashboard/tournaments.info.ejs', options);
     }
-    options.tournament = tournament
 
-        const groupQuery    = `
-            SELECT teams.id AS team_id, teams.name AS team_name, teams.badge FROM groups JOIN teams ON groups.team_id = teams.id
-            WHERE tournament_id = ?
-        `;
-        const groups = await dbAll(db, groupQuery , [id]);
-        options.groups = groups 
+    // Pass the tournament and groupedTeams to the options for rendering
+    options.tournament = tournament;
+    options.groups = groupedTeams;
 
-       res.render('dashboard/tournaments.info.ejs', options);
-  } catch (err) {
-    options.err = err
+    // Render the EJS view with the fetched data
     res.render('dashboard/tournaments.info.ejs', options);
-  }
+
+} catch (error) {
+    console.error(error);
+    options.msg = 'Error fetching tournament data.';
+    res.render('dashboard/tournaments.info.ejs', options);
+}
+
 });
+
+
 
 module.exports = router;

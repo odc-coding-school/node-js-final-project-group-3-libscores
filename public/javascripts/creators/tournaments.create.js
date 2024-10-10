@@ -41,7 +41,7 @@ $(document).ready(function () {
                     $('#badge').val('');
 
                     // Dynamically append the new league data to the table
-                    console.log(data)
+                    // console.log(data)
                     appendNewLeagueToTable(data.tournament[0]);
                     
                     // Close the dialog
