@@ -65,7 +65,7 @@ $(document).ready(function () {
 function appendNewLeagueToTable(tournament) {
    
     const newRow = `
-        <a href="/dashboard/tournaments/${tournament.id}/${tournament.name.replace(' ', '-')}" class="row small-padding border small-round">
+        <a href="/dashboard/tournaments/${tournament.id}" class="row small-padding border small-round">
             <img src="/images/${tournament.badge}" alt="" class="mid-logo">
             <p class="small cap">${tournament.name}</p>
             <i class="fa fa-arrow-right move-right black margin-right"></i>

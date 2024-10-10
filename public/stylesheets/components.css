@@ -849,6 +849,11 @@ body.dialog-active::before {
   height: 38px;
 }
 
+.small-chip:hover,.small-chip.active {
+  background-color: var(--crimson);
+  color: var(--white);
+}
+
 button.blue, a.small-button.blue {
   color: var(--white);
   background-color: var(--blue);
