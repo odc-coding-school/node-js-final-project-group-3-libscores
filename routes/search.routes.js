@@ -15,19 +15,19 @@ router.get('/', (req, res) => {
     const countyQuery = `SELECT county, flag FROM counties WHERE county LIKE ?`;
     // Game query to fetch club names using home and away club IDs
 const gameQuery = `
-SELECT 
-    g.start, 
-    g.home_goal, 
-    g.away_goal, 
-    home.club AS home_club, 
-    away.club AS away_club 
-FROM games g
-JOIN clubs home ON g.home = home.id
-JOIN clubs away ON g.away = away.id
-WHERE home.club LIKE ? OR away.club LIKE ?;
+    SELECT 
+        g.start, 
+        g.home_goal, 
+        g.away_goal, 
+        home.club AS home_club, 
+        away.club AS away_club 
+    FROM games g
+    JOIN clubs home ON g.home = home.id
+    JOIN clubs away ON g.away = away.id
+    WHERE home.club LIKE ? OR away.club LIKE ?;
 `;
 
-    const competitionQuery = `SELECT competition FROM competitions WHERE competition LIKE ?`;
+    const competitionQuery = `SELECT competition, country_id FROM competitions WHERE competition LIKE ?`;
     
 
     // Results object to store all data
