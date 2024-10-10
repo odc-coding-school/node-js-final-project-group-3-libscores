@@ -33,7 +33,7 @@
                             <span class="info" id="third_place"><%= tournament.third_place %></span>
                         </small>
                         <small style="visibility: hidden;">
-                            <span class="info" id="id"><%= tournament.id %></span>
+                            <span class="info" id="tournament_id"><%= tournament.id %></span>
                         </small>
                     </section>
                     <hr class="divider">
@@ -54,14 +54,21 @@
             <% } %>
             
         <div class="small-main bg-white min-high ">
-            <nav class="row small-padding border-bottom">
-                <button class="small-chip active" data-tab="matches">Matches</button>
-                <button class="small-chip" data-tab="teams">Teams</button>
-                <button class="small-chip" data-tab="groups">Groups</button>
-                <a href="/dashboard/tournaments/new-match" class="link small-button move-right">
-                    New Match
-                    <i class="fa fa-arrow-right"></i>
-                </a>
+            <nav class="column small-padding border-bottom">
+                <div class="row border-bottom padding-bottom">
+                    <h4 class="mid bold"><%= tournament ? tournament.name: null %></h4>
+                    <%- include("./team.dialog.ejs") %>
+                    <a href="/dashboard/tournaments/new-match" class="link-btn small-button">
+                        New Match
+                        <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="row">
+                    <button class="small-chip active" data-tab="matches">Matches</button>
+                    <button class="small-chip" data-tab="teams">Teams</button>
+                    <button class="small-chip" data-tab="groups">Groups</button>
+                </div>
+               
             </nav>
             <small id="msg"></small>
            <section class="column small-padding" data-content="tournament">
@@ -72,4 +79,6 @@
     </main>
     <%- include("./dash.foot.ejs") %>
     <script type="module" src="/javascripts/tournaments.info.js"></script>
+    <script type="module" src="/javascripts/creators/teams.create.js"></script>
+
 </body>

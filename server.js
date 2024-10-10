@@ -136,6 +136,7 @@ createTournamentTables()
 
 // API v1 Endpoints
 app.use("/counties", countyRouter)
+app.use("/v1/api/counties", countyRouter)
 app.use("/login", loginRouter)
 app.use("/v1/api", apiRouter)
 app.use("/v1/api/clubs", clubApiRouter)
