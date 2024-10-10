@@ -127,6 +127,8 @@ var gamesApiRouter = require('./routes/api/games.api')
 var competitionsApiRouter = require('./routes/api/competitions.api')
 var activitiesApiRouter = require('./routes/api/activities.api');
 var tournamentsApiRouter = require('./routes/api/tournaments.api');
+var ajaxApiRouter = require('./routes/api/ajax.api');
+
 
 const { createLeagueTables, createTournamentTables } = require('./utils/tablesUtils');
 // CREATE TABLES FOR LEAGUES DB
@@ -145,6 +147,8 @@ app.use("/v1/api/games", gamesApiRouter)
 app.use("/v1/api/competitions", competitionsApiRouter) 
 app.use("/v1/api/activities", activitiesApiRouter)
 app.use("/v1/api/tournaments", tournamentsApiRouter)
+app.use("/v1/api/ajax", ajaxApiRouter)
+
 
 // Listen for socket connections
 io.on('connection', (socket) => {
