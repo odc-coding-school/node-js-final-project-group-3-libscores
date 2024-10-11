@@ -1,18 +1,4 @@
 var router = require('express').Router();
-
-router.get('/matches', (req, res) => {
-    res.render('dashboard/matches.dash.ejs');
-});
-
-router.get('/teams', (req, res) => {
-    res.render('dashboard/teams.dash.ejs');
-});
-
-router.get('/groups', (req, res) => {
-    res.render('dashboard/groups.dash.ejs');
-});
-
-module.exports = router
 var axios = require("axios");
 const baseURL = process.env.API_BASE_URL || 'http://localhost:3000';
 const { getGroupsData, getTeamsData, getMatchesData } = require('@utils/dataUtils');

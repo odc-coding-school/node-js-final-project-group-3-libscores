@@ -1,13 +1,7 @@
 $(document).ready(function () {
-<<<<<<< HEAD
-    $('[data-tab]').click(function(e) {
-        $('[data-tab]').removeClass('active');
-        $(this).addClass('active');
-        let tab = $(this).attr('data-tab');
-=======
     // Extract the tournament ID from the span element
     window.tournament_id = $('#tournament_id').text().trim(); // Use .text() to get the content and .trim() to remove any whitespace
-
+    fetchAndRenderContent(`/v1/api/ajax/matches/${window.tournament_id}`) 
     $('[data-tab]').click(function(e) {
         $('[data-tab]').removeClass('active');
         $(this).addClass('active');
@@ -20,24 +14,11 @@ $(document).ready(function () {
             return;
         }
 
->>>>>>> ab299aa19bf02ec72f9e40ee181a5c47b77740f6
         let url = '';
 
         // Determine the URL to fetch based on the clicked tab
         switch (tab) {
             case "matches":
-<<<<<<< HEAD
-                url = '/v1/api/ajax/matches';
-                break;
-            case "teams":
-                url = '/v1/api/ajax/teams';
-                break;
-            case "groups":
-                url = '/v1/api/ajax/groups';
-                break;
-            default:
-                url = '/v1/api/ajax/matches'; // Default to matches if no tab matches
-=======
                 url = `/v1/api/ajax/matches/${window.tournament_id}`; // Append tournament ID to the URL
                 break;
             case "teams":
@@ -48,21 +29,36 @@ $(document).ready(function () {
                 break;
             default:
                 url = `/v1/api/ajax/matches/${window.tournament_id}`; // Default to matches if no tab matches
->>>>>>> ab299aa19bf02ec72f9e40ee181a5c47b77740f6
                 break;
         }
 
-        // Fetch the rendered EJS content from the server
-        $.ajax({
-            url: url,
-            method: 'GET',
-            success: function (response) {
-                // First, hide the content area, then insert the HTML, and finally slide it down smoothly
-                $('[data-content]').hide().html(response).slideDown(500);  // 500ms animation time
-            },
-            error: function () {
-                $('[data-content]').hide().html('<p>Error loading content. Please try again.</p>').slideDown(500);
-            }
-        });
+        fetchAndRenderContent(url) 
+
+        // // Fetch the rendered EJS content from the server
+        // $.ajax({
+        //     url: url,
+        //     method: 'GET',
+        //     success: function (response) {
+        //         // First, hide the content area, then insert the HTML, and finally slide it down smoothly
+        //         $('[data-content]').hide().html(response).slideDown(500);  // 500ms animation time
+        //     },
+        //     error: function () {
+        //         $('[data-content]').hide().html('<p>Error loading content. Please try again.</p>').slideDown(500);
+        //     }
+        // });
     });
 });
+
+function fetchAndRenderContent(url) {
+    $.ajax({
+        url: url,
+        method: 'GET',
+        success: function(response) {
+            // Default content area selector: '[data-content]'
+            $('[data-content]').hide().html(response).slideDown(500);  // 500ms animation time
+        },
+        error: function() {
+            $('[data-content]').hide().html('<p>Error loading content. Please try again.</p>').slideDown(500);
+        }
+    });
+}
