@@ -49,7 +49,7 @@ var liveRouter = require('./routes/live.routes');
 var resultRouter = require('./routes/results.routes');
 var fixtureRouter = require('./routes/fixtures.routes');
 var leaguesRouter = require('./routes/league.routes');
-var teamsRouter = require('./routes/team.routes');
+const teamRoutes = require('./routes/team.routes');
 var apiRouter = require('./routes/api');
 var firstDivisionRouter = require('./routes/first.division.routes');
 var countyMeetRouter = require('./routes/county.meet.routes');
@@ -78,7 +78,7 @@ app.use('/live', liveRouter);
 app.use('/results', resultRouter);
 app.use('/fixtures', fixtureRouter);
 app.use('/leagues', leaguesRouter);
-app.use('/teams', teamsRouter);
+app.use('/', teamRoutes); 
 app.use('/search', searchRoutes); 
 app.use('/tournaments', tournamentsRouter);
 

@@ -1,157 +1,159 @@
 <%- include("./partial/head") %>
+<<<<<<< HEAD
+<%- include("./partial/top-nav.ejs") %>
+    <div class="bg-rose">
+=======
 <%- include("./ui/nav.ui.ejs") %>
 <div>
+>>>>>>> ab299aa19bf02ec72f9e40ee181a5c47b77740f6
     <main class="container" id="main-body">
         <h3 class="main-title">Search Results for "<%= searchTerm %>"</h3>
 
-        <div class="search-box">
-            <h2 class="section-title">Search Results for Players</h2>
-            <table class="results-table">
-                <thead>
+   <div class="search-box">
+    <h2 class="section-title"> Search Result for Players</h2>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Club</th>
+                <th>Position</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (players.length === 0) { %>
+                <tr>
+                    <td colspan="4" class="no-results" style="text-align: left;">No results found.</td>
+                </tr>
+            <% } else { %>
+                <% players.forEach(player => { %>
                     <tr>
-                        <th>Full Name</th>
-                        <th>Club</th>
-                        <th>Position</th>
-                        <th>DOB</th>
+                        <td><%= player.fullname %></td>
+                        <td><a href="/team/<%= player.club %>"><%= player.club %></a></td>
+                        <td><%= player.position %></td>
                     </tr>
-                </thead>
-                <tbody>
-                    <% if (players.length === 0) { %>
-                        <tr>
-                            <td colspan="4" class="no-results" style="text-align: left;">No results found.</td>
-                        </tr>
-                    <% } else { %>
-                        <% players.forEach(player => { %>
-                            <tr>
-                                <td><%= player.fullname %></td>
-                                <td><a href="/team/<%= player.club %>"><%= player.club %></a></td>
-                                <td><%= player.position %></td>
-                                <td><%= player.DOB %></td>
-                            </tr>
-                        <% }); %>
-                    <% } %>
-                </tbody>
-            </table>
-        </div>
+                <% }); %>
+            <% } %>
+        </tbody>
+    </table>
+    <div class="search-box">
 
-        <div class="search-box">
-            <h2 class="section-title">Search Results for Clubs</h2>
-            <table class="results-table">
-                <thead>
+    </div>
+    <h2 class="section-title">Search Results for Clubs</h2>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>badge</th>
+                <th>Club</th>
+                <th>Squad</th>
+                <th>Founded</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (clubs.length === 0) { %>
+                <tr>
+                    <td colspan="3" class="no-results" style="text-align: left;">No results found.</td>
+                </tr>
+            <% } else { %>
+                <% clubs.forEach(club => { %>
                     <tr>
-                        <th>Badge</th>
-                        <th>Club</th>
-                        <th>Squad</th>
-                        <th>Founded</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% if (clubs.length === 0) { %>
-                        <tr>
-                            <td colspan="4" class="no-results" style="text-align: left;">No results found.</td>
-                        </tr>
-                    <% } else { %>
-                        <% clubs.forEach(club => { %>
-                            <tr>
-                                <td>
-                                    <img src="<%= club.badge %>" alt="Club Badge" style="width: 20px; height: auto; margin-left: 20px;">
-                                </td>
-                                <td><a href="/team/<%= club.club %>"><%= club.club %></a></td>
-                                <td><%= club.squad %></td>
-                                <td><%= club.founded %></td>
-                            </tr>
-                        <% }); %>
-                    <% } %>
-                </tbody>
-            </table>
-        </div>
+                        <td>
+                            <img src="<%= club.badge %>" alt="Club Badge" style="width: 20px; height: auto; margin-left: 20px;">
+                        </td>
 
-        <div class="search-box">
-            <h2>Search Results for Counties</h2>
-            <table class="results-table">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>County</th>
+                        <td><a href="/team/<%= club.club %>"><%= club.club %></a></td>
+                        <td><%= club.squad %></td>
+                        <td><%= club.founded %></td>
                     </tr>
-                </thead>
-                <tbody>
-                    <% if (counties.length === 0) { %>
+                <% }); %>
+            <% } %>
+        </tbody>
+    </table>
+   </div>
+   <div class="search-box">
+    <h2>Search Results for County Meet</h2>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>County</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (counties.length === 0) { %>
+                <tr>
+                    <td class="no-results" style="text-align: left;">No results found.</td>
+                </tr>
+            <% } else { %>
+                <% counties.forEach(county => { %>
+                    <tr>
+                        <td><img src="<%= county.flag %>" alt="County Flag" style="width: 50px; height: auto; margin-left: 20px;"></td>
+                        <td style="text-transform: capitalize;"><%= county.county %></td>
+                        
+                    </tr>
+                <% }); %>
+            <% } %>
+        </tbody>
+    </table>
+   </div>
+    <div class="search-box">
+        <h2 class="section-title">Search results for games</h2>
+        <table class="results-table">
+            <thead>
+                <tr>
+                    <th>Home Team</th>
+                    <th>Away Team</th>
+                    <th>Date</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (games.length === 0) { %>
+                    <tr>
+                        <td colspan="4" class="no-results" style="text-align: left;">No results found.</td>
+                    </tr>
+                <% } else { %>
+                    <% games.forEach(game => { %>
                         <tr>
-                            <td class="no-results" style="text-align: left;">No results found.</td>
+                            <td><a href="/team/<%= game.home %>"><%= game.home %></a></td>
+                            <td><a href="/team/<%= game.away %>"><%= game.away %></a></td>
+                            <td><%= game.date %></td>
+                            <td><%= game.score %></td>
                         </tr>
-                    <% } else { %>
-                        <% counties.forEach(county => { %>
-                            <tr>
-                                <td>
-                                    <img src="<%= county.flag %>" alt="County Flag" style="width: 50px; height: auto; margin-left: 20px;">
-                                </td>
-                                <td style="text-transform: capitalize;"><%= county.county %></td>
-                            </tr>
-                        <% }); %>
-                    <% } %>
-                </tbody>
-            </table>
-        </div>
+                    <% }); %>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
 
-        <div class="search-box">
-            <h2 class="section-title">Search Results for Games</h2>
-            <table class="results-table">
-                <thead>
+    <div class="search-box">
+        <h2 class="section-title">Search results for Competitions</h2>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Competition</th>
+                <th>Country</th>
+                <th>Clubs</th>
+                <th>Players</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (competitions.length === 0) { %>
+                <tr>
+                    <td colspan="3" class="no-results" style="text-align: left;">No results found.</td>
+                </tr>
+            <% } else { %>
+                <% competitions.forEach(competition => { %>
                     <tr>
-                        <th>Home Team</th>
-                        <th>Away Team</th>
-                        <th>Date</th>
-                        <th>Score</th>
+                        <td><%= competition.competition %></td>
+                        <td><%= competition.country_id %></td>
+                        <td><%= competition.clubs %></td>
+                        <td><%= competition.players %></td>
                     </tr>
-                </thead>
-                <tbody>
-                    <% if (games.length === 0) { %>
-                        <tr>
-                            <td colspan="4" class="no-results" style="text-align: left;">No results found.</td>
-                        </tr>
-                    <% } else { %>
-                        <% games.forEach(game => { %>
-                            <tr>
-                                <td><a href="/team/<%= game.home_club %>"><%= game.home_club %></a></td>
-                                <td><a href="/team/<%= game.away_club %>"><%= game.away_club %></a></td>
-                                <td><%= game.start %></td>
-                                <td><%= game.home_goal %> - <%= game.away_goal %></td>
-                            </tr>
-                        <% }); %>
-                    <% } %>
-                </tbody>                
-            </table>
-        </div>
-
-        <div class="search-box">
-            <h2 class="section-title">Search Results for Competitions</h2>
-            <table class="results-table">
-                <thead>
-                    <tr>
-                        <th>Competition</th>
-                        <th>Country</th>
-                        <th>Clubs</th>
-                        <th>Players</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% if (competitions.length === 0) { %>
-                        <tr>
-                            <td colspan="4" class="no-results" style="text-align: left;">No results found.</td>
-                        </tr>
-                    <% } else { %>
-                        <% competitions.forEach(competition => { %>
-                            <tr>
-                                <td><%= competition.competition %></td>
-                                <td><%= competition.country_id %></td>
-                                <td><%= competition.clubs %></td>
-                                <td><%= competition.players %></td>
-                            </tr>
-                        <% }); %>
-                    <% } %>
-                </tbody>
-            </table>
-        </div>
+                <% }); %>
+            <% } %>
+        </tbody>
+    </table>
+    </div>
     </main>
-</div>
+    </div>
+    

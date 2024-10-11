@@ -1,4 +1,10 @@
 $(document).ready(function () {
+<<<<<<< HEAD
+    $('[data-tab]').click(function(e) {
+        $('[data-tab]').removeClass('active');
+        $(this).addClass('active');
+        let tab = $(this).attr('data-tab');
+=======
     // Extract the tournament ID from the span element
     window.tournament_id = $('#tournament_id').text().trim(); // Use .text() to get the content and .trim() to remove any whitespace
 
@@ -14,11 +20,24 @@ $(document).ready(function () {
             return;
         }
 
+>>>>>>> ab299aa19bf02ec72f9e40ee181a5c47b77740f6
         let url = '';
 
         // Determine the URL to fetch based on the clicked tab
         switch (tab) {
             case "matches":
+<<<<<<< HEAD
+                url = '/v1/api/ajax/matches';
+                break;
+            case "teams":
+                url = '/v1/api/ajax/teams';
+                break;
+            case "groups":
+                url = '/v1/api/ajax/groups';
+                break;
+            default:
+                url = '/v1/api/ajax/matches'; // Default to matches if no tab matches
+=======
                 url = `/v1/api/ajax/matches/${window.tournament_id}`; // Append tournament ID to the URL
                 break;
             case "teams":
@@ -29,6 +48,7 @@ $(document).ready(function () {
                 break;
             default:
                 url = `/v1/api/ajax/matches/${window.tournament_id}`; // Default to matches if no tab matches
+>>>>>>> ab299aa19bf02ec72f9e40ee181a5c47b77740f6
                 break;
         }
 
