@@ -39,6 +39,8 @@ function createTournamentTables() {
     let db = useTournamentDB()
     db.serialize(function() {
 
+      db.run("CREATE TABLE IF NOT EXISTS counties (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(50) NOT NULL, flag VARCHAR(50)  NOT NULL)");
+
       db.run("CREATE TABLE IF NOT EXISTS tournaments (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(50) NOT NULL, badge VARCHAR(50)  NOT NULL, host VARCHAR(50) NOT NULL, start DATE NOT NULL, end DATE NOT NULL, winner INTEGER NULL, runner_up INTEGER NULL, third_place INTEGER NULL)");
 
       db.run("CREATE TABLE IF NOT EXISTS teams (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(50) NOT NULL, badge VARCHAR(50)  NOT NULL)");
@@ -49,7 +51,7 @@ function createTournamentTables() {
 
       db.run("CREATE TABLE IF NOT EXISTS lineups (id INTEGER PRIMARY KEY AUTOINCREMENT, fixture_id INTEGER NOT NULL, team_id INTEGER NOT NULL,  player_id INTEGER NOT NULL, started BOOLEAN NULL)");
 
-      db.run("CREATE TABLE IF NOT EXISTS groups (id INTEGER PRIMARY KEY AUTOINCREMENT, team_id INTEGER NOT NULL, name VARCHAR(50) NOT NULL )");
+      db.run("CREATE TABLE IF NOT EXISTS groups (id INTEGER PRIMARY KEY AUTOINCREMENT, tournament_id INTEGER NOT NULL, team_id INTEGER NOT NULL, name VARCHAR(50) NOT NULL )");
 
       db.run("CREATE TABLE IF NOT EXISTS stages (id INTEGER PRIMARY KEY AUTOINCREMENT, tournament_id INTEGER NOT NULL, stage VARCHAR(50) NOT NULL, home_team INTEGER NOT NULL, away_team INTEGER NOT NULL, name DATE NOT NULL)");
 

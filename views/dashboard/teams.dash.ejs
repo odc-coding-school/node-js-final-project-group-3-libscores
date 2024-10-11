@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="column">
     <a href="/teams/id" class="link-card bg-white border small-round row small-padding">
         <img src="/images/grand_kru_flag.png" alt="" class="lg-logo squard-img">
@@ -7,3 +8,24 @@
         </section>
     </a>
 </div>
+=======
+<section class="team-list">
+    <div class="row">
+        <% if (teams && teams.length > 0) { %>
+            <% teams.forEach(team => { %>
+                <div class="column">
+                    <a href="/teams/<%= team.team_id %>" class="link-card bg-white border small-round row small-padding">
+                        <img src="/images/<%= team.badge %>" alt="<%= team.team_name %> Logo" class="lg-logo squard-img">
+                        <section class="column no-gap max">
+                            <h4 class="large bold"><%= team.team_name %></h4>
+                            <small class="dark-gray tiny">Group: <%= team.group_name || 'N/A' %></small>
+                        </section>
+                    </a>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p>No teams available.</p>
+        <% } %>
+    </div>
+</section>
+>>>>>>> ab299aa19bf02ec72f9e40ee181a5c47b77740f6

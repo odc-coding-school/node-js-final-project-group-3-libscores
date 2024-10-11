@@ -108,7 +108,6 @@ var gamesRouter = require('./routes/dashboard/games.routes');
 var playersRouter = require('./routes/dashboard/players.routes');
 var tournamentsDashRouter = require('./routes/dashboard/tournaments.routes');
 
-
 // DASHBOARD ROUTES HANDLERS
 app.use("/dashboard", protected)
 app.use("/dashboard", dashboardRouter)
@@ -127,6 +126,9 @@ var creatorRouter = require('./routes/api/creator.routes')
 var gamesApiRouter = require('./routes/api/games.api')
 var competitionsApiRouter = require('./routes/api/competitions.api')
 var activitiesApiRouter = require('./routes/api/activities.api');
+var tournamentsApiRouter = require('./routes/api/tournaments.api');
+var ajaxApiRouter = require('./routes/api/ajax.api');
+
 const { createLeagueTables, createTournamentTables } = require('./utils/tablesUtils');
 // CREATE TABLES FOR LEAGUES DB
 createLeagueTables()
@@ -135,13 +137,17 @@ createTournamentTables()
 
 // API v1 Endpoints
 app.use("/counties", countyRouter)
+app.use("/v1/api/counties", countyRouter)
 app.use("/login", loginRouter)
 app.use("/v1/api", apiRouter)
 app.use("/v1/api/clubs", clubApiRouter)
 app.use("/v1/api/creates", creatorRouter)
 app.use("/v1/api/games", gamesApiRouter)
-app.use("/v1/api/competitions", competitionsApiRouter)
+app.use("/v1/api/competitions", competitionsApiRouter) 
 app.use("/v1/api/activities", activitiesApiRouter)
+app.use("/v1/api/tournaments", tournamentsApiRouter)
+app.use("/v1/api/ajax", ajaxApiRouter)
+
 
 // Listen for socket connections
 io.on('connection', (socket) => {
