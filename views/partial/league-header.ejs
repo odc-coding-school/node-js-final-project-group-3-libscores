@@ -1,0 +1,20 @@
+
+<div class="border row max bg-white tiny-padding mid-round">
+    <img src="<%= logo %>" class="lg-logo"  alt="">
+    <span>
+        <h1 class="large"><%= title %></h1>
+        <h4 class="muted bold" id="leagueEdition">2024/2025</h4>
+    </span>
+    <% if (league == "cm") { %>
+        <select id="cmEditions" name="cmEditions" class="small-round inline-block move-right margin-right">
+            <% if (editions) { %>
+            <% editions.map(edition => { %>
+             <option class="cap" value="<%= edition.id %>">
+             <%= edition.edition %> /
+             <%= Number(edition.edition) + 1 %>
+            </option>
+            <% }) }%>
+        </select>
+        <% } %>
+    </div>
+    <script type="module" src="/javascripts/county-meet.js" defer></script>

@@ -1,0 +1,32 @@
+<%- include("./dash.nav.ejs") %>
+<body class="bg-rose">
+    <%- include("./dash.bar.ejs") %>
+    
+    <main class='min-wide bg-white'>
+            <nav class="row between small-padding border-bottom">
+            <%- include("./back.btn.ejs") %>
+            <%- include("./club.dialog.ejs") %>
+            </nav>
+            <section class="bg-white  mid-round small-padding long">
+                <table class="table tiny">
+                    <thead class="thead tiny">
+                        <tr class="tr tiny">
+                            <th></th>
+                            <th>Club</th>
+                            <th>Squad</th>
+                            <th>Country</th>
+                            <th>Market Value</th>
+                            <th>Stadium</th>
+                            <th>Founded</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody" id="clubs">
+                    </tbody>
+                </table>
+            </section>
+    </main>
+    <%- include("./dash.foot.ejs") %>
+    <script type="module" src="/javascripts/clubs.dash.js"></script>
+    <script type="module" src="/javascripts/creators/club.create.js"></script>
+</body>
