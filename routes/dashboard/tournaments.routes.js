@@ -83,6 +83,39 @@ router.post('/', upload.single('badge'), async (req, res) => {
 });
 
 // Existing route to get tournament details...
+router.get('/teams/:id', async (req, res) => {
+    // Use the base URL from the environment variables, fallback to localhost if undefined
+    const baseURL = process.env.API_BASE_URL || 'http://localhost:3000';
+    let { id } = req.params;
+    let options = { title: 'Tournaments Dashboard', league: "tournaments", msg: '' };
+
+    try {
+        // Make a dynamic request to the API using the base URL from the environment
+        const response = await axios.get(`${baseURL}/v1/api/tournaments/${id}`);
+
+        // Destructure the tournament and groupedTeams from the API response
+        const { tournament, groupedTeams } = response.data;
+
+        if (!tournament) {
+            options.msg = 'No tournament found.';
+            return res.render('dashboard/tournaments.team.ejs', options);
+        }
+
+        // Pass the tournament and groupedTeams to the options for rendering
+        options.tournament = tournament;
+        options.groups = groupedTeams;
+
+        // Render the EJS view with the fetched data
+        res.render('dashboard/tournaments.team.ejs', options);
+
+    } catch (error) {
+        console.error(error);
+        options.msg = 'Error fetching tournament data.';
+        res.render('dashboard/tournaments.team.ejs', options);
+    }
+});
+
+// Existing route to get tournament details...
 router.get('/:id', async (req, res) => {
     // Use the base URL from the environment variables, fallback to localhost if undefined
     const baseURL = process.env.API_BASE_URL || 'http://localhost:3000';

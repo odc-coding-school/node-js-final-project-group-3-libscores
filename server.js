@@ -107,6 +107,8 @@ var phaseRouter = require('./routes/dashboard/phase.routes');
 var gamesRouter = require('./routes/dashboard/games.routes');
 var playersRouter = require('./routes/dashboard/players.routes');
 var tournamentsDashRouter = require('./routes/dashboard/tournaments.routes');
+var teamsDashRouter = require('./routes/dashboard/teams.routes');
+
 
 // DASHBOARD ROUTES HANDLERS
 app.use("/dashboard", protected)
@@ -118,6 +120,8 @@ app.use("/dashboard/phases", phaseRouter)
 app.use("/dashboard/games", gamesRouter)
 app.use("/dashboard/players", playersRouter)
 app.use("/dashboard/tournaments", tournamentsDashRouter)
+app.use("/dashboard/teams", teamsDashRouter)
+
 
 // fetch data api routes
 var countyRouter = require('./routes/api/county.routes');

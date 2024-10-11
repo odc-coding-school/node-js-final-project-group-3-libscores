@@ -3,7 +3,7 @@
         <% if (teams && teams.length > 0) { %>
             <% teams.forEach(team => { %>
                 <div class="column">
-                    <a href="/teams/<%= team.team_id %>" class="link-card bg-white border small-round row small-padding">
+                    <a href="/dashboard/teams/<%= team.team_id %>" class="link-card bg-white border small-round row small-padding">
                         <img src="/images/<%= team.badge %>" alt="<%= team.team_name %> Logo" class="lg-logo squard-img">
                         <section class="column no-gap max">
                             <h4 class="large bold"><%= team.team_name %></h4>
