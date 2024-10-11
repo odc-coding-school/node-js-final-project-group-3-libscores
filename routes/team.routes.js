@@ -29,7 +29,7 @@ router.get('/team/:clubName', function(req, res, next) {
 
             // Query for the squad (players in the team)
             results.squad = await new Promise((resolve, reject) => {
-                db.all(`SELECT fullname, position FROM players WHERE club_id = ?`, [clubName], (err, rows) => {
+                db.all(`SELECT fullname, position FROM players WHERE club = ?`, [clubName], (err, rows) => {
                     if (err) {
                         console.error('Error querying squad:', err);
                         reject(err);
@@ -42,16 +42,10 @@ router.get('/team/:clubName', function(req, res, next) {
             // Query for the games from the 'games' table where the team plays as either home or away
             results.games = await new Promise((resolve, reject) => {
                 db.all(
-                    `SELECT g.start, 
-                            g.home_goal, 
-                            g.away_goal, 
-                            home.club AS home_club, 
-                            away.club AS away_club 
-                            FROM games g
-                            JOIN clubs home ON g.home = home.id
-                            JOIN clubs away ON g.away = away.id
-                            WHERE home.club LIKE ? OR away.club LIKE ?; 
-                            ORDER BY start DESC`, // Order by date in descending order
+                    `SELECT home, away, start, status, date, home_goal, away_goal, score 
+                    FROM games 
+                    WHERE home = ? OR away = ? 
+                    ORDER BY date DESC`, // Order by date in descending order
                     [clubName, clubName], 
                     (err, rows) => {
                         if (err) {

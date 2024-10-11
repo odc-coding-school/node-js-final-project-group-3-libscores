@@ -10,24 +10,11 @@ router.get('/', (req, res) => {
     const searchParam = `%${searchTerm}%`; // SQL wildcard search
 
     // Queries for players, clubs, games, and competitions
-    const playerQuery = `SELECT fullname, position, DOB FROM players WHERE fullname LIKE ?`;
+    const playerQuery = `SELECT fullname, club, position, DOB FROM players WHERE fullname LIKE ? OR club LIKE ?`;
     const clubQuery = `SELECT badge, club, country_id, squad, founded FROM clubs WHERE club LIKE ?`;
     const countyQuery = `SELECT county, flag FROM counties WHERE county LIKE ?`;
-    // Game query to fetch club names using home and away club IDs
-const gameQuery = `
-    SELECT 
-        g.start, 
-        g.home_goal, 
-        g.away_goal, 
-        home.club AS home_club, 
-        away.club AS away_club 
-    FROM games g
-    JOIN clubs home ON g.home = home.id
-    JOIN clubs away ON g.away = away.id
-    WHERE home.club LIKE ? OR away.club LIKE ?;
-`;
-
-    const competitionQuery = `SELECT competition, country_id FROM competitions WHERE competition LIKE ?`;
+    const gameQuery = `SELECT home, away, date, score FROM games WHERE home LIKE ? OR away LIKE ?`;
+    const competitionQuery = `SELECT competition, country_id, players, clubs FROM competitions WHERE competition LIKE ?`;
     
 
     // Results object to store all data
@@ -41,7 +28,7 @@ const gameQuery = `
     };
 
     // Query players
-    db.all(playerQuery, [searchParam], (err, rows) => {
+    db.all(playerQuery, [searchParam, searchParam], (err, rows) => {
         if (err) {
             console.error('Error querying players:', err);
         } else {
