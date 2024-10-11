@@ -1,5 +1,4 @@
 var router = require('express').Router();
-<<<<<<< HEAD
 
 router.get('/matches', (req, res) => {
     res.render('dashboard/matches.dash.ejs');
@@ -14,7 +13,6 @@ router.get('/groups', (req, res) => {
 });
 
 module.exports = router
-=======
 var axios = require("axios");
 const baseURL = process.env.API_BASE_URL || 'http://localhost:3000';
 const { getGroupsData, getTeamsData, getMatchesData } = require('@utils/dataUtils');
@@ -60,4 +58,3 @@ router.get('/:type/:id', async (req, res) => {
 });
 
 module.exports = router;
->>>>>>> ab299aa19bf02ec72f9e40ee181a5c47b77740f6
